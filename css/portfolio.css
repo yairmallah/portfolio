@@ -24,6 +24,7 @@
 	
 }
 .project-icon-container{
+	margin-top: 20px;
 	width: 15vh;
 	aspect-ratio: 1 / 1;
 	display: flex;
@@ -45,6 +46,7 @@
 }
 .draw-bw{
 	filter: invert(1) grayscale(100%) blur(.2px)  brightness(1000%) contrast(1000%) blur(0.5px);
+	mix-blend-mode: exclusion;
 }
 .photo-black-bg{
 	filter: grayscale(100%) brightness(80%) contrast(250%);
