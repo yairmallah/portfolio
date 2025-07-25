@@ -1,0 +1,51 @@
+:root {
+	--headerPer: 10;
+}
+
+#projects-table{
+	border: none;
+	height: 100%;
+	width:100;
+}
+.projects-row{
+	border: none;
+	height: calc((90 - var(--headerPer)) / 2 * 1%);
+}
+.projects-cell{
+	border: none;
+	/*border: solid 1px red;*/
+	width: 25vw;
+}
+.project-icon-wrapper{
+	height: 100%;
+	width: 100%;
+	display: grid;
+	justify-content: center;
+	
+}
+.project-icon-container{
+	width: 15vh;
+	aspect-ratio: 1 / 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.project-icon{
+	min-width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+
+	/* Fade at the edges */
+	-webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 75%);
+	mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 75%);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+}
+.draw-bw{
+	filter: invert(1) grayscale(100%) blur(.2px)  brightness(1000%) contrast(1000%) blur(0.5px);
+}
+.photo-black-bg{
+	filter: grayscale(100%) brightness(80%) contrast(250%);
+}
