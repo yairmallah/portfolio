@@ -1,6 +1,7 @@
 :root {
 	--textColor:white;
 	--bgBody:#000;
+	--invBg:#fff;
 		
 	--scrollbarColor:#333;
 	--scrollbarHover:#999;
