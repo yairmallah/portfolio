@@ -19,7 +19,7 @@
 							<div class="project-icon-container">
 								<img class="project-icon draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg" alt=""/>
 							</div>
-							<p class="project-title">גגג</p>
+							<p class="project-title">מעונות אגרון</p>
 						</div>
 					</td>
 					<td class="projects-cell">
@@ -27,7 +27,7 @@
 							<div class="project-icon-container">
 								<img class="project-icon photo-black-bg" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png" alt=""/>
 							</div>
-							<p class="project-title">גגג</p>
+							<p class="project-title">רחוב צקלג</p>
 						</div>
 					</td>
 					<td class="projects-cell">
@@ -35,15 +35,15 @@
 							<div class="project-icon-container">
 								<img class="project-icon photo-brighter" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png" alt=""/>
 							</div>
-							<p class="project-title">גגג</p>
+							<p class="project-title">יפו 86</p>
 						</div>
 					</td>
 					<td class="projects-cell">
 						<div class="project-icon-wrapper">
 							<div class="project-icon-container">
-								<img class="project-icon photo-black-bg" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png" alt=""/>
+								<img class="project-icon draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png" alt=""/>
 							</div>
-							<p class="project-title">גגג</p>
+							<p class="project-title">שוקן 2</p>
 						</div>
 					</td>
 				</tr>
@@ -51,17 +51,17 @@
 					<td class="projects-cell">
 						<div class="project-icon-wrapper">
 							<div class="project-icon-container">
-								<img class="project-icon draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg" alt=""/>
+								<img class="project-icon original-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg" alt=""/>
 							</div>
-							<p class="project-title">גגג</p>
+							<p class="project-title">פיאצה דל פופולו</p>
 						</div>
 					</td>
 					<td class="projects-cell">
 						<div class="project-icon-wrapper">
 							<div class="project-icon-container">
-								<img class="project-icon photo-black-bg" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png" alt=""/>
+								<img class="project-icon pre-draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs8.png" alt=""/>
 							</div>
-							<p class="project-title">גגג</p>
+							<p class="project-title">אזור תעשיה תלפיות</p>
 						</div>
 					</td>
 					<td class="projects-cell">
@@ -83,10 +83,14 @@
 				</tr>
 			</table>
 			<script>
-				document.querySelectorAll("img").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.filter="";})})
-				document.querySelectorAll("img").forEach(d=>{d.addEventListener('mouseenter', () =>{d.style.filter="invert(1)";})})
-				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.scale="";})})
-				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseenter', () =>{d.style.scale="1.5";})})
+				document.querySelectorAll("img").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.filter="";})});
+				document.querySelectorAll("img").forEach(d=>{d.addEventListener('mouseenter', () =>{
+					var inv_flag = false;
+					d.classList.forEach(cls => {if (cls.includes('bw')) inv_flag = true;});
+					d.style.filter = inv_flag ? "invert(1) hue-rotate(180deg)" : "none";
+				})});
+				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.scale="";})});
+				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseenter', () =>{d.style.scale="1.7";})});
 			</script>
 		</div>
 		<div id="footer">
