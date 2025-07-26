@@ -6,86 +6,68 @@
         <title>Yair Mallah</title>
 		<link rel="stylesheet" type="text/css" href="css\general.css"/>
 		<link rel="stylesheet" type="text/css" href="css\portfolio.css"/>
+		<script>
+			window.add_dark_vals = {true: {
+				"--drawHueRot": "180deg"
+			}, false: {
+				"--drawHueRot": "0deg"
+			}};
+		</script>
     </head>
     <body>
 		<div id="header"></div>
 		<div id="content-container">
 			<table id="projects-table">
-				<tr class="projects-row">
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg" alt=""/>
-							</div>
-							<p class="project-title">מעונות אגרון</p>
-						</div>
-					</td>
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon photo-black-bg" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png" alt=""/>
-							</div>
-							<p class="project-title">רחוב צקלג</p>
-						</div>
-					</td>
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon photo-brighter" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png" alt=""/>
-							</div>
-							<p class="project-title">יפו 86</p>
-						</div>
-					</td>
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png" alt=""/>
-							</div>
-							<p class="project-title">שוקן 2</p>
-						</div>
-					</td>
-				</tr>
-				<tr class="projects-row">
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon original-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg" alt=""/>
-							</div>
-							<p class="project-title">פיאצה דל פופולו</p>
-						</div>
-					</td>
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon pre-draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs8.png" alt=""/>
-							</div>
-							<p class="project-title">אזור תעשיה תלפיות</p>
-						</div>
-					</td>
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon draw-bw" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg" alt=""/>
-							</div>
-							<p class="project-title">גגג</p>
-						</div>
-					</td>
-					<td class="projects-cell">
-						<div class="project-icon-wrapper">
-							<div class="project-icon-container">
-								<img class="project-icon photo-black-bg" src="https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png" alt=""/>
-							</div>
-							<p class="project-title">גגג</p>
-						</div>
-					</td>
-				</tr>
+
 			</table>
+			<script>
+				const projects_data = [
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg', 'מעונות אגרון', 'draw-bw'],
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png', 'רחוב צקלג', 'photo-black-bg'],
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png', 'יפו 86', 'photo-brighter'],
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png', 'שוקן 2', 'draw-bw'],
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg', 'פיאצה דל פופולו', 'original'],
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs8.png', 'אזור תעשיה תלפיות', 'pre-draw-bw'],
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs10.jpg', 'הספריה הלאומית הישנה', 'photo-brighter'],
+					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png', 'מעונות אגרון', 'draw-bw']
+				];
+				var col_count = 4;
+				
+				function pushProjectsTable(projects_data, col_count, table_id) {
+					const table = document.getElementById(table_id);
+					const tbody = document.createElement("tbody");
+					table.appendChild(tbody);
+
+					for (let i = 0; i < projects_data.length; i += col_count) {
+						const row = document.createElement("tr");
+
+						for (let j = 0; j < col_count; j++) {
+							const index = i + j;
+							const cell = document.createElement("td");
+							cell.className = "projects-cell";
+
+							if (index < projects_data.length) {
+								const [imgSrc, title, classVal] = projects_data[index];
+
+								cell.innerHTML = '<div class="project-icon-wrapper"><div class="project-icon-container"><img class="project-icon '+classVal+'" src="'+imgSrc+'" alt=""/></div><p class="project-title">'+title+'</p></div>';
+							}
+
+							row.appendChild(cell);
+						}
+
+						tbody.appendChild(row);
+					}
+					return table;
+				}
+				pushProjectsTable(projects_data, col_count, "projects-table");
+				
+			</script>
 			<script>
 				document.querySelectorAll("img").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.filter="";})});
 				document.querySelectorAll("img").forEach(d=>{d.addEventListener('mouseenter', () =>{
 					var inv_flag = false;
 					d.classList.forEach(cls => {if (cls.includes('bw')) inv_flag = true;});
-					d.style.filter = inv_flag ? "invert(1) hue-rotate(180deg)" : "none";
+					d.style.filter = inv_flag ? "invert(1) hue-rotate("+ window.add_dark_vals[sessionStorage.getItem("isDark") || true]["--drawHueRot"] +")" : "none";
 				})});
 				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.scale="";})});
 				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseenter', () =>{d.style.scale="1.7";})});

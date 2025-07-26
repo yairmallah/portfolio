@@ -1,5 +1,6 @@
 :root {
-	--headerPer: 10;
+	--bgBody: black;
+	--drawHueRot: 180deg;
 }
 
 #projects-table{
@@ -33,6 +34,8 @@
 	align-items: center;
 	overflow: hidden;
 	transition: scale 1s ease-out;
+	background: var(--bgBody);
+	border-radius: 100%;
 }
 
 .project-icon{
@@ -48,14 +51,14 @@
 	transition: filter 1s ease;
 }
 .draw-bw{
-	filter: invert(1) hue-rotate(180deg) grayscale(50%) /*blur(.2px)*/ brightness(500%)/* contrast(500%) blur(0.5px)*/;
+	filter: invert(1) hue-rotate(var(--drawHueRot)) grayscale(50%) /*blur(.2px)*/ brightness(500%)/* contrast(500%) blur(0.5px)*/;
 	mix-blend-mode: exclusion;
 }
 .pre-draw-bw{
 	filter: invert(1) hue-rotate(180deg) grayscale(50%) contrast(2);
 	mix-blend-mode: exclusion;
 }
-.original-bw{
+.original{
 	filter: invert(0) hue-rotate(0deg) contrast(1.5);
 	mix-blend-mode: exclusion;
 }

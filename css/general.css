@@ -6,7 +6,7 @@
 	--scrollbarColor:#333;
 	--scrollbarHover:#999;
 	
-	--headerPer: 10;
+	--headerPer: 0;
 }
 
 body {
@@ -119,18 +119,19 @@ p {
     direction: rtl;
 }
 a.navItem {
-  display: inline-block;
-  padding: 0.5em 1em;
-  color: var(--invBg);
-  border: none;
-  text-decoration: none;
-  margin: auto
+	display: inline-block;
+	padding: 0.5em 1em;
+	color: var(--invBg);
+	border: none;
+	text-decoration: none;
+	margin: auto;
+	font-weight: bolder;
 }
 .nav-container {
-  display: flex;
-  background: color-mix(in srgb, var(--bgBody) 70%, #80808080);
-  border: none;
-  cursor: pointer;
+	display: flex;
+	background: color-mix(in srgb, var(--bgBody) 70%, #80808080);
+	border: none;
+	cursor: pointer;
 }
 #dark-button{
 	width:40px;
