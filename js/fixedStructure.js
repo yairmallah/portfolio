@@ -29,11 +29,12 @@ function loadInclude(id, file) {
 loadInclude("header", "header.html");
 loadInclude("footer", "footer.html");
 
-// dismplay modes
-console.log(window.add_dark_vals);
+// display modes
 import { toggleMode, darkValues } from './displayModes.js';
-Object.assign(darkValues[false], window.add_dark_vals[false]);
-Object.assign(darkValues[true], window.add_dark_vals[true]);
+if (!window.add_dark_vals === undefined){
+	Object.assign(darkValues[false], window.add_dark_vals[false]);
+	Object.assign(darkValues[true], window.add_dark_vals[true]);
+}
 window.toggleMode = toggleMode;
 
 let isDark = sessionStorage.getItem("isDark") || true;
