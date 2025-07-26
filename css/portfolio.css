@@ -28,6 +28,7 @@
 .project-icon-container{
 	margin: auto;
 	width: 17vh;
+	height: 17vh;
 	aspect-ratio: 1 / 1;
 	display: flex;
 	justify-content: center;
@@ -36,6 +37,7 @@
 	transition: scale 1s ease-out;
 	background: var(--bgBody);
 	border-radius: 100%;
+	mask: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 70%);
 }
 
 .project-icon{
@@ -44,8 +46,8 @@
 	object-fit: cover;
 
 	/* Fade at the edges */
-	-webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 70%);
-	mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 70%);
+	/*-webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 70%);
+	mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 70%);*/
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	transition: filter 1s ease;
