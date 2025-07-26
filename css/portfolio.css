@@ -21,11 +21,12 @@
 	width: 100%;
 	display: grid;
 	justify-content: center;
-	
+	grid-template-rows: 80% 20%;
+	grid-template-columns: 100%;
 }
 .project-icon-container{
-	margin-top: 20px;
-	width: 15vh;
+	margin: auto;
+	width: 17vh;
 	aspect-ratio: 1 / 1;
 	display: flex;
 	justify-content: center;
@@ -47,7 +48,15 @@
 	transition: filter 1s ease;
 }
 .draw-bw{
-	filter: invert(1) grayscale(100%) /*blur(.2px)*/ brightness(1000%) contrast(1000%) /*blur(0.5px)*/;
+	filter: invert(1) hue-rotate(180deg) grayscale(50%) /*blur(.2px)*/ brightness(500%)/* contrast(500%) blur(0.5px)*/;
+	mix-blend-mode: exclusion;
+}
+.pre-draw-bw{
+	filter: invert(1) hue-rotate(180deg) grayscale(50%) contrast(2);
+	mix-blend-mode: exclusion;
+}
+.original-bw{
+	filter: invert(0) hue-rotate(0deg) contrast(1.5);
 	mix-blend-mode: exclusion;
 }
 .photo-black-bg{
@@ -55,4 +64,7 @@
 }
 .photo-brighter{
 	filter: grayscale(100%) brightness(120%) contrast(250%);
+}
+.project-title{
+	text-align: center;
 }
