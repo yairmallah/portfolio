@@ -11,6 +11,21 @@ function waitForObj(objID, callback, timeout = 2000) {
 		}
 	})();
 }
+function waitForPropWin(propName, callback, timeout = 2000) {
+	const start = Date.now();
+	(function check() {
+		const fn = window?.[propName];
+		console.log(propName);
+		console.log(fn);
+		if ( fn != null) {
+			callback(fn); // success!
+		} else if (Date.now() - start < timeout) {
+			setTimeout(check, 50); // keep checking
+		} else {
+		console.warn(`${propName} not available in iframe after timeout`);
+		}
+	})();
+}
 
 
 function loadInclude(id, file) {
@@ -31,10 +46,11 @@ loadInclude("footer", "footer.html");
 
 // display modes
 import { toggleMode, darkValues } from './displayModes.js';
-if (!window.add_dark_vals === undefined){
+waitForPropWin('add_dark_vals', () => {
+	console.log(window.add_dark_vals);
 	Object.assign(darkValues[false], window.add_dark_vals[false]);
 	Object.assign(darkValues[true], window.add_dark_vals[true]);
-}
+});
 window.toggleMode = toggleMode;
 
 let isDark = sessionStorage.getItem("isDark") || true;
