@@ -1,0 +1,15 @@
+.grid-line {
+	position: absolute;
+	background: black;
+	opacity: 0.2;
+	pointer-events: none;
+}
+
+.placed-img {
+	position: absolute;
+	object-fit: contain;
+	border: 1px solid rgba(255, 0, 0, 0.7);
+	height:100%;
+	width:100%;
+	display: block;
+}
