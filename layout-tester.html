@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <title>Layout Tester</title>
+	<link rel="stylesheet" type="text/css" href="css\general.css"/>
+	<link rel="stylesheet" type="text/css" href="css\project.css"/>
+	<link rel="stylesheet" type="text/css" href="css\layout-tester.css"/>
+</head>
+<body>
+		<div id="header"></div>
+		<div id="content-container">
+		
+			<div id="layout-tool">
+				<div id="sidebar">
+					<label>Directory:<select id="directory-select"></select></label>
+					<div id="image-list"></div>
+					<label>Rows: <input type="number" id="rows-input" value="5" min="1" /></label>
+					<label>Cols: <input type="number" id="cols-input" value="4" min="1" /></label>
+					<label>Gap (%): <input type="number" id="gap-input" value="0" min="0" max="20" /></label>
+					<label>ratio (W/H): <input type="number" id="ratio-w" value="16" min="0" max="20" /><input type="number" id="ratio-h" value="9" min="0" max="20" /></label>
+					<button id="generate-grid">Generate Grid</button>
+					<pre id="output"></pre>
+				</div>
+
+				<div id="sandbox-container">
+					<div id="sandbox"></div>
+				</div>
+			</div>
+			
+			<script type="module" src="js/imageLayoutTool.js"></script>
+		</div>
+		<div id="footer"></div>
+		<script type="module" src="js/fixedStructure.js"></script>
+
+</html>
