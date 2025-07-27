@@ -1,0 +1,82 @@
+{
+  "css": [
+    "css/general.css",
+    "css/portfolio.css",
+    "css/project.css"
+  ],
+  "header.html": [
+    "projects.html"
+  ],
+  "imgs": [
+    "imgs/s1",
+    "imgs/s4",
+    "imgs/thumbnails"
+  ],
+  "index.html": [
+    "css/general.css",
+    "js/fixedStructure.js"
+  ],
+  "js": [
+    "js/displayModes.js",
+    "js/fixedStructure.js"
+  ],
+  "layout-tester.html": [
+    "css/general.css",
+    "css/project.css",
+    "js/fixedStructure.js"
+  ],
+  "projects.html": [
+    "css/general.css",
+    "css/portfolio.css",
+    "js/fixedStructure.js"
+  ],
+  "imgs/s1": [
+    "imgs/s1/dl.jpg",
+    "imgs/s1/dr1.jpg",
+    "imgs/s1/dr2.jpg",
+    "imgs/s1/m1.jpeg",
+    "imgs/s1/m2.jpeg",
+    "imgs/s1/m3.jpeg",
+    "imgs/s1/p1.jpg",
+    "imgs/s1/p2.jpg",
+    "imgs/s1/p3.jpg",
+    "imgs/s1/p4.jpg",
+    "imgs/s1/p5.jpg",
+    "imgs/s1/p6.jpg",
+    "imgs/s1/pg1.jpg",
+    "imgs/s1/pg2.jpg",
+    "imgs/s1/pg3.jpg",
+    "imgs/s1/s1.jpeg",
+    "imgs/s1/s2.jpg",
+    "imgs/s1/s3.jpeg",
+    "imgs/s1/s4.jpeg"
+  ],
+  "imgs/s4": [
+    "imgs/s4/br1.jpg",
+    "imgs/s4/br2.jpg",
+    "imgs/s4/cn1.png",
+    "imgs/s4/cn2.jpg",
+    "imgs/s4/l1.jpg",
+    "imgs/s4/l2.jpg",
+    "imgs/s4/lb1.jpg",
+    "imgs/s4/lb2.jpg",
+    "imgs/s4/lt1.jpg",
+    "imgs/s4/lt2.jpg",
+    "imgs/s4/r1.jpg",
+    "imgs/s4/r2.jpg",
+    "imgs/s4/r3.jpg",
+    "imgs/s4/rt1.jpg",
+    "imgs/s4/rt2.jpg"
+  ],
+  "imgs/thumbnails": [
+    "imgs/thumbnails/bdbt4.png",
+    "imgs/thumbnails/bhel.jpg",
+    "imgs/thumbnails/bs1.jpg",
+    "imgs/thumbnails/bs10.jpg",
+    "imgs/thumbnails/bs4.png",
+    "imgs/thumbnails/bs6.png",
+    "imgs/thumbnails/bs7.png",
+    "imgs/thumbnails/bs8.jpg",
+    "imgs/thumbnails/bs8.png"
+  ]
+}
