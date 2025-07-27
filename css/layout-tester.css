@@ -1,0 +1,66 @@
+:root{
+	--gridRows: 20% 20% 20% 20% 20%;
+	--gridColumns: 25% 25% 25% 25%;
+	--gridGap: 0%;
+	--gridRatio: 16 / 9;
+}
+#sandbox-container {
+	width: 100%;
+	height:100%;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#sandbox {
+	max-width: 100%;
+	background: #ccc;
+	position: relative;
+	border: 1px solid #ccc;
+	cursor: crosshair;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: var(--gridColumns);
+	grid-template-rows: var(--gridRows);
+	gap: var(--gridGap);
+	aspect-ratio: var(--gridRatio);
+	direction: ltr;
+}
+pre#output {
+	white-space: pre-wrap;
+	background: #333;
+	padding: 1rem;
+	border: 1px solid #ddd;
+	color: white;
+}
+#layout-tool {
+	display: flex;
+	gap: 10px;
+	height:calc((100 - var(--headerPer) - var(--footerPer))*1vh);
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#sidebar {
+	width: 200px;
+	height:100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-family: sans-serif;
+	direction:ltr;
+}
+
+#image-list img {
+  width: 100%;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+#image-list img.selected {
+  border-color: blue;
+}
+input{
+	max-width: 30px;
+}
