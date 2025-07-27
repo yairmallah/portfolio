@@ -15,8 +15,6 @@ function waitForPropWin(propName, callback, timeout = 2000) {
 	const start = Date.now();
 	(function check() {
 		const fn = window?.[propName];
-		console.log(propName);
-		console.log(fn);
 		if ( fn != null) {
 			callback(fn); // success!
 		} else if (Date.now() - start < timeout) {
@@ -47,7 +45,6 @@ loadInclude("footer", "footer.html");
 // display modes
 import { toggleMode, darkValues } from './displayModes.js';
 waitForPropWin('add_dark_vals', () => {
-	console.log(window.add_dark_vals);
 	Object.assign(darkValues[false], window.add_dark_vals[false]);
 	Object.assign(darkValues[true], window.add_dark_vals[true]);
 });
