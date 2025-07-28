@@ -85,7 +85,7 @@ function logOutput() {
 }
 
 function downloadOutput(){
-	jsonStr = document.getElementById('output').textContent;
+	let jsonStr = document.getElementById('output').textContent;
 	
 	const blob = new Blob([jsonStr], { type: "application/json" });
 	const url = URL.createObjectURL(blob);
