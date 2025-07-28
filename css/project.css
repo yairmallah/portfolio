@@ -1,15 +1,23 @@
+:root{
+	--imgsZ: 3;
+	--linesColor: rgba(0, 0, 0, 0.05);
+	--gridEvents: none;
+}
+
 .grid-line {
 	position: absolute;
-	background: black;
-	opacity: 0.2;
-	pointer-events: none;
+	outline: 1px dashed black;
+    background: var(--linesColor);
+	pointer-events: var(--gridEvents);
+	z-index: 2;
 }
 
 .placed-img {
 	position: absolute;
 	object-fit: contain;
-	border: 1px solid rgba(255, 0, 0, 0.7);
+	outline: 2px solid rgba(255, 0, 0, 0.7);
 	height:100%;
 	width:100%;
 	display: block;
+	z-index: var(--imgsZ);
 }
