@@ -13,13 +13,15 @@
 		
 			<div id="layout-tool">
 				<div id="sidebar">
-					<label>Directory:<select id="directory-select"></select></label>
-					<div id="image-list"></div>
 					<label>Rows: <input type="number" id="rows-input" value="5" min="1" /></label>
 					<label>Cols: <input type="number" id="cols-input" value="4" min="1" /></label>
-					<label>Gap (%): <input type="number" id="gap-input" value="0" min="0" max="20" /></label>
-					<label>ratio (W/H): <input type="number" id="ratio-w" value="16" min="0" max="20" /><input type="number" id="ratio-h" value="9" min="0" max="20" /></label>
+					<label>Gap (%W): <input type="number" id="gap-input" value="1" min="0" max="20" /></label>
+					<label>ratio (W/H): <input type="number" id="ratio-w" value="16" min="0" max="20" />/<input type="number" id="ratio-h" value="7" min="0" max="20" /></label>
 					<button id="generate-grid">Generate Grid</button>
+					<button id="edit-grid">Edit Grid</button>
+					<button id="download">download</button>
+					<label>Directory:<select id="directory-select"></select></label>
+					<div id="image-list"></div>
 					<pre id="output"></pre>
 				</div>
 
