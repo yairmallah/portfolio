@@ -175,19 +175,21 @@ function defineGrid(){
 		sandbox.appendChild(img);
 		img.addEventListener('contextmenu', (e) => {
 			e.preventDefault();
-			img.remove();
+
 		});
 		img.addEventListener('mousedown', (e) => {
-			if (e.buttons = 4){
+			e.preventDefault();
+			if (e.button == 1){
+				e.preventDefault();
 				img.setAttribute('rotation', parseInt(img.getAttribute('rotation')) + 90);
 				img.style.transform = `rotate(${img.getAttribute('rotation')}deg)`;
 			}
-			if (e.buttons = 2){
+			if (e.button == 2){
 				e.preventDefault();
 				img.remove();
 			}
-			if (e.buttons = 1){
-				if (img.getAttribute('data') == '0') {
+			if (e.button == 0){
+				if (img.getAttribute('data') == 'contain') {
 					img.style.objectFit = 'cover';
 					img.setAttribute('data', 'cover');
 				}
@@ -197,9 +199,9 @@ function defineGrid(){
 				}
 			}
 		});
-		img.addEventListener('dblclick', (e) => {
+		/*img.addEventListener('dblclick', (e) => {
 			console.log(img);
-			if (img.getAttribute('data') == '0') {
+			if (img.getAttribute('data') == 'contain') {
 				img.style.objectFit = 'cover';
 				img.setAttribute('data', 'cover');
 			}
@@ -207,7 +209,7 @@ function defineGrid(){
 				img.style.objectFit = 'contain';
 				img.setAttribute('data', 'contain');
 			}
-		});
+		});*/
 		
 		logOutput();
 
