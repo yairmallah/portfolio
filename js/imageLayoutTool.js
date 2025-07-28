@@ -178,9 +178,24 @@ function defineGrid(){
 			img.remove();
 		});
 		img.addEventListener('mousedown', (e) => {
-			img.setAttribute('rotation', parseInt(img.getAttribute('rotation')) + 90);
-			img.style.transform = `rotate(${img.getAttribute('rotation')}deg)`;
-
+			if (e.buttons = 4){
+				img.setAttribute('rotation', parseInt(img.getAttribute('rotation')) + 90);
+				img.style.transform = `rotate(${img.getAttribute('rotation')}deg)`;
+			}
+			if (e.buttons = 2){
+				e.preventDefault();
+				img.remove();
+			}
+			if (e.buttons = 1){
+				if (img.getAttribute('data') == '0') {
+					img.style.objectFit = 'cover';
+					img.setAttribute('data', 'cover');
+				}
+				else{
+					img.style.objectFit = 'contain';
+					img.setAttribute('data', 'contain');
+				}
+			}
 		});
 		img.addEventListener('dblclick', (e) => {
 			console.log(img);
