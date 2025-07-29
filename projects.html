@@ -37,7 +37,12 @@
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs10.jpg', 'הספריה הלאומית הישנה', 'photo-brighter', 'projects/s10.json'],
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bdbt4.png', 'אהיל', 'pre-draw-bw', 'projects/dbt4.json']
 					];
-					var col_count = isMobileDevice()? 1 : 4;
+					var col_count = 4;
+					if (isMobileDevice()){
+						col_count = 1;
+						document.documentElement.style.setProperty('--cellWidth', '100vw);
+						document.documentElement.style.setProperty('--cellHeight', '90vh');
+					}
 					
 					function pushProjectsTable(projects_data, col_count, table_id) {
 						const table = document.getElementById(table_id);
