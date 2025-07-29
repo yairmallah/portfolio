@@ -54,15 +54,13 @@ function rotateImage(img, angleDegrees) {
 	}
 	ctx.drawImage(img, 0, 0);
 	ctx.restore();
-	
 	img.dataset.rotated = 'true';
-
-	// Replace the original <img> source
-	img.src = canvas.toDataURL();
+	try {img.src = canvas.toDataURL();} 
+	catch (error) {console.warn(error);}
 }
 
 // General display values
-document.documentElement.style.setProperty('--imgsZ', '3');
+document.documentElement.style.setProperty('--imgsZ', '1');
 document.documentElement.style.setProperty('--linesColor', 'rgba(0, 0, 0, 0)');
 document.documentElement.style.setProperty('--gridEvents', 'all');
 
@@ -90,21 +88,21 @@ fetch(jsonFile)
 		const rows_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridRows'));
 		const cols_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridColumns'));
 		let p_sum = 0;
-		for (let i = 1; i <= rows_temp.length; i ++){
+		for (let i = 1; i <= cols_temp.length; i ++){
 			const line = document.createElement('line');
 			line.className = 'grid-line grid-line-x';
 			line.id = `r${i}`;
-			p_sum += rows_temp[i-1];
-			line.style.left = `calc(${p_sum}% - ${(rows_temp.length - i) * parseFloat(data.grid.gap) / rows_temp.length}vw)`;
+			p_sum += cols_temp[i-1];
+			line.style.left = `calc(${p_sum}% - ${(cols_temp.length - i) * parseFloat(data.grid.gap) / cols_temp.length}vw)`;
 			container.appendChild(line);
 		}
 		p_sum = 0;
-		for (let i = 1; i <= cols_temp.length; i ++){
+		for (let i = 1; i <= rows_temp.length; i ++){
 			const line = document.createElement('line');
 			line.className = 'grid-line grid-line-y';
 			line.id = `c${i}`;
-			p_sum += cols_temp[i-1];
-			line.style.top = `calc(${p_sum}% - ${(cols_temp.length - i) * parseFloat(data.grid.gap) / cols_temp.length}vw)`;
+			p_sum += rows_temp[i-1];
+			line.style.top = `calc(${p_sum}% - ${(rows_temp.length - i) * parseFloat(data.grid.gap) / rows_temp.length}vw)`;
 			container.appendChild(line);
 		}
 
