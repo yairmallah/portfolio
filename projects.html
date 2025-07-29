@@ -16,75 +16,89 @@
     </head>
     <body>
 		<div id="header"></div>
-		<div id="content-container">
-			<table id="projects-table">
+		<div id="content-container-wrapper">
+			<div id="content-container">
+				<table id="projects-table">
 
-			</table>
-			<script>
-				const projects_data = [
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg', 'מעונות אגרון', 'draw-bw', 'projects/s1.json'],
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png', 'רחוב צקלג', 'photo-black-bg', 'projects/s4.json'],
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png', 'יפו 86', 'photo-brighter', 'projects/s6.json'],
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png', 'שוקן 2', 'draw-bw', 'projects/s7.json'],
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg', 'פיאצה דל פופולו', 'original', 'projects/hel.json'],
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs8.png', 'אזור תעשיה תלפיות', 'pre-draw-bw', 'projects/s8.json'],
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs10.jpg', 'הספריה הלאומית הישנה', 'photo-brighter', 'projects/s10.json'],
-					['https://yairmallah.github.io/portfolio/imgs/thumbnails/bdbt4.png', 'אהיל', 'pre-draw-bw', 'projects/dbt4.json']
-				];
-				var col_count = 4;
-				
-				function pushProjectsTable(projects_data, col_count, table_id) {
-					const table = document.getElementById(table_id);
-					const tbody = document.createElement("tbody");
-					table.appendChild(tbody);
+				</table>
+				<script>
+					function isMobileDevice() {
+						return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+					}
+				</script>
+				<script>
+					const projects_data = [
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg', 'מעונות אגרון', 'draw-bw', 'projects/s1.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png', 'רחוב צקלג', 'photo-black-bg', 'projects/s4.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png', 'יפו 86', 'photo-brighter', 'projects/s6.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png', 'שוקן 2', 'draw-bw', 'projects/s7.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg', 'פיאצה דל פופולו', 'original', 'projects/hel.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs8.png', 'אזור תעשיה תלפיות', 'pre-draw-bw', 'projects/s8.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs10.jpg', 'הספריה הלאומית הישנה', 'photo-brighter', 'projects/s10.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bdbt4.png', 'אהיל', 'pre-draw-bw', 'projects/dbt4.json']
+					];
+					var col_count = isMobileDevice()? 1 : 4;
+					
+					function pushProjectsTable(projects_data, col_count, table_id) {
+						const table = document.getElementById(table_id);
+						const tbody = document.createElement("tbody");
+						table.appendChild(tbody);
 
-					for (let i = 0; i < projects_data.length; i += col_count) {
-						const row = document.createElement("tr");
+						for (let i = 0; i < projects_data.length; i += col_count) {
+							const row = document.createElement("tr");
 
-						for (let j = 0; j < col_count; j++) {
-							const index = i + j;
-							const cell = document.createElement("td");
-							cell.className = "projects-cell";
+							for (let j = 0; j < col_count; j++) {
+								const index = i + j;
+								const cell = document.createElement("td");
+								cell.className = "projects-cell";
 
-							if (index < projects_data.length) {
-								const [imgSrc, title, classVal, linkVal] = projects_data[index];
-								actualButton = document.createElement("div");
-								actualButton.className = 'project-icon-wrapper';
-								actualButton.setAttribute('data-link', linkVal);
-								actualButton.innerHTML = '<div class="project-icon-container"><img class="project-icon '+classVal+'" src="'+imgSrc+'" alt=""/></div><p class="project-title">'+title+'</p>';
-								cell.appendChild(actualButton);
+								if (index < projects_data.length) {
+									const [imgSrc, title, classVal, linkVal] = projects_data[index];
+									const buttonWrapper = document.createElement("div");
+									buttonWrapper.className = 'project-icon-wrapper';
+									
+									const actualButton = document.createElement("div");
+									actualButton.className = 'project-icon-container';
+									actualButton.setAttribute('data-link', linkVal);
+									actualButton.innerHTML = '<img class="project-icon '+classVal+'" src="'+imgSrc+'" alt=""/>'
+									
+									const titleElement = document.createElement("p");
+									titleElement.className = 'project-title';
+									titleElement.innerHTML = title;
+									
+									buttonWrapper.appendChild(actualButton);
+									buttonWrapper.appendChild(titleElement);
+									
+									cell.appendChild(buttonWrapper);
+								}
+
+								row.appendChild(cell);
 							}
 
-							row.appendChild(cell);
+							tbody.appendChild(row);
 						}
-
-						tbody.appendChild(row);
+						return table;
 					}
-					return table;
-				}
-				pushProjectsTable(projects_data, col_count, "projects-table");
-				
-				document.querySelectorAll(".project-icon-wrapper").forEach(item => {
-					item.addEventListener("click", function () {
-						console.log("gug");
-						window.location.href = 'project.html?file=' + this.getAttribute("data-link");
+					pushProjectsTable(projects_data, col_count, "projects-table");
+					
+					document.querySelectorAll(".project-icon-container").forEach(item => {
+						item.addEventListener("click", function () {
+							window.location.href = 'project.html?file=' + this.getAttribute("data-link");
+						});
 					});
-					item.addEventListener("mouseenter", () => {
-						console.log("gug");
-					});
-				});
-				
-			</script>
-			<script>
-				document.querySelectorAll(".project-icon").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.filter="";})});
-				document.querySelectorAll(".project-icon").forEach(d=>{d.addEventListener('mouseenter', () =>{
-					var inv_flag = false;
-					d.classList.forEach(cls => {if (cls.includes('bw')) inv_flag = true;});
-					d.style.filter = inv_flag ? "invert(1) hue-rotate("+ window.add_dark_vals[sessionStorage.getItem("isDark") || true]["--drawHueRot"] +")" : "none";
-				})});
-				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.scale="";})});
-				document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseenter', () =>{d.style.scale="1.7";})});
-			</script>
+					
+				</script>
+				<script>
+					document.querySelectorAll(".project-icon").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.filter="";})});
+					document.querySelectorAll(".project-icon").forEach(d=>{d.addEventListener('mouseenter', () =>{
+						var inv_flag = false;
+						d.classList.forEach(cls => {if (cls.includes('bw')) inv_flag = true;});
+						d.style.filter = inv_flag ? "invert(1) hue-rotate("+ window.add_dark_vals[sessionStorage.getItem("isDark") || true]["--drawHueRot"] +")" : "none";
+					})});
+					document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.scale="";})});
+					document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseenter', () =>{d.style.scale="1.7";})});
+				</script>
+			</div>
 		</div>
 		<div id="footer"></div>
 		<script type="module" src="js/fixedStructure.js"></script>
