@@ -1,0 +1,141 @@
+{
+  "grid": {
+    "columns": [
+      "repeat(6, 1fr)"
+    ],
+    "rows": [
+      "repeat(5, 1fr)"
+    ],
+    "gap": "0.5vw"
+  },
+  "images": [
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/p6.jpg",
+      "gridColumn": "6 / 7",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/p5.jpg",
+      "gridColumn": "5 / 6",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/p4.jpg",
+      "gridColumn": "4 / 5",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/p3.jpg",
+      "gridColumn": "3 / 4",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/p2.jpg",
+      "gridColumn": "2 / 3",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/p1.jpg",
+      "gridColumn": "1 / 2",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/s2.jpg",
+      "gridColumn": "6 / 7",
+      "gridRow": "2 / 3",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/pg3.jpg",
+      "gridColumn": "3 / 4",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "180"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/pg2.jpg",
+      "gridColumn": "2 / 3",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "180"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/dr2.jpg",
+      "gridColumn": "4 / 6",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/dr1.jpg",
+      "gridColumn": "4 / 6",
+      "gridRow": "2 / 4",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/s1.jpeg",
+      "gridColumn": "6 / 7",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "90"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/s3.jpeg",
+      "gridColumn": "6 / 7",
+      "gridRow": "3 / 4",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/s4.jpeg",
+      "gridColumn": "6 / 7",
+      "gridRow": "1 / 2",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/pg1.jpg",
+      "gridColumn": "1 / 2",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/dl.jpg",
+      "gridColumn": "1 / 4",
+      "gridRow": "2 / 5",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/m1.jpeg",
+      "gridColumn": "5 / 6",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s1/m2.jpeg",
+      "gridColumn": "4 / 5",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    }
+  ]
+}
