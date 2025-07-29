@@ -3,7 +3,6 @@
 	--linesColor: rgba(0, 0, 0, 0.05);
 	--gridEvents: none;
 }
-
 .grid-line {
 	position: absolute;
 	outline: 1px dashed black;
@@ -11,7 +10,14 @@
 	pointer-events: var(--gridEvents);
 	z-index: 2;
 }
-
+.grid-line-x {
+	width: var(--gridGap);
+	height: 100%;
+}
+.grid-line-y {
+	height: var(--gridGap);
+	width: 100%;
+}
 .placed-img {
 	position: absolute;
 	object-fit: contain;
@@ -20,4 +26,14 @@
 	width:100%;
 	display: block;
 	z-index: var(--imgsZ);
+}
+#layout-wrapper {
+	display: grid;
+	grid-template-columns: var(--gridColumns);
+	grid-template-rows: var(--gridRows);
+	gap: var(--gridGap);
+	position: relative;
+	width: 100%;
+	height: 100%;
+	aspect-ratio: var(--gridRatio);
 }
