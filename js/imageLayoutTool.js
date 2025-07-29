@@ -316,6 +316,8 @@ function defineGrid(){
 
 	
 }
+
+
 /*
 function editGrid() {
 	const gap = parseFloat(document.documentElement.style.getPropertyValue('--gridGap'));
@@ -447,49 +449,60 @@ function editGrid() {
 	document.documentElement.style.setProperty('--gridEvents', 'all');
 
 	function applyTemplate(propertyName, templateArr) {
-		function wave_check(arg, ind) {
-			if (100 % arg === 0) return (templateArr.length - ind / 2 - 1) * gap / templateArr.length;
+		/*function wave_check(arg, ind) {
+			if (100 % arg === 0) return (templateArr.length - (ind+1)) * gap / templateArr.length;
 			return ind === 0 ? 0 : gap;
 		}
 		const newTemplate = templateArr.map((val, i) =>
 			`calc(${val.toFixed(4)}% - ${wave_check(val, i)}vw)`
+		).join(' ');*/
+		const newTemplate = templateArr.map((val, i) =>
+			`calc(${val.toFixed(4)}% - ${gap * templateArr.length / (templateArr.length+1)}vw)`
 		).join(' ');
 		document.documentElement.style.setProperty(propertyName, newTemplate);
 	}
 
 	function enableDrag(line, axis, index, values, cssVar) {
 		let container = document.getElementById("sandbox");
+		const rect = container.getBoundingClientRect();
 		let isDragging = false;
+		let dragStart = null;
 
 		line.style.cursor = axis === 'x' ? 'ew-resize' : 'ns-resize';
+		if (axis === 'x') line.style.width = '1px';
+		else line.style.height = '1px';
 
 		const down = (e) => {
 			isDragging = true;
+			dragStart = axis === 'x'? e.clientX - rect.left : e.clientY - rect.top;
 			e.preventDefault();
 			document.body.style.userSelect = "none";
 		};
 		const up = () => {
 			isDragging = false;
+			dragStart = null;
 			document.body.style.userSelect = "";
 		};
 		const move = (e) => {
 			if (!isDragging) return;
-			const rect = container.getBoundingClientRect();
 			let pos;
+			let posDiff;
 			if (axis === 'x') {
 				let x = e.clientX - rect.left;
 				pos = Math.max(0, Math.min(100, (x / rect.width) * 100));
+				posDiff = ((x - dragStart) / rect.width) * 100;
 			} else {
 				let y = e.clientY - rect.top;
 				pos = Math.max(0, Math.min(100, (y / rect.height) * 100));
+				posDiff = ((y - dragStart) / rect.height) * 100;
 			}
 
 			const totalBefore = values.slice(0, index).reduce((a, b) => a + b, 0);
 			const newVal = pos - totalBefore;
 			if (newVal < 1 || newVal > values[index] + values[index + 1] - 1) return;
 
-			values[index + 1] = values[index + 1] - newVal + values[index];
-			values[index] = newVal;
+			values[index + 1] = values[index + 1]  - posDiff;//- newVal + values[index];
+			values[index] = posDiff;//newVal;
 
 			if (axis === 'x') {
 				line.style.left = `${pos}%`;
@@ -531,6 +544,7 @@ function editGrid() {
 
 	gridColsPer = colVals.slice();
 	gridRowsPer = rowVals.slice();
+	console.log(colVals);
 
 	applyTemplate('--gridColumns', colVals);
 	applyTemplate('--gridRows', rowVals);
@@ -546,7 +560,7 @@ function editGrid() {
 
 document.getElementById('generate-grid').addEventListener('click', defineGrid);
 document.getElementById('download').addEventListener('click', downloadOutput);
-//document.getElementById('edit-grid').addEventListener('click', editGrid);
+document.getElementById('edit-grid').addEventListener('click', editGrid);
 
 
 
