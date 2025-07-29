@@ -38,6 +38,7 @@
 	background: var(--bgBody);
 	border-radius: 100%;
 	mask: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 70%);
+	cursor: pointer;
 }
 
 .project-icon{
