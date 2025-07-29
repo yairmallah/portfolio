@@ -72,3 +72,6 @@ input{
 	50% { opacity: 0; }
 	100% { opacity: 1; }
 }
+.placed-img {
+	outline: 2px solid rgba(255, 0, 0, 0.7);
+}
