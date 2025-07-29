@@ -71,4 +71,5 @@
 	aspect-ratio: var(--gridRatio);
 	overflow: hidden;
 	background-color: var(--bgBody);
+	direction:lrt;
 }
