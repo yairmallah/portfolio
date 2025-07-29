@@ -1,12 +1,14 @@
 :root {
 	--bgBody: black;
 	--drawHueRot: 180deg;
+	--cellHeight: 40vh;
+	--cellWidth: 25vw;
 }
 
 #projects-table{
 	border: none;
 	height: 100%;
-	width:100;
+	width: 100%;
 }
 .projects-row{
 	border: none;
@@ -15,7 +17,8 @@
 .projects-cell{
 	border: none;
 	/*border: solid 1px red;*/
-	width: 25vw;
+	width: var(--cellWidth);
+	height: var(--cellHeight);
 }
 .project-icon-wrapper{
 	height: 100%;
