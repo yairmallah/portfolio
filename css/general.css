@@ -36,7 +36,7 @@ body {
 	overflow: hidden;
 	display: grid;
 	grid-template-rows: 100%;
-	grid-template-columns: 15% 15% 15% 15% 15%;
+	grid-template-columns: 30% 30% 30% 4%;
 	gap: 2%;
 }
 #content-container{
