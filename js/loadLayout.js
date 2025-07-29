@@ -17,6 +17,8 @@ function extract_percents(cssProp){
 	return percentages = [...cssProp.matchAll(/calc\(([\d.]+)%/g)].map(match => parseFloat(match[1]));
 }
 function rotateImage(img, angleDegrees) {
+	if (img.dataset.rotated === 'true') return;
+	
 	const canvas = document.createElement('canvas');
 	const ctx = canvas.getContext('2d');
 
@@ -52,6 +54,8 @@ function rotateImage(img, angleDegrees) {
 	}
 	ctx.drawImage(img, 0, 0);
 	ctx.restore();
+	
+	img.dataset.rotated = 'true';
 
 	// Replace the original <img> source
 	img.src = canvas.toDataURL();
