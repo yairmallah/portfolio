@@ -31,7 +31,7 @@
 	/*transition: all 3s ease;	*/
 }
 .comp-draw{
-	filter: invert(1);
+	filter: invert(1) hue-rotate(180deg);
 	mix-blend-mode: difference;
 }
 .comp-contain{object-fit: contain;}
