@@ -6,7 +6,8 @@
     "rows": [
       "repeat(6, 1fr)"
     ],
-    "gap": "1vw"
+    "gap": "1vw",
+    "ratio": "4 / 3"
   },
   "images": [
     {
@@ -14,7 +15,8 @@
       "gridColumn": "4 / 7",
       "gridRow": "1 / 4",
       "objectFit": "cover",
-      "rotation": "0"
+      "rotation": "0",
+      "classCSS": "comp-photo"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/sec.png",
