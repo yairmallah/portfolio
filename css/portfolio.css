@@ -1,17 +1,26 @@
 :root {
 	--bgBody: black;
 	--drawHueRot: 180deg;
-	--cellHeight: 40vh;
-	--cellWidth: 25vw;
+	--cellHeight: 50vh;
+	--cellWidth: 25%;
 }
 #projects-table{
+	
 	border: none;
-	height: 100%;
+	/*height: 100%;*/
+	height: calc((100 - var(--headerPer) - var(--footerPer)) * 1vh);
 	width: 100%;
+	display: grid;
+	grid-template-rows: repeat(auto-fill, var(--cellHeight));
+	scroll-snap-type: y mandatory;
+	overflow-y: auto;
+	scroll-behavior: smooth;
 }
 .projects-row{
 	border: none;
-	height: calc((90 - var(--headerPer)) / 2 * 1%);
+	height: var(--cellHeight);
+	display: flex;
+	scroll-snap-align: start;
 }
 .projects-cell{
 	border: none;
@@ -75,14 +84,4 @@
 }
 .project-title{
 	text-align: center;
-}
-@media (max-width: 768px) {
-	#projects-table {
-		scroll-snap-type: y mandatory;
-		overflow-y: scroll;
-		scroll-behavior: smooth;
-	}
-	.projects-cell {
-		scroll-snap-align: start;
-	}
 }
