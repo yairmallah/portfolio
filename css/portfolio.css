@@ -4,7 +4,6 @@
 	--cellHeight: 40vh;
 	--cellWidth: 25vw;
 }
-
 #projects-table{
 	border: none;
 	height: 100%;
@@ -76,4 +75,14 @@
 }
 .project-title{
 	text-align: center;
+}
+@media (max-width: 768px) {
+	#projects-table {
+		scroll-snap-type: y mandatory;
+		overflow-y: scroll;
+		scroll-behavior: smooth;
+	}
+	.projects-cell {
+		scroll-snap-align: start;
+	}
 }
