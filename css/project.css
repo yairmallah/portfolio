@@ -2,6 +2,7 @@
 	--imgsZ: 3;
 	--linesColor: rgba(0, 0, 0, 0.05);
 	--gridEvents: none;
+	--hueRotDraw: 180deg;
 }
 .grid-line {
 	position: absolute;
@@ -31,7 +32,7 @@
 	/*transition: all 3s ease;	*/
 }
 .comp-draw{
-	filter: invert(1) hue-rotate(180deg);
+	filter: invert(1) hue-rotate(var(--hueRotDraw));
 	mix-blend-mode: difference;
 }
 .comp-contain{object-fit: contain;}
