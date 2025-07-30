@@ -1,15 +1,27 @@
 {
+  "about.html": [
+    "css/general.css",
+    "js/fixedStructure.js"
+  ],
+  "contact.html": [
+    "css/general.css",
+    "js/fixedStructure.js"
+  ],
   "css": [
     "css/general.css",
+    "css/layout-tester.css",
     "css/portfolio.css",
     "css/project.css"
   ],
   "header.html": [
-    "projects.html"
+    "projects.html",
+    "about.html",
+    "contact.html"
   ],
   "imgs": [
     "imgs/s1",
     "imgs/s4",
+    "imgs/s6",
     "imgs/thumbnails"
   ],
   "index.html": [
@@ -18,12 +30,26 @@
   ],
   "js": [
     "js/displayModes.js",
-    "js/fixedStructure.js"
+    "js/fixedStructure.js",
+    "js/imageLayoutTool.js",
+    "js/loadLayout.js"
   ],
   "layout-tester.html": [
     "css/general.css",
     "css/project.css",
+    "css/layout-tester.css",
+    "js/imageLayoutTool.js",
     "js/fixedStructure.js"
+  ],
+  "project.html": [
+    "css/general.css",
+    "css/project.css",
+    "js/loadLayout.js",
+    "js/fixedStructure.js"
+  ],
+  "projects": [
+    "projects/s1.json",
+    "projects/s4.json"
   ],
   "projects.html": [
     "css/general.css",
@@ -67,6 +93,16 @@
     "imgs/s4/r3.jpg",
     "imgs/s4/rt1.jpg",
     "imgs/s4/rt2.jpg"
+  ],
+  "imgs/s6": [
+    "imgs/s6/-1 100.png",
+    "imgs/s6/0 100.png",
+    "imgs/s6/1 100.png",
+    "imgs/s6/2 100.png",
+    "imgs/s6/3 100.png",
+    "imgs/s6/4 100.png",
+    "imgs/s6/ground 200.png",
+    "imgs/s6/sec.png"
   ],
   "imgs/thumbnails": [
     "imgs/thumbnails/bdbt4.png",
