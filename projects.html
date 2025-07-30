@@ -18,9 +18,9 @@
 		<div id="header"></div>
 		<div id="content-container-wrapper">
 			<div id="content-container">
-				<table id="projects-table">
+				<div id="projects-table">
 
-				</table>
+				</div>
 				<script>
 					function isMobileDevice() {
 						return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -40,21 +40,20 @@
 					var col_count = 4;
 					if (isMobileDevice()){
 						col_count = 1;
-						document.documentElement.style.setProperty('--cellWidth', '100vw');
+						document.documentElement.style.setProperty('--cellWidth', '100%');
 						document.documentElement.style.setProperty('--cellHeight', '100vh');
 					}
 					
 					function pushProjectsTable(projects_data, col_count, table_id) {
 						const table = document.getElementById(table_id);
-						const tbody = document.createElement("tbody");
-						table.appendChild(tbody);
 
 						for (let i = 0; i < projects_data.length; i += col_count) {
-							const row = document.createElement("tr");
+							const row = document.createElement("div");//"tr");
+							row.className = "projects-row"
 
 							for (let j = 0; j < col_count; j++) {
 								const index = i + j;
-								const cell = document.createElement("td");
+								const cell = document.createElement("div");//"td");
 								cell.className = "projects-cell";
 
 								if (index < projects_data.length) {
@@ -80,7 +79,7 @@
 								row.appendChild(cell);
 							}
 
-							tbody.appendChild(row);
+							table.appendChild(row);
 						}
 						return table;
 					}
