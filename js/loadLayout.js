@@ -63,6 +63,7 @@ function rotateImage(img, angleDegrees) {
 document.documentElement.style.setProperty('--imgsZ', '1');
 document.documentElement.style.setProperty('--linesColor', 'rgba(0, 0, 0, 0)');
 document.documentElement.style.setProperty('--gridEvents', 'all');
+document.addEventListener("DOMContentLoaded", ()=>{setTimeout(() => {document.getElementById("layout-wrapper").classList.toggle("active", true);}, 1500);});
 
 // --- Load the specified JSON file ---
 fetch(jsonFile)
