@@ -467,6 +467,8 @@ function editGrid() {
 		const rect = container.getBoundingClientRect();
 		let isDragging = false;
 		let dragStart = null;
+		const updatedValues = structuredClone(values);
+		
 
 		line.style.cursor = axis === 'x' ? 'ew-resize' : 'ns-resize';
 		if (axis === 'x') line.style.width = '1px';
@@ -482,6 +484,11 @@ function editGrid() {
 			isDragging = false;
 			dragStart = null;
 			document.body.style.userSelect = "";
+			/*values = structuredClone(updatedValues);*/
+			console.log(values);
+			//console.log(updatedValues);
+			//return enableDrag(line, axis, index, values, cssVar);
+			
 		};
 		const move = (e) => {
 			if (!isDragging) return;
@@ -501,9 +508,11 @@ function editGrid() {
 			const newVal = pos - totalBefore;
 			if (newVal < 1 || newVal > values[index] + values[index + 1] - 1) return;
 
-			values[index + 1] = values[index + 1]  - posDiff;//- newVal + values[index];
-			values[index] = posDiff;//newVal;
-
+			values[index + 1] = values[index + 1]/*  - posDiff;*/- newVal + values[index];
+			values[index] = /*values[index] + posDiff;*/newVal;
+			
+			let p_sum = 0;
+			for (let i=0;i < index; i++) p_sum += updatedValues[i];
 			if (axis === 'x') {
 				line.style.left = `${pos}%`;
 				gridColsPer = values.slice();
@@ -579,6 +588,7 @@ document.addEventListener("mousemove", (e) => {
 		let newY = e.clientY - offsetY;
 		sidebar.style.left = `${newX}px`;
 		sidebar.style.top = `${newY}px`;
+		sidebar.style.position = "fixed";
 	}
 });
 
@@ -586,7 +596,7 @@ document.addEventListener("mouseup", () => {
 	if (isDragging) {
 		localStorage.setItem("sidebarX", sidebar.style.left.replace("px", ""));
 		localStorage.setItem("sidebarY", sidebar.style.top.replace("px", ""));
-		// adj sub menu positio
+		if (parseInt(sidebar.style.left) >= 800 && parseInt(sidebar.style.top) <= 50) sidebar.style.position = "unset";
 	}
 	isDragging = false;
 	sidebar.style.cursor = "grab";
