@@ -71,9 +71,10 @@ function logOutput() {
 
 	const layout = {
 		grid: {
-			columns: computedStyle.getPropertyValue('--gridColumns').trim().split(/\s+/),
-			rows: computedStyle.getPropertyValue('--gridRows').trim().split(/\s+/),
-			gap: computedStyle.getPropertyValue('--gridGap').trim()
+			columns: computedStyle.getPropertyValue('--gridColumns').trim(),
+			rows: computedStyle.getPropertyValue('--gridRows').trim(),
+			gap: computedStyle.getPropertyValue('--gridGap').trim(),
+			ratio: computedStyle.getPropertyValue('--gridRatio').trim()
 		},
 		images: placements
 	};
@@ -101,9 +102,21 @@ function defineGrid(){
 	const rows = parseInt(document.getElementById('rows-input').value);
 	const cols = parseInt(document.getElementById('cols-input').value);
 	const gapPercent = parseFloat(document.getElementById('gap-input').value);
+	document.getElementById('gap-input').addEventListener('change', ()=> {
+		document.documentElement.style.setProperty('--gridGap', `${parseFloat(document.getElementById('gap-input').value)}vw`);
+	});
 	const ratio_h = parseInt(document.getElementById('ratio-h').value);
+	document.getElementById('ratio-h').addEventListener('change', ()=> {
+		document.documentElement.style.setProperty('--gridRatio', `${
+			parseInt(document.getElementById('ratio-w').value)
+		} / ${
+			parseInt(document.getElementById('ratio-h').value)
+		}`);
+	});
 	const ratio_w = parseInt(document.getElementById('ratio-w').value);
-
+	document.getElementById('ratio-w').addEventListener('change', ()=> {
+		document.documentElement.style.setProperty('--gridRatio', `${parseInt(document.getElementById('ratio-w').value)} / ${parseInt(document.getElementById('ratio-h').value)}`)
+	});
 	const sandbox = document.getElementById('sandbox');
 	
 	sandbox.innerHTML = ''; // clear previous grid
@@ -119,23 +132,23 @@ function defineGrid(){
 	const stepY = 100 / rows;
 	for (let i = 1; i <= cols; i++) {
 		let line = document.createElement('div');
-		line.className = 'grid-line';
+		line.className = 'grid-line grid-line-x';
 		line.id = `c${i}`;
 		line.style.left = `calc(${i * stepX }% - ${(cols - i) * gapPercent / cols}vw)`;
-		line.style.top = '0';
+		/*line.style.top = '0';
 		line.style.width = `${gapPercent}vw`;
-		line.style.height = '100%';
+		line.style.height = '100%';*/
 		sandbox.appendChild(line);
 	}
 
 	for (let i = 1; i <= rows; i++) {
 		let line = document.createElement('div');
-		line.className = 'grid-line';
+		line.className = 'grid-line grid-line-y';
 		line.id = `r${i}`;
 		line.style.top = `calc(${i * stepY }% - ${(rows - i) * gapPercent / rows}vw)`;
-		line.style.left = '0';
+		/*line.style.left = '0';
 		line.style.height = `${gapPercent}vw`;
-		line.style.width = '100%';
+		line.style.width = '100%';*/
 		sandbox.appendChild(line);
 	}
 
@@ -260,61 +273,6 @@ function defineGrid(){
 		marker.style.animation = 'blink 0.8s infinite';
 		document.body.appendChild(marker);
 	}
-	
-	
-	/*sandbox.onclick = e => {
-	if (!selectedImage) return;
-	const rect = sandbox.getBoundingClientRect();
-
-	let x = ((e.clientX - rect.left) / rect.width) * 100;
-	let y = ((e.clientY - rect.top) / rect.height) * 100;
-
-	function getSnapIndex(coord, gridArr) {
-		let acc = 0;
-		for (let i = 0; i < gridArr.length; i++) {
-			let next = acc + gridArr[i];
-			if (coord < next) return i + 1;
-			acc = next;
-		}
-		return gridArr.length;
-	}
-
-	const xGrid = getSnapIndex(x, gridColsPer || Array(parseInt(document.getElementById('cols-input').value)).fill(100 / parseInt(document.getElementById('cols-input').value))) + 1;
-	const yGrid = getSnapIndex(y, gridRowsPer || Array(parseInt(document.getElementById('rows-input').value)).fill(100 / parseInt(document.getElementById('rows-input').value))) + 1;
-	console.log(xGrid);
-	console.log(yGrid);
-	if (!firstClick) {
-		firstClick = { x: xGrid, y: yGrid };
-		markGridPoint(xGrid, yGrid); // add this
-		return;
-	}
-
-	const minX = Math.min(firstClick.x, xGrid);
-	const minY = Math.min(firstClick.y, yGrid);
-	const maxX = Math.max(firstClick.x, xGrid);
-	const maxY = Math.max(firstClick.y, yGrid);
-	if (minX === maxX || minY === maxY) return;
-
-	const img = document.createElement('img');
-	img.className = 'placed-img';
-	img.src = selectedImage;
-	img.style.gridColumn = `${minX} / ${maxX}`;
-	img.style.gridRow = `${minY} / ${maxY}`;
-	sandbox.appendChild(img);
-
-	img.addEventListener('contextmenu', (e) => {
-		e.preventDefault();
-		img.remove();
-	});
-	img.addEventListener('dblclick', (e) => {
-		img.style.objectFit = img.style.objectFit === 'cover' ? 'contain' : 'cover';
-	});
-	logOutput();
-	firstClick = null;
-
-};*/
-
-	
 }
 
 
