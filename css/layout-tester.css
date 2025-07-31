@@ -13,7 +13,7 @@
 }
 #sandbox {
 	max-width: 100%;
-	background: #efefef;
+	background: var(--bgBody);
 	position: relative;
 	outline: 1px solid #999;
 	cursor: crosshair;
@@ -74,4 +74,11 @@ input{
 }
 .placed-img {
 	outline: 2px solid rgba(255, 0, 0, 0.7);
+}
+.grid-line {
+	position: absolute;
+	outline: 1px dotted rgba(127,127,127,0.8);
+    background: var(--linesColor);
+	z-index: 2;
+	mix-blend-mode: normal;
 }
