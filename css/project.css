@@ -96,7 +96,6 @@
 	margin-right: auto;
 	margin-left: auto;
 }
-}
 #layout-wrapper.active {
 	max-height: calc(var(--gridRatio) * 200%);
 }
