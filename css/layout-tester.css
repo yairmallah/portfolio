@@ -13,6 +13,7 @@
 }
 #sandbox {
 	max-width: 100%;
+	max-height: 100%;
 	background: var(--bgBody);
 	position: relative;
 	outline: 1px solid #999;
