@@ -22,6 +22,7 @@
     "imgs/s1",
     "imgs/s4",
     "imgs/s6",
+    "imgs/s8",
     "imgs/thumbnails"
   ],
   "index.html": [
@@ -49,7 +50,8 @@
   ],
   "projects": [
     "projects/s1.json",
-    "projects/s4.json"
+    "projects/s4.json",
+    "projects/s6.json"
   ],
   "projects.html": [
     "css/general.css",
@@ -103,6 +105,38 @@
     "imgs/s6/4 100.png",
     "imgs/s6/ground 200.png",
     "imgs/s6/sec.png"
+  ],
+  "imgs/s8": [
+    "imgs/s8/cvr.png",
+    "imgs/s8/ext facade 3.png",
+    "imgs/s8/fold.gif",
+    "imgs/s8/fregiso1.png",
+    "imgs/s8/fregiso2.png",
+    "imgs/s8/Ggif.gif",
+    "imgs/s8/Gline.png",
+    "imgs/s8/GlineCol.jpg",
+    "imgs/s8/imd1.jpeg",
+    "imgs/s8/imd2.png",
+    "imgs/s8/imd3.png",
+    "imgs/s8/imd4.png",
+    "imgs/s8/imd5.png",
+    "imgs/s8/imn1.png",
+    "imgs/s8/imn2.png",
+    "imgs/s8/imn3.png",
+    "imgs/s8/imn4.png",
+    "imgs/s8/modcem.png",
+    "imgs/s8/modpls1.jpg",
+    "imgs/s8/modpls2.jpg",
+    "imgs/s8/modpls3.png",
+    "imgs/s8/modpls4.png",
+    "imgs/s8/modpls5.jpg",
+    "imgs/s8/modpls6.jpg",
+    "imgs/s8/pgood.png",
+    "imgs/s8/planex.png",
+    "imgs/s8/sec.png",
+    "imgs/s8/isoex1.png",
+    "imgs/s8/isoex2.png",
+    "imgs/s8/secex.png"
   ],
   "imgs/thumbnails": [
     "imgs/thumbnails/bdbt4.png",

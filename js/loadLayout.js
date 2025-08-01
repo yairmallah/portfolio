@@ -106,12 +106,27 @@ fetch(jsonFile)
 		}
 
 		// Add images
+		let i = 0;
 		data.images.forEach(item => {
-			const img = document.createElement('img');
-			img.loading = 'lazy';
+			let img;
+			i ++;
+			if (item.src.substr(-3) == "mp4"){
+				img = document.createElement('video');
+				img.autoplay = true;
+				img.loop = true;
+				img.muted = true;
+				img.playsInline = true;
+			}
+			else{
+				img = document.createElement('img');
+				img.loading = 'lazy';
+				if (item.rotation && item.rotation != 0){
+					rotateImage(img, item.rotation);
+				}
+			}
 			img.src = item.src;
 			img.classList.toggle('placed-img', true);
-			if (item.classCSS) img.classList.toggle(item.className, true);
+			if (item.classCSS) img.classList.toggle(item.classCSS, true);
 			else img.classList.toggle('comp-draw', true);
 			img.style.gridColumn = item.gridColumn;
 			img.style.gridRow = item.gridRow;
@@ -121,9 +136,7 @@ fetch(jsonFile)
 				img.classList.toggle('chosen-image');
 				document.getElementById("block-bg").classList.toggle('hidden');
 			});
-			if (item.rotation && item.rotation != 0){
-				rotateImage(img, item.rotation);
-			}
 		});
+		console.log(i);
 	})
 	.catch(err => console.error('Failed to load layout:', err));
