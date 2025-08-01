@@ -3,6 +3,7 @@
 	--linesColor: rgba(0, 0, 0, 0.05);
 	--gridEvents: none;
 	--hueRotDraw: 180deg;
+	--softBright: 100;
 }
 #content-container{
 	height: calc(100vh - (var(--headerPer) + var(--footerPer)) * 1%);
@@ -36,6 +37,24 @@
 }
 .comp-draw{
 	filter: invert(1) hue-rotate(var(--hueRotDraw));
+	mix-blend-mode: difference;
+}
+.comp-draw-inv{
+	filter: hue-rotate(var(--hueRotDraw));
+	mix-blend-mode: difference;
+}
+.comp-photo-to-gry{
+	filter: grayscale(70%);
+}
+.comp-photo-lighter{
+	filter: brightness(var(--softBright)) contrast(1000%) grayscale(80%);
+}
+.comp-photo-softer{
+	filter: invert(1) brightness(150%) contrast(300%) grayscale(80%) hue-rotate(calc(var(--hueRotDraw) + 180deg)) invert(1);
+	mix-blend-mode: difference;
+}
+.comp-photo-to-darw{
+	filter: contrast(500%) grayscale(70%) invert(1) hue-rotate(var(--hueRotDraw));
 	mix-blend-mode: difference;
 }
 .comp-contain{object-fit: contain;}
