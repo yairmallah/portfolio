@@ -1,16 +1,14 @@
 // --- Extract ?file=layout1.json from URL ---
 const params = new URLSearchParams(window.location.search);
 const jsonFile = params.get('file') || 'projects/s4.json';  // fallback to default
-function reformat_grid_row_col(rows, gap){
+function reformat_grid_row_col(row, gap){
 	var counter = "";
-	rows.forEach(row => {
-		const match = row.match(/repeat\((\d+),\s*1fr\)/);
-		if (match) {
-			const count = parseInt(match[1]);
-			counter += `calc(${100 / count}% - ${count / (count+1) * parseFloat(gap)}vw) `.repeat(count);
-		}
-		else counter += row;
-	});
+	const match = row.match(/repeat\((\d+),\s*1fr\)/);
+	if (match) {
+		const count = parseInt(match[1]);
+		counter += `calc(${100 / count}% - ${count / (count+1) * parseFloat(gap)}vw) `.repeat(count);
+	}
+	else counter += row;
 	return counter;
 }
 function extract_percents(cssProp){
