@@ -44,6 +44,7 @@ function loadImagesFromDirectory(dir) {
 	for (const key in siteGraph[dir]) {
 
 		const img = document.createElement('img');
+		img.loading = "lazy";
 		img.src = siteGraph[dir][key];
 		img.addEventListener('click', () => {
 			document.querySelectorAll('#image-list img').forEach(i => i.classList.remove('selected'));
@@ -178,6 +179,7 @@ function defineGrid(){
 
 		const img = document.createElement('img');
 		img.className = 'placed-img';
+		img.loading = "lazy";
 		img.src = selectedImage;
 		img.style.gridColumn = `${minX} / ${maxX}`;
 		img.style.gridRow = `${minY} / ${maxY}`;
