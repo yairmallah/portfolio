@@ -1,11 +1,7 @@
 {
   "grid": {
-    "columns": [
-      "repeat(8, 1fr)"
-    ],
-    "rows": [
-      "repeat(8, 1fr)"
-    ],
+    "columns": "repeat(8, 1fr)",
+    "rows": "repeat(8, 1fr)",
     "gap": "1vw",
     "ratio": "16 / 9"
   },
