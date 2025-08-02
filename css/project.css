@@ -5,9 +5,6 @@
 	--hueRotDraw: 180deg;
 	--softBright: 100;
 }
-#content-container{
-	height: calc(100vh - (var(--headerPer) + var(--footerPer)) * 1%);
-}
 .grid-line {
 	position: absolute;
 	outline: 1px dotted rgba(127,127,127,0.3);
