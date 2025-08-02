@@ -89,6 +89,8 @@ fetch(jsonFile)
 		// Grid lines
 		const rows_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridRows'));
 		const cols_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridColumns'));
+		console.log(rows_temp);
+		console.log(cols_temp);
 		let p_sum = 0;
 		for (let i = 1; i <= cols_temp.length; i ++){
 			const line = document.createElement('line');
