@@ -136,9 +136,15 @@ fetch(jsonFile)
 				rotateImage(img, item.rotation);
 			}
 			img.addEventListener('click', () => {
-				img.classList.toggle('chosen-image');
-				document.getElementById("block-bg").classList.toggle('hidden');
+				img.classList.toggle('chosen-image', true);
+				document.getElementById("block-bg").classList.toggle('hidden', false);
 			});
+		});
+		document.getElementById("block-bg").addEventListener('click', () => {
+			document.querySelectorAll('.placed-img').forEach(imgObj => {
+				imgObj.classList.toggle('chosen-image', false);
+			});
+			document.getElementById("block-bg").classList.toggle('hidden', true);
 		});
 	})
 	.catch(err => console.error('Failed to load layout:', err));
