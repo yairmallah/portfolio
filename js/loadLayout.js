@@ -1,6 +1,6 @@
 // --- Extract ?file=layout1.json from URL ---
 const params = new URLSearchParams(window.location.search);
-const jsonFile = params.get('file') || 'projects/s4.json';  // fallback to default
+const jsonFile = params.get('file') || 'projects/s1.json';  // fallback to default
 function reformat_grid_row_col(row, gap){
 	var counter = "";
 	const match = row.match(/repeat\((\d+),\s*1fr\)/);
