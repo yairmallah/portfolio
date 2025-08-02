@@ -1,9 +1,11 @@
 {
   "about.html": [
+    "imgs/fav.png",
     "css/general.css",
     "js/fixedStructure.js"
   ],
   "contact.html": [
+    "imgs/fav.png",
     "css/general.css",
     "js/fixedStructure.js"
   ],
@@ -19,13 +21,16 @@
     "contact.html"
   ],
   "imgs": [
+    "imgs/fav.png",
     "imgs/s1",
     "imgs/s4",
     "imgs/s6",
+    "imgs/s7",
     "imgs/s8",
     "imgs/thumbnails"
   ],
   "index.html": [
+    "imgs/fav.png",
     "css/general.css",
     "js/fixedStructure.js"
   ],
@@ -36,6 +41,7 @@
     "js/loadLayout.js"
   ],
   "layout-tester.html": [
+    "imgs/fav.png",
     "css/general.css",
     "css/project.css",
     "css/layout-tester.css",
@@ -43,6 +49,7 @@
     "js/fixedStructure.js"
   ],
   "project.html": [
+    "imgs/fav.png",
     "css/general.css",
     "css/project.css",
     "js/loadLayout.js",
@@ -106,6 +113,23 @@
     "imgs/s6/4 100.png",
     "imgs/s6/ground 200.png",
     "imgs/s6/sec.png"
+  ],
+  "imgs/s7": [
+    "imgs/s7/cont1.jpg",
+    "imgs/s7/cont2.png",
+    "imgs/s7/eled.png",
+    "imgs/s7/elen.png",
+    "imgs/s7/elenor.png",
+    "imgs/s7/gschem.png",
+    "imgs/s7/isocer.png",
+    "imgs/s7/isocon.png",
+    "imgs/s7/isoen4.png",
+    "imgs/s7/p.png",
+    "imgs/s7/pground.png",
+    "imgs/s7/psub.png",
+    "imgs/s7/ptyp.png",
+    "imgs/s7/schp.png",
+    "imgs/s7/table.jpg"
   ],
   "imgs/s8": [
     "imgs/s8/GgifT.mp4",
