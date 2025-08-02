@@ -84,7 +84,7 @@
 	gap: var(--gridGap);
 	position: relative;
 	max-width: 100%;
-	max-height: 100%;
+	max-height: calc(100vh - var(--headerPer) * 1vh);
 	aspect-ratio: var(--gridRatio);
 	overflow: hidden;
 	background-color: var(--bgBody);
@@ -94,5 +94,5 @@
 	margin-left: auto;
 }
 #layout-wrapper.active {
-	max-height: calc(var(--gridRatio) * 200%);
+	max-height: calc((200vh - var(--headerPer) * 1vh) / (var(--gridRatio)) );
 }
