@@ -1,7 +1,7 @@
 {
   "grid": {
     "columns": "repeat(6, 1fr)",
-    "rows": "calc(20% - 0.4vw) calc(20% - 0.4vw) calc(17% - 0.4vw) calc(27% - 0.4vw) calc(16% - 0.4vw)",
+    "rows": "calc(20% - 0.8vw) calc(20% - 0.8vw) calc(17% - 0.8vw) calc(27% - 0.8vw) calc(16% - 0.8vw)",
     "gap": "1vw",
 	"ratio": "7 / 5"
   },
