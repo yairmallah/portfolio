@@ -123,9 +123,6 @@ fetch(jsonFile)
 			else{
 				img = document.createElement('img');
 				img.loading = 'lazy';
-				if (item.rotation && item.rotation != 0){
-					rotateImage(img, item.rotation);
-				}
 			}
 			img.src = item.src;
 			img.classList.toggle('placed-img', true);
@@ -135,6 +132,9 @@ fetch(jsonFile)
 			img.style.gridRow = item.gridRow;
 			img.classList.toggle('comp-' + (item.objectFit || 'cover'), true)
 			container.appendChild(img);
+			if (item.rotation && item.rotation != 0){
+				rotateImage(img, item.rotation);
+			}
 			img.addEventListener('click', () => {
 				img.classList.toggle('chosen-image');
 				document.getElementById("block-bg").classList.toggle('hidden');
