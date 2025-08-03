@@ -38,6 +38,7 @@ body {
 	grid-template-rows: 100%;
 	grid-template-columns: repeat(3, 1fr) 3%;
 	gap: 1%;
+	border-radius: 15px;
 }
 #content-container{
 	width: 100%;
