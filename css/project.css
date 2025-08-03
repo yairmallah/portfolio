@@ -94,5 +94,5 @@
 	margin-left: auto;
 }
 #layout-wrapper.active {
-	max-height: calc((200vh - var(--headerPer) * 1vh) / (var(--gridRatio)) );
+	max-height: calc((100vw - var(--headerPer) * 1vh) / (var(--gridRatio)) );
 }
