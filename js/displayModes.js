@@ -5,7 +5,8 @@ export const darkValues={
 		"--invBg": "black",
 
 		"--scrollbarColor":"#ccc",
-		"--scrollbarHover":"#666"
+		"--scrollbarHover":"#666",
+		"--darkButtonRot": "0 0 1 180deg"
 	},
 	true: {
 		"--bgBody":"#000",
@@ -13,7 +14,8 @@ export const darkValues={
 		"--invBg": "white",
 		
 		"--scrollbarColor":"#333",
-		"--scrollbarHover":"#999"
+		"--scrollbarHover":"#999",
+		"--darkButtonRot": "0 0 1 0deg"
 	}
 	
 };
