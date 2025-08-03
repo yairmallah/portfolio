@@ -6,7 +6,7 @@
 	--scrollbarColor:#333;
 	--scrollbarHover:#999;
 	
-	--headerPer: 5;
+	--headerPer: 2.5;
 	--footerPer:0;
 }
 
@@ -27,7 +27,7 @@ body {
 	direction: rtl;
 }
 #header{
-	height: calc(var(--headerPer) * 1%);
+	height: calc(var(--headerPer) * 1em);
 	position: fixed;
 	z-index:5;
 	top:0;
@@ -36,13 +36,13 @@ body {
 	overflow: hidden;
 	display: grid;
 	grid-template-rows: 100%;
-	grid-template-columns: 30% 30% 30% 4%;
-	gap: 2%;
+	grid-template-columns: repeate 4%;
+	gap: 1%;
 }
 #content-container{
 	width: 100%;
 	position: relative;
-	top: calc(var(--headerPer) * 1%);
+	top: calc(var(--headerPer) * 1em);
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -145,7 +145,7 @@ a.navItem {
 }
 .nav-container {
 	display: flex;
-	background: color-mix(in srgb, var(--bgBody) 70%, #80808080);
+	background: color-mix(in srgb, var(--bgBody) 30%, #80808080);
 	border: none;
 	cursor: pointer;
 }
