@@ -89,7 +89,7 @@
 	overflow: hidden;
 	background-color: var(--bgBody);
 	direction: ltr;
-	transition: max-height 5s linear;
+	transition: max-height 3s ease;
 	margin-right: auto;
 	margin-left: auto;
 }
