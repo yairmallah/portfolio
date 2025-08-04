@@ -4,6 +4,7 @@
 	--gridEvents: none;
 	--hueRotDraw: 180deg;
 	--softBright: 100;
+	--chosenImageZoom: 1;
 }
 .grid-line {
 	position: absolute;
@@ -64,6 +65,8 @@
 	mix-blend-mode: normal;
 	filter: none;
 	margin: auto;
+	transition: transform 0.3s linear;
+	transform: scale(var(--chosenImageZoom));
 }
 #block-bg{
 	background: rgba(0, 0, 0, 0.8);
