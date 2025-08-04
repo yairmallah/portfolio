@@ -112,6 +112,7 @@ fetch(jsonFile)
 				}
 				
 			});
+			root.style.setProperty("--chosenImageZoom", 1);
 			chnImg.addEventListener('mousemove', (e) => {
 				const rect = chnImg.getBoundingClientRect();
 				const x = ((e.clientX - rect.left) / rect.width) * 100;
