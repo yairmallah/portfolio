@@ -136,21 +136,17 @@ p {
     text-align: right;
     direction: rtl;
 }
-a.navItem {
-	display: inline-block;
-	padding: 0.5em 1em;
-	color: var(--invBg);
-	border: none;
-	text-decoration: none;
-	margin: auto;
-	font-weight: bolder;
-}
 .nav-container {
-	display: flex;
 	background: color-mix(in srgb, var(--bgBody) 30%, #80808080);
 	border: none;
 	cursor: pointer;
 	border-radius: 0 0 1em 1em;
+	display: inline-block;
+	padding: 0.5em 1em;
+	color: var(--invBg);
+	text-decoration: none;
+	font-weight: bolder;
+	text-align: center;
 }
 #dark-button{
 	width: calc(var(--headerPer) * 2em);
