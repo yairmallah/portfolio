@@ -157,7 +157,6 @@ a.navItem {
 	height: calc(var(--headerPer) * 0.8em);
 	border-radius: calc(var(--headerPer) * 0.5em);
 	overflow:hidden;
-	border: 2px solid var(--textColor);
 	rotate: var(--darkButtonRot);
 	transition: all 1s ease;
 	background-color: var(--bgBody)
