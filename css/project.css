@@ -56,17 +56,14 @@
 }
 .comp-contain{object-fit: contain;}
 .comp-cover{object-fit: cover;}
-.placed-img.chosen-image{
-	position: fixed;
-	max-width: 100vw;
-	max-height: 100vh;
+#chosen-image{
+	max-width: 85vw;
+	max-height: 85vh;
 	z-index: 10;
-	top: 0;
-	left: 0;
 	object-fit: contain;
 	mix-blend-mode: normal;
 	filter: none;
-	transform: scale(0.85);
+	margin: auto;
 }
 #block-bg{
 	background: rgba(0, 0, 0, 0.8);
@@ -76,6 +73,7 @@
 	z-index: 8;
 	top: 0;
 	left: 0;
+	display: flex;
 }
 #layout-wrapper {
 	display: grid;
