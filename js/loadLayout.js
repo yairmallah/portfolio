@@ -123,7 +123,7 @@ fetch(jsonFile)
 			chnImg.addEventListener('wheel', (e) => {
 				let dir = -e.deltaY / Math.abs(e.deltaY);
 				if (!root.style.getPropertyValue("--chosenImageZoom")) root.style.setProperty("--chosenImageZoom", "1.1");
-				let newZoom = Math.max(1, parseFloat(root.style.getPropertyValue("--chosenImageZoom"))*1.1);
+				let newZoom = Math.max(1, parseFloat(root.style.getPropertyValue("--chosenImageZoom"))*(dir >= 0? 1.1 : 0.9));
 				root.style.setProperty("--chosenImageZoom", newZoom);
 			});
 			document.getElementById("block-bg").classList.toggle('hidden', false);
