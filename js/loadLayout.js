@@ -1,6 +1,7 @@
 // --- Extract ?file=layout1.json from URL ---
 const params = new URLSearchParams(window.location.search);
 const jsonFile = params.get('file') || 'projects/s1.json';  // fallback to default
+const root = document.documentElement;
 function reformat_grid_row_col(row, gap){
 	var counter = "";
 	const match = row.match(/repeat\((\d+),\s*1fr\)/);
@@ -110,6 +111,20 @@ fetch(jsonFile)
 					console.error(`image list Exception, coulden fin match for ${itemObj}`);
 				}
 				
+			});
+			chnImg.addEventListener('mousemove', (e) => {
+				const rect = chnImg.getBoundingClientRect();
+				const x = ((e.clientX - rect.left) / rect.width) * 100;
+				const y = ((e.clientY - rect.top) / rect.height) * 100;
+				chnImg.style.transformOrigin = `${x}% ${y}%`;
+			});
+
+			chnImg.addEventListener('mouseleave', () => {chnImg.style.transformOrigin = 'center';});
+			chnImg.addEventListener('wheel', (e) => {
+				let dir = -e.deltaY / Math.abs(e.deltaY);
+				if (!root.style.getPropertyValue("--chosenImageZoom")) root.style.setProperty("--chosenImageZoom", "1.1");
+				let newZoom = Math.max(1, parseFloat(root.style.getPropertyValue("--chosenImageZoom"))*1.1);
+				root.style.setProperty("--chosenImageZoom", newZoom);
 			});
 			document.getElementById("block-bg").classList.toggle('hidden', false);
 		}
