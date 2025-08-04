@@ -62,7 +62,6 @@ document.documentElement.style.setProperty('--imgsZ', '1');
 document.documentElement.style.setProperty('--linesColor', 'rgba(0, 0, 0, 0)');
 document.documentElement.style.setProperty('--gridEvents', 'all');
 document.addEventListener("DOMContentLoaded", ()=>{
-	console.log("DOMContentLoaded");
 	setTimeout(() => {document.getElementById("layout-wrapper").classList.toggle("active", true);}, 1500);
 });
 
@@ -70,6 +69,51 @@ document.addEventListener("DOMContentLoaded", ()=>{
 fetch(jsonFile)
 	.then(response => response.json())
 	.then(data => {
+		function setCoshenImg(itemObj){
+			let chnImg;
+			if (itemObj.src.substr(-3) == "mp4"){
+				chnImg = document.createElement('video');
+				chnImg.autoplay = true;
+				chnImg.loop = true;
+				chnImg.muted = true;
+				chnImg.playsInline = true;
+			}
+			else{
+				chnImg = document.createElement('img');
+			}
+			chnImg.src = itemObj.src;
+			if (itemObj.rotation && itemObj.rotation != 0){
+				rotateImage(chnImg, itemObj.rotation);
+			}
+			chnImg.id = 'chosen-image';
+			
+			document.getElementById("block-bg").innerHTML = "";
+			document.getElementById("block-bg").appendChild(chnImg);
+			chnImg.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const screenMiddle = window.innerWidth / 2;
+				const clickX = event.clientX;
+			
+				if (clickX < screenMiddle) {
+					for (let i = 0; i < data.images.length; i++){
+						if (data.images[i] === itemObj){
+							return setCoshenImg(data.images[(i + data.images.length - 1) % data.images.length]);
+						}
+					}
+					console.error(`image list Exception, coulden fin match for ${itemObj}`);
+				}else{
+					for (let i = 0; i < data.images.length; i++){
+						if (data.images[i] === itemObj){
+							return setCoshenImg(data.images[(i + data.images.length + 1) % data.images.length]);
+						}
+					}
+					console.error(`image list Exception, coulden fin match for ${itemObj}`);
+				}
+				
+			});
+			document.getElementById("block-bg").classList.toggle('hidden', false);
+		}
+		
 		const container = document.getElementById('layout-wrapper');
 
 		// Set CSS variables
@@ -89,8 +133,6 @@ fetch(jsonFile)
 		// Grid lines
 		const rows_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridRows'));
 		const cols_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridColumns'));
-		console.log(rows_temp);
-		console.log(cols_temp);
 		let p_sum = 0;
 		for (let i = 1; i <= cols_temp.length; i ++){
 			const line = document.createElement('line');
@@ -135,15 +177,11 @@ fetch(jsonFile)
 			if (item.rotation && item.rotation != 0){
 				rotateImage(img, item.rotation);
 			}
-			img.addEventListener('click', () => {
-				img.classList.toggle('chosen-image', true);
-				document.getElementById("block-bg").classList.toggle('hidden', false);
+			img.addEventListener('click', (e) => {
+				setCoshenImg(item);
 			});
 		});
 		document.getElementById("block-bg").addEventListener('click', () => {
-			document.querySelectorAll('.placed-img').forEach(imgObj => {
-				imgObj.classList.toggle('chosen-image', false);
-			});
 			document.getElementById("block-bg").classList.toggle('hidden', true);
 		});
 	})
