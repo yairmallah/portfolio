@@ -18,6 +18,7 @@
   "images": [
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s4/cn2.jpg",
+      "title": "פרספקטיבה | כפל שימוש במבנה",
       "gridColumn": "3 / 7",
       "gridRow": "3 / 7",
       "objectFit": "cover",
