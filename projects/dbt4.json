@@ -1,0 +1,73 @@
+{
+  "text": {
+	"title": "אהיל",
+	"textR": "האהיל  תוכנן כדי להציע מגוון רחב ככל האפשר של מצבי אור. בשימוש בטכנולוגיה של הדפסת תלת מימד וחיתוך בליזר יצרתי מרקם גמיש שמייצר מצבי אור שונים",
+	"area": "90",
+	"units": "cm",
+	"status": "הודפס"
+  },
+  "grid": {
+    "columns": "repeat(4, 1fr)",
+    "rows": "repeat(4, 1fr)",
+    "gap": "1vw",
+    "ratio": "6 / 5"
+  },
+  "images": [
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/d1.png",
+      "gridColumn": "4 / 5",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/d2.png",
+      "gridColumn": "3 / 4",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/d3.png",
+      "gridColumn": "2 / 3",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/const.png",
+      "gridColumn": "2 / 5",
+      "gridRow": "1 / 4",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/texture.jpg",
+      "gridColumn": "1 / 2",
+      "gridRow": "1 / 2",
+      "objectFit": "cover",
+      "rotation": "90"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/front.png",
+      "gridColumn": "1 / 2",
+      "gridRow": "2 / 4",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/texture1.png",
+      "gridColumn": "1 / 2",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "90"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/dbt4/texture1.png",
+      "gridColumn": "2 / 5",
+      "gridRow": "4 / 5",
+      "objectFit": "contain",
+      "rotation": "0"
+    }
+  ]
+}
