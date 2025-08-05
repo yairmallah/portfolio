@@ -15,28 +15,28 @@
   },
   "images": [
     {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/d1.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/d1.png",
       "gridColumn": "4 / 5",
       "gridRow": "4 / 5",
       "objectFit": "cover",
       "rotation": "0"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/d2.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/d2.png",
       "gridColumn": "3 / 4",
       "gridRow": "4 / 5",
       "objectFit": "cover",
       "rotation": "0"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/d3.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/d3.png",
       "gridColumn": "2 / 3",
       "gridRow": "4 / 5",
       "objectFit": "cover",
       "rotation": "0"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/const.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/const.png",
       "gridColumn": "2 / 5",
       "gridRow": "1 / 4",
       "objectFit": "contain",
@@ -44,7 +44,7 @@
       "classCSS": "comp-photo"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/texture.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/texture.jpg",
       "gridColumn": "1 / 2",
       "gridRow": "1 / 2",
       "objectFit": "cover",
@@ -52,7 +52,7 @@
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/front.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/front.png",
       "gridColumn": "1 / 2",
       "gridRow": "2 / 4",
       "objectFit": "cover",
@@ -60,7 +60,7 @@
       "classCSS": "comp-photo"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/texture1.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/texture1.png",
       "gridColumn": "1 / 2",
       "gridRow": "4 / 5",
       "objectFit": "cover",
