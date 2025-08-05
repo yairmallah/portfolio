@@ -16,7 +16,7 @@
   },
   "images": [
     {
-      "src": "http://127.0.0.4:8080/imgs/thumbnails/bhel.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg",
       "gridColumn": "2 / 5",
       "gridRow": "1 / 4",
       "objectFit": "cover",
@@ -24,7 +24,7 @@
 	  "classCSS": "comp-photo"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/hel/model3.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/hel/model3.jpg",
       "gridColumn": "1 / 2",
       "gridRow": "2 / 3",
       "objectFit": "contain",
@@ -32,7 +32,7 @@
 	  "classCSS": "comp-draw-inv"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/hel/model1.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/hel/model1.jpg",
       "gridColumn": "1 / 2",
       "gridRow": "1 / 2",
       "objectFit": "contain",
@@ -40,7 +40,7 @@
 	  "classCSS": "comp-draw-inv"
     },
     {
-      "src": "http://127.0.0.4:8080/imgs/hel/model2.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/hel/model2.png",
       "gridColumn": "1 / 2",
       "gridRow": "3 / 4",
       "objectFit": "contain",
