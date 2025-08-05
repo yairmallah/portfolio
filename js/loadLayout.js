@@ -83,6 +83,7 @@ fetch(jsonFile)
 	.then(response => response.json())
 	.then(data => {
 		function setCoshenImg(itemObj){
+			const bgContainer = document.getElementById("block-bg");
 			let chnImg;
 			if (itemObj.src.substr(-3) == "mp4"){
 				chnImg = document.createElement('video');
@@ -105,8 +106,20 @@ fetch(jsonFile)
 				});
 			};
 			
-			document.getElementById("block-bg").innerHTML = "";
-			document.getElementById("block-bg").appendChild(chnImg);
+			bgContainer.innerHTML = "";
+			const intermediary = document.createElement("div");
+			intermediary.appendChild(chnImg);
+			intermediary.id = "chosen-image-intermediary";
+			if (itemObj.title){
+				imgTitle = document.createElement("h1");
+				imgTitle.id = "chosen-image-title";
+				imgTitleCont = document.createElement("div");
+				imgTitleCont.id = "chosen-image-title-container";
+				imgTitle.innerHTML = itemObj.title;
+				imgTitleCont.appendChild(imgTitle);
+				intermediary.appendChild(imgTitleCont);
+			}
+			bgContainer.appendChild(intermediary);
 			chnImg.addEventListener('click', (e) => {
 				e.stopPropagation();
 				const screenMiddle = window.innerWidth / 2;
