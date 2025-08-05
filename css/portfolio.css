@@ -1,7 +1,7 @@
 :root {
 	--bgBody: black;
 	--drawHueRot: 180deg;
-	--cellHeight: 50vh;
+	--cellHeight: 47vh;
 	--cellWidth: 25%;
 }
 #projects-table{
