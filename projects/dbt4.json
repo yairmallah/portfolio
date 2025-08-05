@@ -2,6 +2,7 @@
   "text": {
 	"title": "אהיל",
 	"textR": "האהיל  תוכנן כדי להציע מגוון רחב ככל האפשר של מצבי אור. בשימוש בטכנולוגיה של הדפסת תלת מימד וחיתוך בליזר יצרתי מרקם גמיש שמייצר מצבי אור שונים",
+	"date": "אוקטובר 2022 - ינואר 2023",
 	"area": "90",
 	"units": "cm",
 	"status": "הודפס"
@@ -39,35 +40,32 @@
       "gridColumn": "2 / 5",
       "gridRow": "1 / 4",
       "objectFit": "contain",
-      "rotation": "0"
+      "rotation": "0",
+      "classCSS": "comp-photo"
     },
     {
       "src": "http://127.0.0.4:8080/imgs/dbt4/texture.jpg",
       "gridColumn": "1 / 2",
       "gridRow": "1 / 2",
       "objectFit": "cover",
-      "rotation": "90"
+      "rotation": "90",
+      "classCSS": "comp-draw-inv"
     },
     {
       "src": "http://127.0.0.4:8080/imgs/dbt4/front.png",
       "gridColumn": "1 / 2",
       "gridRow": "2 / 4",
       "objectFit": "cover",
-      "rotation": "0"
+      "rotation": "0",
+      "classCSS": "comp-photo"
     },
     {
       "src": "http://127.0.0.4:8080/imgs/dbt4/texture1.png",
       "gridColumn": "1 / 2",
       "gridRow": "4 / 5",
       "objectFit": "cover",
-      "rotation": "90"
-    },
-    {
-      "src": "http://127.0.0.4:8080/imgs/dbt4/texture1.png",
-      "gridColumn": "2 / 5",
-      "gridRow": "4 / 5",
-      "objectFit": "contain",
-      "rotation": "0"
+      "rotation": "90",
+      "classCSS": "comp-draw-inv"
     }
   ]
 }
