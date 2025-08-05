@@ -17,6 +17,7 @@
   "images": [
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg",
+      "title": "חתך | תוכנית | מפת טופוגרפיה | פיאצה דל פופולו",
       "gridColumn": "2 / 5",
       "gridRow": "1 / 4",
       "objectFit": "cover",
@@ -25,6 +26,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/hel/model3.jpg",
+      "title": "מודל | מבט צד",
       "gridColumn": "1 / 2",
       "gridRow": "2 / 3",
       "objectFit": "contain",
@@ -33,6 +35,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/hel/model1.jpg",
+      "title": "מודל | מבט על",
       "gridColumn": "1 / 2",
       "gridRow": "1 / 2",
       "objectFit": "contain",
@@ -41,6 +44,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/hel/model2.png",
+      "title": "מודל | רומא",
       "gridColumn": "1 / 2",
       "gridRow": "3 / 4",
       "objectFit": "contain",
