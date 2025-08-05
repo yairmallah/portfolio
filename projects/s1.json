@@ -18,6 +18,7 @@
   "images": [
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s1/p6.jpg",
+      "title": "תוכנית | שימושים - מפלס 1.9m+",
       "gridColumn": "6 / 7",
       "gridRow": "5 / 6",
       "objectFit": "contain",
@@ -25,6 +26,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s1/p5.jpg",
+      "title": "תוכנית | שימושים - מפלס 1.78m+",
       "gridColumn": "5 / 6",
       "gridRow": "5 / 6",
       "objectFit": "contain",
@@ -32,6 +34,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s1/p4.jpg",
+      "title": "תוכנית | שימושים - מפלס 1.43m+",
       "gridColumn": "4 / 5",
       "gridRow": "5 / 6",
       "objectFit": "contain",
@@ -39,6 +42,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s1/p3.jpg",
+      "title": "תוכנית | שימושים - מפלס 1.00m+",
       "gridColumn": "3 / 4",
       "gridRow": "5 / 6",
       "objectFit": "contain",
@@ -46,6 +50,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s1/p2.jpg",
+      "title": "תוכנית | שימושים - מפלס 0.55m+",
       "gridColumn": "2 / 3",
       "gridRow": "5 / 6",
       "objectFit": "contain",
@@ -53,6 +58,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s1/p1.jpg",
+      "title": "תוכנית | שימושים - מפלס 0.01m+",
       "gridColumn": "1 / 2",
       "gridRow": "5 / 6",
       "objectFit": "contain",
