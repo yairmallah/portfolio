@@ -16,6 +16,7 @@
   "images": [
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/d1.png",
+      "title": "שרטוט | מרקם",
       "gridColumn": "4 / 5",
       "gridRow": "4 / 5",
       "objectFit": "cover",
@@ -23,6 +24,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/d2.png",
+      "title": "שרטוט | מרקם",
       "gridColumn": "3 / 4",
       "gridRow": "4 / 5",
       "objectFit": "cover",
@@ -30,6 +32,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/d3.png",
+      "title": "שרטוט | רכיב אהיל",
       "gridColumn": "2 / 3",
       "gridRow": "4 / 5",
       "objectFit": "cover",
@@ -37,6 +40,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/const.png",
+      "title": "הדמיה | יצירת אהיל",
       "gridColumn": "2 / 5",
       "gridRow": "1 / 4",
       "objectFit": "contain",
@@ -45,6 +49,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/texture.jpg",
+      "title": "תמונה | אהיל",
       "gridColumn": "1 / 2",
       "gridRow": "1 / 2",
       "objectFit": "cover",
@@ -53,6 +58,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/front.png",
+      "title": "תמונה | אהיל",
       "gridColumn": "1 / 2",
       "gridRow": "2 / 4",
       "objectFit": "cover",
@@ -61,6 +67,7 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/dbt4/texture1.png",
+      "title": "תמונה | אהיל",
       "gridColumn": "1 / 2",
       "gridRow": "4 / 5",
       "objectFit": "cover",
