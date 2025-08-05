@@ -63,7 +63,19 @@ document.documentElement.style.setProperty('--imgsZ', '1');
 document.documentElement.style.setProperty('--linesColor', 'rgba(0, 0, 0, 0)');
 document.documentElement.style.setProperty('--gridEvents', 'all');
 document.addEventListener("DOMContentLoaded", ()=>{
-	setTimeout(() => {document.getElementById("layout-wrapper").classList.toggle("active", true);}, 1500);
+	const mainSect = document.getElementById("layout-container");
+	const rightSect = document.getElementById("text-right");
+	const leftSect = document.getElementById("text-left");
+	mainSect.addEventListener('mouseenter', () => {
+		mainSect.classList.toggle("active", true);
+		leftSect.classList.toggle("active", false);
+		rightSect.classList.toggle("active", false);
+	});
+	mainSect.addEventListener('mouseleave', () => {
+		mainSect.classList.toggle("active", false);
+		leftSect.classList.toggle("active", true);
+		rightSect.classList.toggle("active", true);
+	});
 });
 
 // --- Load the specified JSON file ---
@@ -130,7 +142,23 @@ fetch(jsonFile)
 			document.getElementById("block-bg").classList.toggle('hidden', false);
 		}
 		
-		const container = document.getElementById('layout-wrapper');
+		const container = document.getElementById('layout-container');
+		const rightSect = document.getElementById("text-right");
+		const leftSect = document.getElementById("text-left");
+		
+		if(data.text){
+			document.title = data.text.title;
+			leftApp = "";
+			leftApp += `<div class="quick-fact"><b class="fact-title">שם: </b><span class="fact-data">${data.text.title}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">פרוגרמה: </b><span class="fact-data">${data.text.program}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">מקום: </b><span class="fact-data">${data.text.loaction}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">זמן: </b><span class="fact-data">${data.text.date}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">שטח: </b><span class="fact-data">${data.text.area}${data.text.units}²</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">סטטוס: </b><span class="fact-data">${data.text.status}</span></div>`;
+			rightSect.innerHTML = `<div class="exp-text"><h3>${data.text.title}</h3>${data.text.textR}</div>`
+			leftSect.innerHTML = leftApp;
+		}
+		
 
 		// Set CSS variables
 		if (data.grid.columns) {
@@ -180,7 +208,7 @@ fetch(jsonFile)
 			}
 			else{
 				img = document.createElement('img');
-				img.loading = 'lazy';
+				//img.loading = 'lazy';
 			}
 			img.src = item.src;
 			img.classList.toggle('placed-img', true);
