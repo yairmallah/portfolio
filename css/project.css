@@ -6,6 +6,60 @@
 	--softBright: 100;
 	--chosenImageZoom: 1;
 }
+#text-right{
+	transition: width 1s ease;
+	width: 5vw;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}#text-right.active{
+	width: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 5vw);
+}.exp-text{
+	text-align: justify;
+	margin: 1em;
+}
+
+#layout-container {
+	display: grid;
+	grid-template-columns: var(--gridColumns);
+	grid-template-rows: var(--gridRows);
+	gap: var(--gridGap);
+	position: relative;
+	max-width: 90vw;
+	max-height: calc(100vh - var(--headerPer) * 1em);
+	aspect-ratio: var(--gridRatio);
+	overflow: hidden;
+	background-color: var(--bgBody);
+	direction: ltr;
+	transition: max-height 1s ease;
+	margin-right: auto;
+	margin-left: auto;
+}
+#layout-container.active {
+	max-height: calc((100vw - var(--headerPer) * 1em) / (var(--gridRatio)) );
+}
+#text-left{
+	transition: width 1s ease;
+	width: 5vw;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	overflow-x: hidden;
+	overflow-y: auto;
+}#text-left.active{
+	width: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 5vw);
+}.quick-fact{
+	margin-top: 2em;
+	margin-right: 1em;
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 5em calc(100% - 5em);
+}
 .grid-line {
 	position: absolute;
 	outline: 1px dotted rgba(127,127,127,0.3);
@@ -34,7 +88,7 @@
 	/*transition: all 3s ease;	*/
 }
 .comp-draw{
-	filter: invert(1) hue-rotate(var(--hueRotDraw));
+	filter: invert(1) hue-rotate(var(--hueRotDraw)) blur(0.4px);
 	mix-blend-mode: difference;
 }
 .comp-draw-inv{
@@ -77,23 +131,4 @@
 	top: 0;
 	left: 0;
 	display: flex;
-}
-#layout-wrapper {
-	display: grid;
-	grid-template-columns: var(--gridColumns);
-	grid-template-rows: var(--gridRows);
-	gap: var(--gridGap);
-	position: relative;
-	max-width: 100%;
-	max-height: calc(100vh - var(--headerPer) * 1em);
-	aspect-ratio: var(--gridRatio);
-	overflow: hidden;
-	background-color: var(--bgBody);
-	direction: ltr;
-	transition: max-height 3s ease;
-	margin-right: auto;
-	margin-left: auto;
-}
-#layout-wrapper.active {
-	max-height: calc((100vw - var(--headerPer) * 1em) / (var(--gridRatio)) );
 }
