@@ -1,0 +1,162 @@
+{
+  "text": {
+	"title": "יפו 86",
+	"textR": "על רחוב יפו הראשי בירושלים מיקמתי קמפוס לחקלאות במוטיבציה לייצר חקלאות ניסויונית בתנאים אורבניים. תוכנית המבנה משתנה דרמתית מקומה לקומה כדי לאפשר לאור להגיע לכל חלקי המבנה, ולייצר חלוקה עשירה בין חללי פנים וחוץ.</br>בתכנון שילבתי מבנה היסטורי ובניה חדשה, כדי לייצר קמפוס עירוני מתפקד יחד עם אזורים לקהילה ולהסברה ושטחי חקלאות שמישים. ",
+	"program": "מבנה ציבור | אקדמיה",
+	"loaction": "יפו 86, ירושלים",
+	"date": "מרץ 2023 - יולי 2023",
+	"area": "16,250",
+	"units": "m",
+	"status": "לא נבנה | סטודנטיאלי"
+  },
+  "grid": {
+    "columns": "repeat(9, 1fr)",
+    "rows": "calc(12.5% - 0.5333333333333333vw) calc(12.5% - 0.5333333333333333vw) calc(12.5% - 0.5333333333333333vw) calc(12.5% - 0.5333333333333333vw) calc(12.5% - 0.5333333333333333vw) calc(8.5% - 0.5333333333333333vw) calc(12.5% - 0.5333333333333333vw) calc(12.5% - 0.5333333333333333vw)",
+    "gap": "0.6vw",
+    "ratio": "10 / 7"
+  },
+  "images": [
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/secsqr1.png",
+      "gridColumn": "1 / 2",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/secsqr2.png",
+      "gridColumn": "1 / 2",
+      "gridRow": "5 / 6",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/secsqr3.png",
+      "gridColumn": "1 / 2",
+      "gridRow": "6 / 7",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/p1.png",
+      "gridColumn": "2 / 3",
+      "gridRow": "4 / 7",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/p0.png",
+      "gridColumn": "3 / 4",
+      "gridRow": "4 / 7",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/pu.png",
+      "gridColumn": "4 / 5",
+      "gridRow": "4 / 7",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/p0ex.png",
+      "gridColumn": "4 / 5",
+      "gridRow": "1 / 4",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/fullvid.mp4",
+      "gridColumn": "5 / 8",
+      "gridRow": "4 / 8",
+      "objectFit": "cover",
+      "rotation": "0",
+	  "additionals": [["controls", "true"]],
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/imS0.png",
+      "gridColumn": "8 / 10",
+      "gridRow": "4 / 5",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/imS1.png",
+      "gridColumn": "8 / 10",
+      "gridRow": "3 / 4",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/imS2.png",
+      "gridColumn": "8 / 10",
+      "gridRow": "2 / 3",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/imS3.png",
+      "gridColumn": "8 / 10",
+      "gridRow": "1 / 2",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/jlm.png",
+      "gridColumn": "8 / 10",
+      "gridRow": "5 / 7",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/tzapln.png",
+      "gridColumn": "7 / 8",
+      "gridRow": "8 / 9",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/tza.png",
+      "gridColumn": "6 / 7",
+      "gridRow": "8 / 9",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/secw3.png",
+      "gridColumn": "5 / 8",
+      "gridRow": "3 / 4",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/typo.jpg",
+      "gridColumn": "8 / 9",
+      "gridRow": "7 / 9",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/secw2.png",
+      "gridColumn": "2 / 5",
+      "gridRow": "8 / 9",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s10/secw1.png",
+      "gridColumn": "2 / 5",
+      "gridRow": "7 / 8",
+      "objectFit": "cover",
+      "rotation": "0"
+    }
+  ]
+}

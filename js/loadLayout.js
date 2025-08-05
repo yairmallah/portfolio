@@ -99,6 +99,11 @@ fetch(jsonFile)
 				rotateImage(chnImg, itemObj.rotation);
 			}
 			chnImg.id = 'chosen-image';
+			if (itemObj.additionals) {
+				itemObj.additionals.forEach(attr => {
+					chnImg[attr[0]] = attr[1];
+				});
+			};
 			
 			document.getElementById("block-bg").innerHTML = "";
 			document.getElementById("block-bg").appendChild(chnImg);

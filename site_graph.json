@@ -1,11 +1,11 @@
 {
   "about.html": [
-    "imgs/fav.png",
+    "imgs/sys/fav.svg",
     "css/general.css",
     "js/fixedStructure.js"
   ],
   "contact.html": [
-    "imgs/fav.png",
+    "imgs/sys/fav.svg",
     "css/general.css",
     "js/fixedStructure.js"
   ],
@@ -16,21 +16,26 @@
     "css/project.css"
   ],
   "header.html": [
+    "css/general.css",
     "projects.html",
     "about.html",
     "contact.html"
   ],
   "imgs": [
+    "imgs/dbt4",
     "imgs/fav.png",
+    "imgs/hel",
     "imgs/s1",
+    "imgs/s10",
     "imgs/s4",
     "imgs/s6",
     "imgs/s7",
     "imgs/s8",
+    "imgs/sys",
     "imgs/thumbnails"
   ],
   "index.html": [
-    "imgs/fav.png",
+    "imgs/sys/fav.svg",
     "css/general.css",
     "js/fixedStructure.js"
   ],
@@ -41,7 +46,7 @@
     "js/loadLayout.js"
   ],
   "layout-tester.html": [
-    "imgs/fav.png",
+    "imgs/sys/fav.svg",
     "css/general.css",
     "css/project.css",
     "css/layout-tester.css",
@@ -49,22 +54,40 @@
     "js/fixedStructure.js"
   ],
   "project.html": [
-    "imgs/fav.png",
+    "imgs/sys/fav.svg",
     "css/general.css",
     "css/project.css",
     "js/loadLayout.js",
     "js/fixedStructure.js"
   ],
   "projects": [
+    "projects/dbt4.json",
+    "projects/hel.json",
     "projects/s1.json",
     "projects/s4.json",
     "projects/s6.json",
+    "projects/s7.json",
     "projects/s8.json"
   ],
   "projects.html": [
+    "imgs/sys/fav.svg",
     "css/general.css",
     "css/portfolio.css",
     "js/fixedStructure.js"
+  ],
+  "imgs/dbt4": [
+    "imgs/dbt4/const.png",
+    "imgs/dbt4/d1.png",
+    "imgs/dbt4/d2.png",
+    "imgs/dbt4/d3.png",
+    "imgs/dbt4/front.png",
+    "imgs/dbt4/texture.jpg",
+    "imgs/dbt4/texture1.png"
+  ],
+  "imgs/hel": [
+    "imgs/hel/model1.jpg",
+    "imgs/hel/model2.png",
+    "imgs/hel/model3.jpg"
   ],
   "imgs/s1": [
     "imgs/s1/dl.jpg",
@@ -86,6 +109,33 @@
     "imgs/s1/s2.jpg",
     "imgs/s1/s3.jpeg",
     "imgs/s1/s4.jpeg"
+  ],
+  "imgs/s10": [
+    "imgs/s10/circles param.png",
+    "imgs/s10/fullvid.mp4",
+    "imgs/s10/imS0.png",
+    "imgs/s10/imS1.png",
+    "imgs/s10/imS2.png",
+    "imgs/s10/imS3.png",
+    "imgs/s10/jlm.png",
+    "imgs/s10/p0.png",
+    "imgs/s10/p0ex.png",
+    "imgs/s10/p0T.png",
+    "imgs/s10/p1.png",
+    "imgs/s10/p1T.png",
+    "imgs/s10/pu.png",
+    "imgs/s10/puT.png",
+    "imgs/s10/s motion.png",
+    "imgs/s10/schm static.png",
+    "imgs/s10/secsqr1.png",
+    "imgs/s10/secsqr2.png",
+    "imgs/s10/secsqr3.png",
+    "imgs/s10/secw1.png",
+    "imgs/s10/secw2.png",
+    "imgs/s10/secw3.png",
+    "imgs/s10/typo.jpg",
+    "imgs/s10/woods.png",
+    "imgs/s10/תצא שחור לבן.png"
   ],
   "imgs/s4": [
     "imgs/s4/br1.jpg",
@@ -128,7 +178,6 @@
     "imgs/s7/pground.png",
     "imgs/s7/psub.png",
     "imgs/s7/ptyp.png",
-    "imgs/s7/schp.png",
     "imgs/s7/table.jpg"
   ],
   "imgs/s8": [
@@ -153,6 +202,11 @@
     "imgs/s8/planex.png",
     "imgs/s8/sec.png",
     "imgs/s8/secex.png"
+  ],
+  "imgs/sys": [
+    "imgs/sys/fav.svg",
+    "imgs/sys/moon.svg",
+    "imgs/sys/sun.svg"
   ],
   "imgs/thumbnails": [
     "imgs/thumbnails/bdbt4.png",
