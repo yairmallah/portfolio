@@ -149,12 +149,12 @@ fetch(jsonFile)
 		if(data.text){
 			document.title = data.text.title;
 			leftApp = "";
-			leftApp += `<div class="quick-fact"><b class="fact-title">שם: </b><span class="fact-data">${data.text.title}</span></div>`;
-			leftApp += `<div class="quick-fact"><b class="fact-title">פרוגרמה: </b><span class="fact-data">${data.text.program}</span></div>`;
-			leftApp += `<div class="quick-fact"><b class="fact-title">מקום: </b><span class="fact-data">${data.text.loaction}</span></div>`;
-			leftApp += `<div class="quick-fact"><b class="fact-title">זמן: </b><span class="fact-data">${data.text.date}</span></div>`;
-			leftApp += `<div class="quick-fact"><b class="fact-title">שטח: </b><span class="fact-data">${data.text.area}${data.text.units}²</span></div>`;
-			leftApp += `<div class="quick-fact"><b class="fact-title">סטטוס: </b><span class="fact-data">${data.text.status}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">שם: </b><span class="fact-data">${data.text.title || '-'}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">פרוגרמה: </b><span class="fact-data">${data.text.program || '-'}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">מקום: </b><span class="fact-data">${data.text.loaction || '-'}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">זמן: </b><span class="fact-data">${data.text.date || '-'}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">שטח: </b><span class="fact-data">${data.text.area || '-'}${data.text.units? data.text.units + '²' : ''}</span></div>`;
+			leftApp += `<div class="quick-fact"><b class="fact-title">סטטוס: </b><span class="fact-data">${data.text.status || '-'}</span></div>`;
 			rightSect.innerHTML = `<div class="exp-text"><h3>${data.text.title}</h3>${data.text.textR}</div>`
 			leftSect.innerHTML = leftApp;
 		}
