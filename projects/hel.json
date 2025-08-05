@@ -1,0 +1,50 @@
+{
+  "text": {
+	"title": "פיאצה דל פופולו",
+	"textR": "הפרוייקט מציע בחינה של פיאצה דל פופולו כנקודת ארכימדס של רומא. דרכי העיר ההיסטורית מתחילות ממנה והעיר המודרנית מושתתת על גביה. כתוצאה מכך היא מכילה עותק של רומה כולה על גביה.",
+	"program": "-",
+	"loaction": "פיאצה דל פופולו, רומא, איטליה",
+	"date": "מרץ 2021 - יולי 2021",
+	"area": "-",
+	"status": "-"
+  },
+  "grid": {
+    "columns": "repeat(4, 1fr)",
+    "rows": "repeat(3, 1fr)",
+    "gap": "1vw",
+    "ratio": "4 / 3",
+  },
+  "images": [
+    {
+      "src": "http://127.0.0.4:8080/imgs/thumbnails/bhel.jpg",
+      "gridColumn": "2 / 5",
+      "gridRow": "1 / 4",
+      "objectFit": "cover",
+      "rotation": "0",
+	  "classCSS": "comp-photo"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/hel/model3.jpg",
+      "gridColumn": "1 / 2",
+      "gridRow": "2 / 3",
+      "objectFit": "contain",
+      "rotation": "0",
+	  "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/hel/model1.jpg",
+      "gridColumn": "1 / 2",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0",
+	  "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/hel/model2.png",
+      "gridColumn": "1 / 2",
+      "gridRow": "3 / 4",
+      "objectFit": "contain",
+      "rotation": "0",
+    }
+  ]
+}
