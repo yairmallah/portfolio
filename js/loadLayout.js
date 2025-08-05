@@ -214,6 +214,11 @@ fetch(jsonFile)
 			img.classList.toggle('placed-img', true);
 			if (item.classCSS) img.classList.toggle(item.classCSS, true);
 			else img.classList.toggle('comp-draw', true);
+			if (item.additionals) {
+				item.additionals.forEach(attr => {
+					img[attr[0]] = attr[1];
+				});
+			};
 			img.style.gridColumn = item.gridColumn;
 			img.style.gridRow = item.gridRow;
 			img.classList.toggle('comp-' + (item.objectFit || 'cover'), true)
