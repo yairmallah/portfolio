@@ -122,6 +122,21 @@
 	transition: transform 0.3s linear;
 	transform: scale(var(--chosenImageZoom));
 }
+#chosen-image-intermediary{
+	/*height: 100%;*/
+	margin: auto;
+	direction: rtl;
+}
+#chosen-image-title{
+	font-size: 3vh;
+	color: white;
+	margin:0;
+}
+#chosen-image-title-container{
+	width:0;
+	overflow: visible;
+	white-space: nowrap;
+}
 #block-bg{
 	background: rgba(0, 0, 0, 0.85);
 	position: fixed;
