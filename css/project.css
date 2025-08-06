@@ -80,12 +80,42 @@
 }
 .placed-img {
 	position: absolute;
-	object-fit: contain;
 	height:100%;
 	width:100%;
 	display: block;
 	z-index: var(--imgsZ);
+	background-repeat: no-repeat;
+	background-size: contain;
+	object-fit: contain;
+	background-position: center;
 	/*transition: all 3s ease;	*/
+}
+.comp-contain{
+	object-fit: contain;
+	background-size: contain;
+}
+.comp-cover{
+	object-fit: cover;
+	background-size: cover;
+}
+.rotated-bg {
+	position: relative;
+	overflow: hidden;
+	--rotation: 0deg;
+}
+
+.rotated-bg::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: inherit;
+	background-size: inherit;
+	background-repeat: no-repeat;
+	background-position: center;
+	transform: rotate(var(--rotation));
+	transform-origin: center;
+	pointer-events: none;
+	z-index: 0;
 }
 .comp-draw{
 	filter: invert(1) hue-rotate(var(--hueRotDraw)) blur(0.4px);
@@ -109,8 +139,6 @@
 	filter: contrast(500%) grayscale(70%) invert(1) hue-rotate(var(--hueRotDraw));
 	mix-blend-mode: difference;
 }
-.comp-contain{object-fit: contain;}
-.comp-cover{object-fit: cover;}
 #chosen-image{
 	max-width: 85vw;
 	max-height: 85vh;
