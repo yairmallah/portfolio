@@ -45,6 +45,7 @@
       "gridRow": "1 / 4",
       "objectFit": "contain",
       "rotation": "0",
+	  "additionals": [["style.backgroundColor", "#000"]],
       "classCSS": "comp-photo"
     },
     {
