@@ -98,25 +98,6 @@
 	object-fit: cover;
 	background-size: cover;
 }
-.rotated-bg {
-	position: relative;
-	overflow: hidden;
-	--rotation: 0deg;
-}
-
-.rotated-bg::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: inherit;
-	background-size: inherit;
-	background-repeat: no-repeat;
-	background-position: center;
-	transform: rotate(var(--rotation));
-	transform-origin: center;
-	pointer-events: none;
-	z-index: 0;
-}
 .comp-draw{
 	filter: invert(1) hue-rotate(var(--hueRotDraw)) blur(0.4px);
 	mix-blend-mode: difference;
