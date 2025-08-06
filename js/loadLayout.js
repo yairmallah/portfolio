@@ -203,7 +203,6 @@ fetch(jsonFile)
 			let el;
 
 			if (item.src.substr(-3) === "mp4") {
-				// Keep video element for video files
 				el = document.createElement('video');
 				el.autoplay = true;
 				el.loop = true;
@@ -211,7 +210,6 @@ fetch(jsonFile)
 				el.playsInline = true;
 				el.src = item.src;
 			} else {
-				// Use <div> with background-image for images
 				el = document.createElement('div');
 				el.style.backgroundImage = `url('${item.src}')`;
 				if (item.rotation && item.rotation != 0) applyRotatedBackground(el, item.src, item.rotation, (item.objectFit || 'cover'));
