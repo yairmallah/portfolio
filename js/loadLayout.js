@@ -165,6 +165,25 @@ fetch(jsonFile)
 		const container = document.getElementById('layout-container');
 		const rightSect = document.getElementById("text-right");
 		const leftSect = document.getElementById("text-left");
+		const junctions = [];
+
+		function calculateJunctions() {
+			const containerRect = container.getBoundingClientRect();
+			const xLines = Array.from(document.querySelectorAll('.grid-line-x')).map(line =>
+				line.getBoundingClientRect().left - containerRect.left
+			);
+			const yLines = Array.from(document.querySelectorAll('.grid-line-y')).map(line =>
+				line.getBoundingClientRect().top - containerRect.top
+			);
+
+			for (let x of xLines) {
+				for (let y of yLines) {
+					junctions.push({ x, y });
+				}
+			}
+		}
+
+		
 		
 		if(data.text){
 			document.title = data.text.title;
@@ -215,6 +234,8 @@ fetch(jsonFile)
 			line.style.top = `calc(${p_sum}% - ${(rows_temp.length - i) * parseFloat(data.grid.gap) / rows_temp.length}vw)`;
 			container.appendChild(line);
 		}
+		calculateJunctions();
+		
 		data.images.forEach(item => {
 			let el;
 
@@ -260,5 +281,109 @@ fetch(jsonFile)
 		document.getElementById("block-bg").addEventListener('click', () => {
 			document.getElementById("block-bg").classList.toggle('hidden', true);
 		});
+		
+		
+		
+		
+		/*document.querySelectorAll('.placed-img').forEach(img => {
+			img.addEventListener('mouseenter', (e) => {
+				const rect = img.getBoundingClientRect();
+				const containerRect = container.getBoundingClientRect();
+				const corners = [
+					{ x: rect.left - containerRect.left, y: rect.top - containerRect.top }, // top-left
+					{ x: rect.right - containerRect.left, y: rect.top - containerRect.top }, // top-right
+					{ x: rect.right - containerRect.left, y: rect.bottom - containerRect.top }, // bottom-right
+					{ x: rect.left - containerRect.left, y: rect.bottom - containerRect.top } // bottom-left
+				];
+				corners.forEach(corner => {if (Math.random() > 0.3) emitWave(corner.x, corner.y)});
+			});
+		});*/
+		const waveSpeed = 300; // pixels/sec
+		const waveRadius = 4;
+		const directionList = [
+						{ dx: 1, dy: 0 },
+						{ dx: -1, dy: 0 },
+						{ dx: 0, dy: 1 },
+						{ dx: 0, dy: -1 }
+					];
+		function randomDir(){
+			return directionList[Math.floor(Math.random() * 4)];
+		}
+		
+		function emitWave(x, y) {
+			const visited = new Set();
+
+			// initial directions
+			for (let i=0; i < 3; i ++){
+				let dir = randomDir();
+				propagate(x, y, dir.dx, dir.dy, visited);
+			}
+
+		}
+
+		function propagate(x, y, dx, dy, visited, age=0) {
+			console.log(age);
+			if ( ++ age >= 40) return;
+			const dot = document.createElement('div');
+			dot.className = 'wave-dot';
+			container.appendChild(dot);
+			let lastTime = null;
+
+			function move(timestamp) {
+				if (!lastTime) lastTime = timestamp;
+				const elapsed = (timestamp - lastTime) / 1000;
+				lastTime = timestamp;
+
+				const step = waveSpeed * elapsed;
+				x += dx * step;
+				y += dy * step;
+
+				dot.style.left = `${x - waveRadius}px`;
+				dot.style.top = `${y - waveRadius}px`;
+
+				// check for junction
+				const junction = checkJunction(x, y);
+				const key = `${Math.round(x)}-${Math.round(y)}`;
+
+				if (junction && !visited.has(key)) {
+					visited.add(key);
+
+					let direction = directionList[Math.floor(Math.random() * 4)];
+					if (direction.dx !== -dx || direction.dy !== -dy) {
+						propagate(x, y, direction.dx, direction.dy, visited, age);
+						if (Math.random() > 0.8){
+							direction = directionList[Math.floor(Math.random() * 4)];
+							if (direction.dx !== -dx || direction.dy !== -dy) propagate(x, y, direction.dx, direction.dy, visited, age);
+						}
+						dot.remove();
+						return;
+					}
+
+				}
+
+				// stop if outside container
+				if (x < 0 || x > container.clientWidth || y < 0 || y > container.clientHeight) {
+					dot.remove();
+					return;
+				}
+				requestAnimationFrame(move);
+			}
+			requestAnimationFrame(move);
+		}
+
+		function checkJunction(x, y) {
+			const margin = 4;
+			let junctionX = false;
+			let junctionY = false;
+			document.querySelectorAll('.grid-line-x').forEach(line => {
+				const lineX = line.getBoundingClientRect().left - container.getBoundingClientRect().left;
+				if (Math.abs(lineX - x) < margin) junctionX = true;
+			});
+			document.querySelectorAll('.grid-line-y').forEach(line => {
+				const lineY = line.getBoundingClientRect().top - container.getBoundingClientRect().top;
+				if (Math.abs(lineY - y) < margin) junctionY = true;
+			});
+			return junctionX && junctionY;
+		}
 	})
 	.catch(err => console.error('Failed to load layout:', err));
