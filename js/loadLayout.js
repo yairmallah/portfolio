@@ -15,48 +15,6 @@ function reformat_grid_row_col(row, gap){
 function extract_percents(cssProp){
 	return percentages = [...cssProp.matchAll(/calc\(([\d.]+)%/g)].map(match => parseFloat(match[1]));
 }
-function rotateImage(img, angleDegrees) {
-	if (img.dataset.rotated === 'true') return;
-	
-	const canvas = document.createElement('canvas');
-	const ctx = canvas.getContext('2d');
-
-	// Wait until the image is fully loaded
-	if (!img.complete) {
-		img.onload = () => rotateImage(img, angleDegrees);
-		return;
-	}
-
-	const angle = angleDegrees % 360;
-	const width = img.naturalWidth;
-	const height = img.naturalHeight;
-
-	// Adjust canvas size and context based on rotation
-	if (angle === 90 || angle === 270) {
-		canvas.width = height;
-		canvas.height = width;
-	} else {
-		canvas.width = width;
-		canvas.height = height;
-	}
-
-	ctx.save();
-	if (angle === 90) {
-		ctx.translate(height, 0);
-		ctx.rotate(Math.PI / 2);
-	} else if (angle === 180) {
-		ctx.translate(width, height);
-		ctx.rotate(Math.PI);
-	} else if (angle === 270) {
-		ctx.translate(0, width);
-		ctx.rotate(3 * Math.PI / 2);
-	}
-	ctx.drawImage(img, 0, 0);
-	ctx.restore();
-	img.dataset.rotated = 'true';
-	try {img.src = canvas.toDataURL();} 
-	catch (error) {console.warn(error);}
-}
 function applyRotatedBackground(div, imageSrc, angleDeg, objectFit = 'cover') {
 	const img = new Image();
 	img.onload = function () {
@@ -126,9 +84,7 @@ fetch(jsonFile)
 				chnImg = document.createElement('img');
 			}
 			chnImg.src = itemObj.src;
-			if (itemObj.rotation && itemObj.rotation != 0){
-				rotateImage(chnImg, itemObj.rotation);
-			}
+			/*if (itemObj.rotation && itemObj.rotation != 0){}*/
 			chnImg.id = 'chosen-image';
 			if (itemObj.additionals) {
 				itemObj.additionals.forEach(attr => {
@@ -243,40 +199,6 @@ fetch(jsonFile)
 			line.style.top = `calc(${p_sum}% - ${(rows_temp.length - i) * parseFloat(data.grid.gap) / rows_temp.length}vw)`;
 			container.appendChild(line);
 		}
-
-		// Add images
-		/*data.images.forEach(item => {
-			let img;
-			if (item.src.substr(-3) == "mp4"){
-				img = document.createElement('video');
-				img.autoplay = true;
-				img.loop = true;
-				img.muted = true;
-				img.playsInline = true;
-			}
-			else{
-				img = document.createElement('img');
-			}
-			img.src = item.src;
-			img.classList.toggle('placed-img', true);
-			if (item.classCSS) img.classList.toggle(item.classCSS, true);
-			else img.classList.toggle('comp-draw', true);
-			if (item.additionals) {
-				item.additionals.forEach(attr => {
-					img[attr[0]] = attr[1];
-				});
-			};
-			img.style.gridColumn = item.gridColumn;
-			img.style.gridRow = item.gridRow;
-			img.classList.toggle('comp-' + (item.objectFit || 'cover'), true)
-			container.appendChild(img);
-			if (item.rotation && item.rotation != 0){
-				rotateImage(img, item.rotation);
-			}
-			img.addEventListener('click', (e) => {
-				setCoshenImg(item);
-			});
-		});*/
 		data.images.forEach(item => {
 			let el;
 
