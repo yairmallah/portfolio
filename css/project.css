@@ -78,6 +78,15 @@
 	width: 120%;
 	left: -10%;
 }
+.wave-dot {
+	position: absolute;
+	width: calc(var(--gridGap) / 2);
+	height: calc(var(--gridGap) / 2);
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--invBg) 30%, #80808080);
+	pointer-events: none;
+	z-index: 10;
+}
 .placed-img {
 	position: absolute;
 	height:100%;
