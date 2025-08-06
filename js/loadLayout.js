@@ -18,32 +18,36 @@ function extract_percents(cssProp){
 function applyRotatedBackground(div, imageSrc, angleDeg, objectFit = 'cover') {
 	const img = new Image();
 	img.onload = function () {
-		const angleRad = angleDeg * Math.PI / 180;
-		const sin = Math.abs(Math.sin(angleRad));
-		const cos = Math.abs(Math.cos(angleRad));
+		try {
+			const angleRad = angleDeg * Math.PI / 180;
+			const sin = Math.abs(Math.sin(angleRad));
+			const cos = Math.abs(Math.cos(angleRad));
 
-		const width = img.width;
-		const height = img.height;
+			const width = img.width;
+			const height = img.height;
 
-		const canvas = document.createElement('canvas');
-		const ctx = canvas.getContext('2d');
+			const canvas = document.createElement('canvas');
+			const ctx = canvas.getContext('2d');
 
-		// Calculate size of rotated canvas
-		canvas.width = width * cos + height * sin;
-		canvas.height = width * sin + height * cos;
+			// Calculate size of rotated canvas
+			canvas.width = width * cos + height * sin;
+			canvas.height = width * sin + height * cos;
 
-		// Move to center and rotate
-		ctx.translate(canvas.width / 2, canvas.height / 2);
-		ctx.rotate(angleRad);
-		ctx.drawImage(img, -width / 2, -height / 2);
+			// Move to center and rotate
+			ctx.translate(canvas.width / 2, canvas.height / 2);
+			ctx.rotate(angleRad);
+			ctx.drawImage(img, -width / 2, -height / 2);
 
-		// Use canvas as background image
-		div.style.backgroundImage = `url('${canvas.toDataURL()}')`;
-		div.style.backgroundSize = objectFit;
-		div.style.backgroundRepeat = 'no-repeat';
-		div.style.backgroundPosition = 'center';
+			// Use canvas as background image
+			div.style.backgroundImage = `url('${canvas.toDataURL()}')`;
+			div.style.backgroundSize = objectFit;
+			div.style.backgroundRepeat = 'no-repeat';
+			div.style.backgroundPosition = 'center';
+		}
+		catch(e) {console.warn("rotationg img aborted due to ", e);}
 	};
 	img.src = imageSrc;
+	
 }
 
 // General display values
@@ -212,11 +216,12 @@ fetch(jsonFile)
 			} else {
 				el = document.createElement('div');
 				el.style.backgroundImage = `url('${item.src}')`;
+				
 				if (item.rotation && item.rotation != 0) applyRotatedBackground(el, item.src, item.rotation, (item.objectFit || 'cover'));
 			}
-
+			
 			el.classList.add('placed-img');
-
+			el.style.setProperty('--rotation', `${item.rotation}deg`);
 			if (item.classCSS) {
 				el.classList.add(item.classCSS);
 			} else {
@@ -233,7 +238,6 @@ fetch(jsonFile)
 			el.style.gridRow = item.gridRow;
 
 			el.classList.add('comp-' + (item.objectFit || 'cover'));
-
 			container.appendChild(el);
 
 			el.addEventListener('click', (e) => {
