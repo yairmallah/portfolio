@@ -49,6 +49,18 @@ function applyRotatedBackground(div, imageSrc, angleDeg, objectFit = 'cover') {
 	img.src = imageSrc;
 	
 }
+function setNestedProperty(obj, keyPath, value) {
+	const keys = keyPath.split('.');
+	const lastKey = keys.pop(); // Get the last key (where the value should be assigned)
+
+	let current = obj;
+	for (const key of keys) {
+		current = current[key]; // Traverse down the path
+		if (current === undefined) return; // Safety check
+	}
+
+	current[lastKey] = value; // Set the final value
+}
 
 // General display values
 document.documentElement.style.setProperty('--imgsZ', '1');
@@ -230,7 +242,7 @@ fetch(jsonFile)
 
 			if (item.additionals) {
 				item.additionals.forEach(attr => {
-					el[attr[0]] = attr[1];
+					setNestedProperty(el, attr[0], attr[1]);
 				});
 			}
 
