@@ -57,6 +57,36 @@ function rotateImage(img, angleDegrees) {
 	try {img.src = canvas.toDataURL();} 
 	catch (error) {console.warn(error);}
 }
+function applyRotatedBackground(div, imageSrc, angleDeg, objectFit = 'cover') {
+	const img = new Image();
+	img.onload = function () {
+		const angleRad = angleDeg * Math.PI / 180;
+		const sin = Math.abs(Math.sin(angleRad));
+		const cos = Math.abs(Math.cos(angleRad));
+
+		const width = img.width;
+		const height = img.height;
+
+		const canvas = document.createElement('canvas');
+		const ctx = canvas.getContext('2d');
+
+		// Calculate size of rotated canvas
+		canvas.width = width * cos + height * sin;
+		canvas.height = width * sin + height * cos;
+
+		// Move to center and rotate
+		ctx.translate(canvas.width / 2, canvas.height / 2);
+		ctx.rotate(angleRad);
+		ctx.drawImage(img, -width / 2, -height / 2);
+
+		// Use canvas as background image
+		div.style.backgroundImage = `url('${canvas.toDataURL()}')`;
+		div.style.backgroundSize = objectFit;
+		div.style.backgroundRepeat = 'no-repeat';
+		div.style.backgroundPosition = 'center';
+	};
+	img.src = imageSrc;
+}
 
 // General display values
 document.documentElement.style.setProperty('--imgsZ', '1');
@@ -215,7 +245,7 @@ fetch(jsonFile)
 		}
 
 		// Add images
-		data.images.forEach(item => {
+		/*data.images.forEach(item => {
 			let img;
 			if (item.src.substr(-3) == "mp4"){
 				img = document.createElement('video');
@@ -226,7 +256,6 @@ fetch(jsonFile)
 			}
 			else{
 				img = document.createElement('img');
-				//img.loading = 'lazy';
 			}
 			img.src = item.src;
 			img.classList.toggle('placed-img', true);
@@ -247,7 +276,51 @@ fetch(jsonFile)
 			img.addEventListener('click', (e) => {
 				setCoshenImg(item);
 			});
+		});*/
+		data.images.forEach(item => {
+			let el;
+
+			if (item.src.substr(-3) === "mp4") {
+				// Keep video element for video files
+				el = document.createElement('video');
+				el.autoplay = true;
+				el.loop = true;
+				el.muted = true;
+				el.playsInline = true;
+				el.src = item.src;
+			} else {
+				// Use <div> with background-image for images
+				el = document.createElement('div');
+				el.style.backgroundImage = `url('${item.src}')`;
+				if (item.rotation && item.rotation != 0) applyRotatedBackground(el, item.src, item.rotation, (item.objectFit || 'cover'));
+			}
+
+			el.classList.add('placed-img');
+
+			if (item.classCSS) {
+				el.classList.add(item.classCSS);
+			} else {
+				el.classList.add('comp-draw');
+			}
+
+			if (item.additionals) {
+				item.additionals.forEach(attr => {
+					el[attr[0]] = attr[1];
+				});
+			}
+
+			el.style.gridColumn = item.gridColumn;
+			el.style.gridRow = item.gridRow;
+
+			el.classList.add('comp-' + (item.objectFit || 'cover'));
+
+			container.appendChild(el);
+
+			el.addEventListener('click', (e) => {
+				setCoshenImg(item);
+			});
 		});
+
 		document.getElementById("block-bg").addEventListener('click', () => {
 			document.getElementById("block-bg").classList.toggle('hidden', true);
 		});
