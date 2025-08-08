@@ -68,17 +68,18 @@ document.documentElement.style.setProperty('--linesColor', 'rgba(0, 0, 0, 0)');
 document.documentElement.style.setProperty('--gridEvents', 'all');
 document.addEventListener("DOMContentLoaded", ()=>{
 	const mainSect = document.getElementById("layout-container");
+	const toggleLayoutButton = document.getElementById("toggle-layout-button");
 	const rightSect = document.getElementById("text-right");
 	const leftSect = document.getElementById("text-left");
-	mainSect.addEventListener('mouseenter', () => {
-		mainSect.classList.toggle("active", true);
-		leftSect.classList.toggle("active", false);
-		rightSect.classList.toggle("active", false);
-	});
-	mainSect.addEventListener('mouseleave', () => {
-		mainSect.classList.toggle("active", false);
-		leftSect.classList.toggle("active", true);
-		rightSect.classList.toggle("active", true);
+	mainSect.classList.toggle("active", false);
+	toggleLayoutButton.classList.toggle("active", false);
+	leftSect.classList.toggle("hidden", false);
+	rightSect.classList.toggle("hidden", false);
+	toggleLayoutButton.addEventListener('click', () => {
+		mainSect.classList.toggle("active");
+		toggleLayoutButton.classList.toggle("active");
+		leftSect.classList.toggle("hidden");
+		rightSect.classList.toggle("hidden");
 	});
 });
 
