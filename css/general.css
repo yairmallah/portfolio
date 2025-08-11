@@ -28,19 +28,6 @@ body {
 	color: var(--textColor);
 	direction: rtl;
 }
-#header{
-	height: calc(var(--headerPer) * 1em);
-	position: fixed;
-	z-index:5;
-	top:0;
-	left:0;
-	width: 100%;
-	overflow: visible;
-	display: grid;
-	grid-template-rows: 100%;
-	grid-template-columns: repeat(3, 1fr) calc(var(--headerPer) * 2 * 1em);
-	gap: 1%;
-}
 #content-container{
 	width: 100%;
 	position: relative;
@@ -67,6 +54,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
@@ -135,46 +123,4 @@ p {
     word-wrap: break-word;
     text-align: right;
     direction: rtl;
-}
-.nav-container {
-	background: color-mix(in srgb, var(--bgBody) 30%, #80808080);
-	border: none;
-	cursor: pointer;
-	border-radius: 0 0 1em 1em;
-	display: inline-block;
-	padding: 0.5em 1em;
-	color: var(--invBg);
-	text-decoration: none;
-	font-weight: bolder;
-	text-align: center;
-}
-#dark-button{
-	width: calc(var(--headerPer) * 2em);
-	height: calc(var(--headerPer) * 0.8em);
-	border-radius: calc(var(--headerPer) * 0.5em);
-	overflow:hidden;
-	rotate: var(--darkButtonRot);
-	transition: all 1s ease;
-	background-color: var(--bgBody)
-}
-#toggle-dark{
-	height: calc(var(--headerPer) * 0.8em);
-	width: calc(var(--headerPer) * 0.8em);
-	position: absolute;
-	left: 0;
-	border-radius: 50%;
-    background-size: contain;
-	background-color:#000;
-	background-image: url("https://yairmallah.github.io/portfolio/imgs/sys/moon.svg");
-}
-#toggle-light{
-	height: calc(var(--headerPer) * 0.8em);
-	width: calc(var(--headerPer) * 0.8em);
-	position: absolute;
-	right: 0;
-	border-radius: 50%;
-    background-size: contain;
-	background-color:#fff;
-	background-image: url("https://yairmallah.github.io/portfolio/imgs/sys/sun.svg");
-	background-repeat: no-repeat;
 }
