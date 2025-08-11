@@ -32,7 +32,7 @@
 	background: color-mix(in srgb, var(--bgBody) 50%, #808080);
 	box-shadow: none;
 }
-::-webkit-scrollbar-thumb:hover {
+#header::-webkit-scrollbar-thumb:hover {
 	background: color-mix(in srgb, var(--bgBody) 50%, #808080);
 }
 .nav-container {
