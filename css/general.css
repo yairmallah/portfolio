@@ -118,9 +118,7 @@ p {
     position: relative;
     color: var(--textColor);
     unicode-bidi: isolate;
-    text-align: right;
     justify-content: right;
     word-wrap: break-word;
-    text-align: right;
     direction: rtl;
 }
