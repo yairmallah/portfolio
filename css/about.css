@@ -1,9 +1,9 @@
 :root{
-	--leftWidth: 30vw;
+	--leftWidth: 25vw;
 	--gapBase: 1em;
 }
 #content-container-wrapper{
-	width: calc(100vw - var(--leftWidth) - 3 * var(--gapBase));
+	width: calc(100vw - var(--leftWidth) - var(--gapBase));
 }
 #content-container{
 	text-align: justify;
@@ -58,6 +58,7 @@
 	display: grid;
 	grid-template-rows: 100%;
 	grid-template-columns: 7em calc(100% - 7em);
+	margin-top: 1em;
 }.time-element-elab{
 	padding-right: calc(7em + var(--gapBase));
 }
