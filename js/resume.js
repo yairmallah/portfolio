@@ -126,7 +126,7 @@ function buildTimeline(data) {
 				const lines = document.createElement("div");
 				lines.classList.toggle("border-line", true);
 				lines.style.gridRow = generateGridYear(ev);
-				lines.style.setProperty("--gridColLoc", cat == "education"? colIndex : colIndex + 2);
+				lines.style.setProperty("--gridColLoc", cat == "education"? colIndex + 1 : colIndex + 2);
 				timelineGrid.appendChild(item);
 				timelineGrid.appendChild(lines);
 			});
