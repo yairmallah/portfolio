@@ -3,19 +3,27 @@ const root = document.documentElement;
 async function loadResume() {
 	const res = await fetch("js/resume.json");
 	const data = await res.json();
+	console.log(data);
+	
+	buildAbout(data);
 
-	// build the unified timeline
 	buildTimeline(data);
 
-	// build left side (skills, languages, etc.)
 	buildSidebar(data);
 }
-var yCols = {};
-function generateGridYear(evenetItem){
-	return `${yCols[evenetItem.start][0]} / ${yCols[evenetItem.end][yCols[evenetItem.end].length - 1]}`;
+
+function buildAbout(data){
+	const container = document.getElementById("sub-header");
+	const title = document.createElement("h2");
+	title.id = "about-title";
+	title.textContent = data.about.title;
+	const textContainer = document.createElement("div");
+	textContainer.id = "about-text-container";
+	textContainer.innerHTML = data.about.text;
+	container.appendChild(title);
+	container.appendChild(textContainer);
 }
 
-// === builds the timeline grid from all sections ===
 function buildTimeline(data) {
 	function sortYears(a, b){
 		const numA = parseInt(a);
@@ -38,6 +46,10 @@ function buildTimeline(data) {
 		const [bStart, bEnd] = [bPar[0], bPar[bPar.length - 1]];
 		return (aStart == bEnd || bStart == aEnd); // overlap if ranges intersect
 	}
+	var yCols = {};
+	function generateGridYear(evenetItem){
+		return `${yCols[evenetItem.start][0]} / ${yCols[evenetItem.end][yCols[evenetItem.end].length - 1]}`;
+	}
 
 	const categories = [
 		"education",
@@ -55,13 +67,10 @@ function buildTimeline(data) {
 		sec.items.forEach(item => {
 			let [start, end] = item.time.split(' ');
 			if (sortYears(start, end) > 0) [start, end] = [end, start];
-			events.push({ category: sec.title, start, end, action: item.action, elab: item.elab });
+			events.push({ category: sec.title, start, end, action: item.action, elab: item.elab, title: item.title });
 		});
-	});
-	console.log(events);
-	
+	});	
 
-	// get sorted years (unique)
 	const years = [...new Set(events.flatMap(e => [e.start, e.end]))].sort(sortYears);
 	root.style.setProperty("--gridRowCount", years.length);
 
@@ -86,6 +95,7 @@ function buildTimeline(data) {
 	// === category columns ===
 	var gridStartCol = 0;
 	const occupied = {};
+	console.log(events);
 	categories.forEach(cat => {
 		gridStartCol += 1;
 		//root.style.setProperty("--gridColsMidle", 1);
@@ -94,6 +104,7 @@ function buildTimeline(data) {
 			const evs = events.filter(e => e.category === cat && e.start == y);
 			const yDiv = document.getElementById(y);
 			evs.forEach(ev => {
+				console.log(ev);
 				const item = document.createElement("div");
 				item.classList.add("timeline-item", "category-"+cat);
 				item.style.gridRow = generateGridYear(ev);
@@ -111,6 +122,7 @@ function buildTimeline(data) {
 					}
 				});
 				occupied[colIndex].push(ev);
+				console.log(ev);
 				
 				if (colIndex > gridEndCol) gridEndCol = colIndex;
 				if (cat == "education") item.style.gridColumn = `${colIndex} / ${colIndex + 1}`;
@@ -118,6 +130,7 @@ function buildTimeline(data) {
 				item.innerHTML = 
 				`<div class="timeline-marker top"></div>
 				<div class="timeline-content">
+					<span class="timeline-title">${ev.title}</span>
 					<span class="action">${ev.action}</span>
 					${ev.elab ? ev.elab.map(p => `<div class="elab">${p}</div>`).join("") : ""}
 				</div>
@@ -125,6 +138,8 @@ function buildTimeline(data) {
 				`;
 				const lines = document.createElement("div");
 				lines.classList.toggle("border-line", true);
+				lines.classList.toggle(cat == "education"? "right-side" : "left-side", true);
+				if (ev.shifted) lines.classList.toggle("border-line-shifted", true);
 				lines.style.gridRow = generateGridYear(ev);
 				lines.style.setProperty("--gridColLoc", cat == "education"? colIndex + 1 : colIndex + 2);
 				timelineGrid.appendChild(item);
@@ -138,7 +153,7 @@ function buildTimeline(data) {
 	root.style.setProperty("--gridColsCount", gridStartCol);
 
 	// inject into your page
-	const container = document.getElementById("content-container");
+	const container = document.getElementById("text-right");
 	container.innerHTML = ""; // clear old content
 	container.appendChild(timelineGrid);
 }
