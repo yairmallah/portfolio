@@ -130,8 +130,10 @@ function buildTimeline(data) {
 				item.innerHTML = 
 				`<div class="timeline-marker top"></div>
 				<div class="timeline-content">
-					<span class="timeline-title">${ev.title}</span> | 
-					<span class="action">${ev.action}</span>
+					<div class="content-title">
+						<span class="timeline-title">${ev.title}</span> | 
+						<span class="action">${ev.action}</span>
+					</div>
 					${ev.elab ? ev.elab.map(p => `<div class="elab">${p}</div>`).join("") : ""}
 				</div>
 				<div class="timeline-marker bottom"></div>
