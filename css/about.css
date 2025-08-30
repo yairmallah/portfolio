@@ -170,4 +170,6 @@ h2{
 	font-weight: bolder;
 }.timeline-content .action{
 	font-style: italic;
+}.timeline-content .content-title{
+	margin-bottom: 0.6em;
 }
