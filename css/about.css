@@ -1,9 +1,12 @@
 :root{
-	--leftWidth: 25vw;
+	--leftWidth: 17vw;
 	--gapBase: 1em;
 	--gridRowCount: 2;
 	--gridColsCount: 2;
 	--gridColsMidle: 1;
+}
+#header{
+	z-index: 99;
 }
 #content-container-wrapper{
 	width: calc(100vw - var(--leftWidth) - var(--gapBase));
@@ -28,13 +31,6 @@
 	left: 0;
 	top: 0;
 }
-#main-container{
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	margin: 50px;
-	gap:3%;
-	height: 100%;
-}
 #text-left{
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -56,9 +52,7 @@
 	margin-right: var(--gapBase);
 }
 
-#text-right{
-	border-left: 1px solid color-mix(in srgb, var(--invBg) 30%, #80808080);
-}.time-element-title{
+.time-element-title{
 	display: grid;
 	grid-template-rows: 100%;
 	grid-template-columns: 7em calc(100% - 7em);
@@ -81,8 +75,8 @@ h2{
 	grid-template-rows: repeat(calc(var(--gridRowCount) - 1), 1fr) 1px;
 	/*gap: 1em;*/
 	position: relative;
-	margin-top: 2em;
-	margin-bottom: 2em;
+	margin-top: 3em;
+	margin-bottom: 3em;
 }
 .timeline-year{
 	grid-column: calc(var(--gridColsMidle) + 1) / calc(var(--gridColsMidle) + 3);
@@ -100,7 +94,7 @@ h2{
 	width: var(--rad);
 	z-index: -1;
 	border: var(--border) solid color-mix(in srgb, var(--invBg) 100%, #80808080);
-	background: color-mix(in srgb, var(--bgBody) 15%, #80808080);
+	background: color-mix(in srgb, var(--bgBody) 35%, #808080);
 	opacity: 0.8;
 	position: absolute;
 	right: calc(50% - var(--rad) / 2 - var(--border) / 2);
@@ -119,6 +113,8 @@ h2{
 .timeline-item {
 	position: relative;
 	background: color-mix(in srgb, var(--bgBody) 70%, #80808080);
+	border-bottom: 1px solid var(--bgBody);
+	border-top: 1px solid var(--bgBody);
 }
 .timeline-marker{
 	width: 12px;
@@ -137,12 +133,21 @@ h2{
 	right: -6px;
 }
 .border-line{
-	position:relative;
+	position: absolute;
 	height: 100%;
 	width:100%;
 	grid-column: min(calc(var(--gridColsMidle) + 2), var(--gridColLoc)) / max(calc(var(--gridColsMidle) + 2), var(--gridColLoc));
-	border-top: 1px dashed color-mix(in srgb, var(--bgBody) 10%, #808080);
-	border-bottom: 1px dashed color-mix(in srgb, var(--bgBody) 10%, #808080);
+	border-top: 1px dashed var(--invBg);
+	border-bottom: 1px dashed var(--invBg);
+	opacity: 0.3;
+	z-index: 6;
+	pointer-events: none;
+}.border-line-shifted{
+	width: calc(100% + var(--gapBase));
+}.right-side.border-line-shifted{
+	left: 0;
+}.left-side.border-line-shifted{
+	right: 0;
 }
 .category-education{
 	border-left: 1px solid var(--invBg);
@@ -159,5 +164,10 @@ h2{
 	padding-right: 0.5rem;
 }
 .timeline-content {
-	font-size: 0.9rem;
+	font-size: 1em;
+}
+.timeline-content .timeline-title{
+	font-weight: bolder;
+}.timeline-content .action{
+	font-style: italic;
 }
