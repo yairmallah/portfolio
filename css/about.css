@@ -6,7 +6,7 @@
 	--gridColsMidle: 1;
 }
 #header{
-	z-index: 99;
+	z-index: 99 !important;
 }
 #content-container-wrapper{
 	width: calc(100vw - var(--leftWidth) - var(--gapBase));
