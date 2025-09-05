@@ -3,7 +3,10 @@
 	--gapBase: 1em;
 	--gridRowCount: 2;
 	--gridColsCount: 2;
-	--gridColsMidle: 1;
+	--gridColsMiddle: 1;
+	--timeItemBgLight: 75%;
+	--timeItemBgSat: 30%;
+	--markerBgInt: 35%;
 }
 #header{
 	z-index: 99 !important;
@@ -71,7 +74,7 @@ h2{
 }
 #timeline-grid {
 	display: grid;
-	grid-template-columns: repeat(calc(var(--gridColsMidle)), 1fr) 0.5fr 0.5fr repeat(calc(var(--gridColsCount) - var(--gridColsMidle)), 1fr);
+	grid-template-columns: /*repeat(var(--gridColsMiddle), 1fr)*/ 4em 4em repeat(calc(var(--gridColsCount) - var(--gridColsMiddle)), 1fr);
 	grid-template-rows: repeat(calc(var(--gridRowCount) - 1), 1fr) 1px;
 	/*gap: 1em;*/
 	position: relative;
@@ -79,7 +82,7 @@ h2{
 	margin-bottom: 3em;
 }
 .timeline-year{
-	grid-column: calc(var(--gridColsMidle) + 1) / calc(var(--gridColsMidle) + 3);
+	grid-column: calc(var(--gridColsMiddle) + 1) / calc(var(--gridColsMiddle) + 3);
 	position: absolute;
 	text-align: center;
 	width: 100%;
@@ -94,7 +97,7 @@ h2{
 	width: var(--rad);
 	z-index: -1;
 	border: var(--border) solid color-mix(in srgb, var(--invBg) 100%, #80808080);
-	background: color-mix(in srgb, var(--bgBody) 35%, #808080);
+	background: color-mix(in srgb, var(--bgBody) var(--markerBgInt), #808080);
 	opacity: 0.8;
 	position: absolute;
 	right: calc(50% - var(--rad) / 2 - var(--border) / 2);
@@ -102,7 +105,7 @@ h2{
 }
 #grid-axis{
 	grid-rows: 1 / -1;
-	grid-column: calc(var(--gridColsMidle) + 1) / calc(var(--gridColsMidle) + 3);
+	grid-column: calc(var(--gridColsMiddle) + 1) / calc(var(--gridColsMiddle) + 3);
 	height:100%;
 	width: 2px;
 	z-index: -5;
@@ -115,28 +118,34 @@ h2{
 	background: color-mix(in srgb, var(--bgBody) 70%, #80808080);
 	border-bottom: 1px solid var(--bgBody);
 	border-top: 1px solid var(--bgBody);
+	border-radius: 0.7em 0 0 0.7em;
+	border-right: 3px solid  color-mix(in srgb, var(--invBg) 35%, hsl(var(--baseColorHue), 100%, 70%));
+	/*box-shadow: 1.5px 0 0 0 color-mix(in srgb, var(--invBg) 35%, hsl(var(--baseColorHue), 100%, 70%));*/
+	outline-offset: -1.5px; 
+	margin-left: 1.5em;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
 }
 .timeline-marker{
 	width: 12px;
 	height: 12px;
-	background: color-mix(in srgb, var(--invBg) 15%, #808080);
+	background: color-mix(in srgb, #ddd 75%, hsl(var(--baseColorHue), 100%, 70%));
 	border-radius: 50%;
 	position: absolute;
-	opacity: 0.7;
+	opacity: 0.6;
+	right: -7.5px;
+	pointer-events: none;
+	border: 1px solid var(--invBg);
 }.timeline-marker.top{
 	top: -6px;
 }.timeline-marker.bottom{
 	bottom: -6px;
-}.category-education .timeline-marker{
-	left: -6px;
-}.category-projects .timeline-marker{
-	right: -6px;
 }
 .border-line{
 	position: absolute;
 	height: 100%;
 	width:100%;
-	grid-column: min(calc(var(--gridColsMidle) + 2), var(--gridColLoc)) / max(calc(var(--gridColsMidle) + 2), var(--gridColLoc));
+	grid-column: min(calc(var(--gridColsMiddle) + 2), var(--gridColLoc)) / max(calc(var(--gridColsMiddle) + 2), var(--gridColLoc));
 	border-top: 1px dashed var(--invBg);
 	border-bottom: 1px dashed var(--invBg);
 	opacity: 0.3;
@@ -150,17 +159,22 @@ h2{
 	right: 0;
 }
 .category-education{
-	border-left: 1px solid var(--invBg);
-	margin-right: 1.5em;
+	/*border-left: 1px solid var(--invBg);*/
+	/*margin-right: 1.5em;*/
+	--baseColorHue: 240;
+	background: color-mix(in srgb, var(--bgBody) 70%, hsla(var(--baseColorHue), var(--timeItemBgSat), var(--timeItemBgLight), 0.5));
+}.category-exhibitions{
+	--baseColorHue: 270;
+	background: color-mix(in srgb, var(--bgBody) 70%, hsla(var(--baseColorHue), var(--timeItemBgSat), var(--timeItemBgLight), 0.5));
+}.category-projects{
+	--baseColorHue: 110;
+	background: color-mix(in srgb, var(--bgBody) 70%, hsla(var(--baseColorHue), var(--timeItemBgSat), var(--timeItemBgLight), 0.5));
+}.category-jobs{
+	--baseColorHue: 20;
+	background: color-mix(in srgb, var(--bgBody) 70%, hsla(var(--baseColorHue), var(--timeItemBgSat), var(--timeItemBgLight), 0.5));
 }
-.category-projects{
-	border-right: 1px solid var(--invBg);
-	margin-left: 1.5em;
-}
-.category-education .timeline-content{
+timeline-content{
 	padding-left: 0.5rem;
-}
-.category-projects .timeline-content{
 	padding-right: 0.5rem;
 }
 .timeline-content {
@@ -171,5 +185,22 @@ h2{
 }.timeline-content .action{
 	font-style: italic;
 }.timeline-content .content-title{
+	margin-top: 0.6em;
 	margin-bottom: 0.6em;
+	text-align: right;
+}.timeline-content .elab{
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+	line-height: 1.5
+}
+#timeline-legend{
+	position: fixed;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+	-webkit-mask: radial-gradient(farthest-side, transparent 70%, black 0);
+	mask: radial-gradient(farthest-side, transparent 70%, black 0);
+	bottom: 15px;
+	left: calc(var(--leftWidth) + 15px + var(--gapBase));
 }
