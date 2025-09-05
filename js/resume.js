@@ -48,13 +48,10 @@ function buildTimeline(data) {
 	}
 	var yCols = {};
 	function generateGridYear(evenetItem){
-		return `${yCols[evenetItem.start][0]} / ${yCols[evenetItem.end][yCols[evenetItem.end].length - 1]}`;
+		return `${yCols[evenetItem.start][0]} / ${yCols[evenetItem.end][yCols[evenetItem.end].length - 1] - (evenetItem.start == evenetItem.end ? 0 : 1)}`;
 	}
+	function toggleLegend(){}
 
-	const categories = [
-		"education",
-		"projects"
-	];
 	const timelineGrid = document.createElement("div");
 	timelineGrid.id = "timeline-grid";
 	const gridAxis = document.createElement("div");
@@ -71,6 +68,7 @@ function buildTimeline(data) {
 		});
 	});	
 
+	const categories = [...new Set(events.flatMap(e => e.category))];
 	const years = [...new Set(events.flatMap(e => [e.start, e.end]))].sort(sortYears);
 	root.style.setProperty("--gridRowCount", years.length);
 
@@ -94,17 +92,16 @@ function buildTimeline(data) {
 
 	// === category columns ===
 	var gridStartCol = 0;
+	let gridEndCol = gridStartCol;
 	const occupied = {};
-	console.log(events);
 	categories.forEach(cat => {
 		gridStartCol += 1;
-		//root.style.setProperty("--gridColsMidle", 1);
-		let gridEndCol = gridStartCol;
+		root.style.setProperty("--gridColsMiddle", 0);
+		//let gridEndCol = gridStartCol;
 		years.forEach(y => {
 			const evs = events.filter(e => e.category === cat && e.start == y);
 			const yDiv = document.getElementById(y);
 			evs.forEach(ev => {
-				console.log(ev);
 				const item = document.createElement("div");
 				item.classList.add("timeline-item", "category-"+cat);
 				item.style.gridRow = generateGridYear(ev);
@@ -122,11 +119,10 @@ function buildTimeline(data) {
 					}
 				});
 				occupied[colIndex].push(ev);
-				console.log(ev);
 				
 				if (colIndex > gridEndCol) gridEndCol = colIndex;
-				if (cat == "education") item.style.gridColumn = `${colIndex} / ${colIndex + 1}`;
-				else item.style.gridColumn = `${colIndex + 2} / ${colIndex + 3}`;
+				/*if (cat == "education") item.style.gridColumn = `${colIndex} / ${colIndex + 1}`;
+				else */item.style.gridColumn = `${colIndex + 2} / ${colIndex + 3}`;
 				item.innerHTML = 
 				`<div class="timeline-marker top"></div>
 				<div class="timeline-content">
@@ -140,21 +136,26 @@ function buildTimeline(data) {
 				`;
 				const lines = document.createElement("div");
 				lines.classList.toggle("border-line", true);
-				lines.classList.toggle(cat == "education"? "right-side" : "left-side", true);
+				lines.classList.toggle(/*cat == "education"? "right-side" :*/ "left-side", true);
 				if (ev.shifted) lines.classList.toggle("border-line-shifted", true);
 				lines.style.gridRow = generateGridYear(ev);
-				lines.style.setProperty("--gridColLoc", cat == "education"? colIndex + 1 : colIndex + 2);
+				lines.style.setProperty("--gridColLoc", /*cat == "education"? colIndex + 1 :*/ colIndex + 2);
 				timelineGrid.appendChild(item);
 				timelineGrid.appendChild(lines);
 			});
 			
 		});
-		gridStartCol = gridEndCol;
-		if (cat == "education") root.style.setProperty("--gridColsMidle", gridStartCol);
+		gridStartCol = 0;//gridEndCol;
+		//if (cat == "education") root.style.setProperty("--gridColsMiddle", gridStartCol);
 	});
-	root.style.setProperty("--gridColsCount", gridStartCol);
+	root.style.setProperty("--gridColsCount", /*gridStartCol*/ gridEndCol);
+	
+	const legend = document.createElement("div");
+	legend.id = "timeline-legend";
+	legend.addEventListener("click", toggleLegend);
+	timelineGrid.appendChild(legend);
 
-	// inject into your page
+	// inject into page
 	const container = document.getElementById("text-right");
 	container.innerHTML = ""; // clear old content
 	container.appendChild(timelineGrid);
