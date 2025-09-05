@@ -47,6 +47,8 @@
 	font-weight: bolder;
 	text-align: center;
 	white-space: nowrap;
+	border: 1px solid var(--invBg);
+	border-top: 0;
 }
 #dark-button{
 	width: calc(var(--headerPer) * 2em);
