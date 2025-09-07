@@ -12,7 +12,7 @@
 	z-index: 99 !important;
 }
 #content-container-wrapper{
-	width: calc(100vw - var(--leftWidth) - var(--gapBase) / 2);
+	width: calc(100vw - var(--leftWidth) - var(--gapBase) * 2);
 }
 #content-container{
 	text-align: justify;
@@ -29,7 +29,7 @@
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: calc(var(--leftWidth) + var(--gapBase) * 2);
+	width: calc(var(--leftWidth) + var(--gapBase) / 2);
 	position:fixed;
 	left: 0;
 	top: 0;
