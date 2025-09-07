@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="he">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="./imgs/sys/fav.svg" sizes="any">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css\general.css"/>
+		<link rel="stylesheet" type="text/css" href="css\imgDisplay.css"/>
+		<script>
+			function waitForVideoLoad(timeout = 2000, act) {
+				const start = Date.now();
+				(function check() {
+					try{
+						let vid = document.getElementById("myVideo");
+						let source = document.getElementById("vidSource");
+						if (vid != null && source != null) {
+							act();
+						} else if (Date.now() - start < timeout) {
+							setTimeout(check, 50); // keep checking
+						} else {
+							console.warn("video not available in after timeout");
+						}
+					}
+					catch (e){
+						if (Date.now() - start < timeout) {
+							setTimeout(check, 50); // keep checking
+						} else {
+							console.warn("video not available in after timeout");
+						}
+					}
+				})();
+			}
+			function loadImg(src){
+				function getType(src){
+					if (src.endsWith(".mp4")) return "vid";
+					if ((src.endsWith(".jpg"))||(src.endsWith(".png"))||(src.endsWith(".mp4"))||(src.endsWith(".gif"))||(src.endsWith(".svg"))||(src.endsWith(".jpeg"))||(src.endsWith(".webp"))) return "img";
+				}
+				window.imgSrc = src;
+				let add_name = src.split("/");
+				add_name = add_name[add_name.length - 1];
+				add_name = add_name.split(".");
+				add_name = add_name[0];
+				
+				document.querySelector("title").textContext = add_name;
+				document.getElementById("img-container").innerHTML = "";
+				let actImg;
+				if (getType(src) == "img"){
+					actImg = document.createElement("img");
+					actImg.src = window.imgSrc;
+				}
+				else if (getType(src) == "vid"){
+					console.log(window.imgSrc);
+					actImg = document.createElement("video");
+					actImg.src = window.imgSrc;
+					actImg.controls = true;
+					actImg.muted = true;
+					try {
+						waitForVideoLoad(actImg.play());
+					}
+					catch (error) {
+						console.warn(error);
+					}
+				}
+				actImg.id = "img";
+				console.log(actImg);
+				document.getElementById("img-container").appendChild(actImg);
+			}
+			function loadTxt(src){
+				window.txtSrc = src;
+
+				document.getElementById("text-container").innerHTML = "";
+				let actText;
+				if (getType(src) == "img"){
+					actImg = document.createElement("img");
+					actImg.src = window.imgSrc;
+				}
+				else if (getType(src) == "vid"){
+					console.log(window.imgSrc);
+					actImg = document.createElement("video");
+					actImg.src = window.imgSrc;
+					actImg.controls = true;
+					actImg.muted = true;
+					try {
+						waitForVideoLoad(actImg.play());
+					}
+					catch (error) {
+						console.warn(error);
+					}
+				}
+				
+				
+				document.getElementById("text-container").appendChild(actImg);
+			}
+		</script>
+		<script>
+			function loadTxt(src){
+				fetch(src) // Load the other page
+					.then(response => response.text()) // Convert response to text
+					.then(html => {
+						let parser = new DOMParser();
+						let doc = parser.parseFromString(html, "text/html"); // Parse as DOM
+						let targetElement = doc.querySelector("body"); // Select specific element
+						if (targetElement) {
+						document.getElementById("text-container").innerHTML = targetElement.innerHTML; // Insert only inner content
+						}
+					});
+			}
+		</script>
+		
+	</head>
+	<body>
+		<div id="content-container">
+			<div id="text-container"></div>
+			<div id="img-container"></div>
+		</div>
+		<script>
+			const params = new URLSearchParams(window.location.search);
+			const imgAdd = params.get('img');
+			const txtAdd = params.get('txt');
+			loadImg(imgAdd);
+			loadTxt(txtAdd);
+		</script>
+	</body>
+</html>
