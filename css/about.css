@@ -75,7 +75,7 @@ h2{
 #timeline-grid {
 	display: grid;
 	grid-template-columns: /*repeat(var(--gridColsMiddle), 1fr)*/ 4em 4em repeat(calc(var(--gridColsCount) - var(--gridColsMiddle)), 1fr);
-	grid-template-rows: repeat(calc(var(--gridRowCount) - 1), 1fr) 1px;
+	grid-template-rows: repeat(calc(var(--gridRowCount) - 1), minmax(8em, auto)) 1px;
 	/*gap: 1em;*/
 	position: relative;
 	margin-top: 3em;
@@ -119,9 +119,7 @@ h2{
 	border-bottom: 1px solid var(--bgBody);
 	border-top: 1px solid var(--bgBody);
 	border-radius: 0.7em 0 0 0.7em;
-	border-right: 3px solid  color-mix(in srgb, var(--invBg) 35%, hsl(var(--baseColorHue), 100%, 70%));
-	/*box-shadow: 1.5px 0 0 0 color-mix(in srgb, var(--invBg) 35%, hsl(var(--baseColorHue), 100%, 70%));*/
-	outline-offset: -1.5px; 
+	border-right: 3px solid color-mix(in srgb, var(--invBg) 35%, hsl(var(--baseColorHue), 100%, 70%));
 	margin-left: 1.5em;
 	padding-right: 0.5em;
 	padding-left: 0.5em;
@@ -199,8 +197,27 @@ timeline-content{
 	width: 20px;
 	border-radius: 50%;
 	background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
-	-webkit-mask: radial-gradient(farthest-side, transparent 70%, black 0);
-	mask: radial-gradient(farthest-side, transparent 70%, black 0);
+	-webkit-mask: radial-gradient(farthest-side, transparent 60%, black 0);
+	mask: radial-gradient(farthest-side, transparent 60%, black 0);
 	bottom: 15px;
 	left: calc(var(--leftWidth) + 15px + var(--gapBase));
+	overflow: visible;
+}
+#timeline-legend-container{
+	bottom: 55px;
+	left: calc(var(--leftWidth) + 15px + var(--gapBase));
+	position: fixed;
+	background: color-mix(in srgb, var(--bgBody) 50%, #808080a0);
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid var(--invBg);
+}
+#timeline-legend-container .legend-color{
+	background: color-mix(in srgb, var(--invBg) 20%, hsl(var(--baseColorHue), 100%, 50%)) !important;
+	width: 50px;
+	height: 25px;
+}
+#timeline-legend-container .legend-tag{
+	padding-right: var(--gapBase);
+	margin: 10px;
 }
