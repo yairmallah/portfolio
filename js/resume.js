@@ -3,7 +3,6 @@ const root = document.documentElement;
 async function loadResume() {
 	const res = await fetch("js/resume.json");
 	const data = await res.json();
-	console.log(data);
 	
 	buildAbout(data);
 
@@ -25,6 +24,7 @@ function buildAbout(data){
 }
 
 function buildTimeline(data) {
+	const container = document.getElementById("text-right");
 	function sortYears(a, b){
 		const numA = parseInt(a);
 		const numB = parseInt(b);
@@ -50,7 +50,43 @@ function buildTimeline(data) {
 	function generateGridYear(evenetItem){
 		return `${yCols[evenetItem.start][0]} / ${yCols[evenetItem.end][yCols[evenetItem.end].length - 1] - (evenetItem.start == evenetItem.end ? 0 : 1)}`;
 	}
-	function toggleLegend(){}
+	function loadLegend(container){
+		const catTrans = {
+			"education": "השכלה",
+			"exhibitions": "תערוכות",
+			"jobs": "עבודות",
+			"projects": "פרוייקטים אישיים"
+		}
+		
+		const legendContainer = document.createElement("div");
+		legendContainer.id = "timeline-legend-container";
+		legendContainer.classList.add("hidden");
+		
+		const legendTable = document.createElement("table");
+		legendTable.id = "timeline-legend-table";
+
+		categories.forEach(cat => {
+			const tr = document.createElement("tr");
+			const tdr = document.createElement("td");
+			const tdl = document.createElement("td");
+			tr.appendChild(tdr);
+			tr.appendChild(tdl);
+			const legendTag = document.createElement("p");
+			legendTag.classList.add("legend-tag");
+			legendTag.textContent = catTrans[cat]? catTrans[cat] : cat;
+			const legendColor = document.createElement("div");
+			legendColor.classList.add(`category-${cat}`, "legend-color");
+			tdl.appendChild(legendTag);
+			tdr.appendChild(legendColor);
+			legendTable.appendChild(tr);
+		});
+		
+		legendContainer.appendChild(legendTable);
+		container.appendChild(legendContainer);
+	}
+	function toggleLegend(){
+		document.getElementById("timeline-legend-container").classList.toggle("hidden");
+	}
 
 	const timelineGrid = document.createElement("div");
 	timelineGrid.id = "timeline-grid";
@@ -154,11 +190,12 @@ function buildTimeline(data) {
 	legend.id = "timeline-legend";
 	legend.addEventListener("click", toggleLegend);
 	timelineGrid.appendChild(legend);
+	
 
 	// inject into page
-	const container = document.getElementById("text-right");
 	container.innerHTML = ""; // clear old content
 	container.appendChild(timelineGrid);
+	loadLegend(container);
 }
 
 // === builds the left sidebar (skills + languages) ===
