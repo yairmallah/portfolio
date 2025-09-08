@@ -1,0 +1,529 @@
+<html>
+<head>
+<title>simulation.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+.s4 { color: #629755; font-style: italic;}
+.s5 { color: #6a8759;}
+</style>
+<style>
+	body {
+		background-color:#000;
+	}
+	/* scrollbar */
+	/* width */
+	::-webkit-scrollbar {
+	width: 10px;
+	}
+	/* Track */
+	::-webkit-scrollbar-track {
+	background: #000; 
+	}
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+	background: #333; 
+	box-shadow: inset 0px 0px 2px 2px #111;
+	}
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+	background: #999; 
+	}
+	/* end scrollbar */
+</style>
+</head>
+<body id="simulation-code">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+graph.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">rhinoDealer</span>
+<span class="s0">import </span><span class="s1">numpy </span><span class="s0">as </span><span class="s1">np</span>
+<span class="s0">from </span><span class="s1">scipy.spatial </span><span class="s0">import </span><span class="s1">KDTree</span>
+<span class="s0">from </span><span class="s1">shapely.geometry </span><span class="s0">import </span><span class="s1">LineString</span><span class="s0">, </span><span class="s1">Point  </span><span class="s2"># For detect intersections and merge points</span>
+<span class="s0">import </span><span class="s1">matplotlib.pyplot </span><span class="s0">as </span><span class="s1">plt</span>
+
+
+<span class="s0">class </span><span class="s1">Graph:</span>
+    <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">tolerance=</span><span class="s3">1e-2</span><span class="s1">):</span>
+        <span class="s1">self.nodes = {}  </span><span class="s2"># Store nodes: {node_id: (x, y, z)}</span>
+        <span class="s1">self.edges = {}  </span><span class="s2"># Store edges: {(node1, node2): properties}</span>
+        <span class="s1">self.tolerance = tolerance</span>
+        <span class="s1">self.kdtree = </span><span class="s0">None</span>
+
+    <span class="s0">def </span><span class="s1">add_node(self</span><span class="s0">, </span><span class="s1">coords):</span>
+        <span class="s4">&quot;&quot;&quot;Add a node to the graph, merging nearby points.&quot;&quot;&quot;</span>
+        <span class="s0">if not </span><span class="s1">self.nodes:  </span><span class="s2"># If there are no nodes yet</span>
+            <span class="s1">node_id = </span><span class="s3">0</span>
+            <span class="s1">self.nodes[node_id] = coords</span>
+            <span class="s0">return </span><span class="s1">node_id</span>
+
+        <span class="s2"># Build KDTree from current nodes</span>
+        <span class="s1">points = np.array(list(self.nodes.values()))  </span><span class="s2"># Ensure a 2D array</span>
+        <span class="s1">self.kdtree = KDTree(points)</span>
+
+        <span class="s2"># Check if a close enough node already exists</span>
+        <span class="s1">dist</span><span class="s0">, </span><span class="s1">idx = self.kdtree.query(coords</span><span class="s0">, </span><span class="s1">distance_upper_bound=self.tolerance)</span>
+        <span class="s0">if </span><span class="s1">dist &lt; self.tolerance:</span>
+            <span class="s0">return </span><span class="s1">list(self.nodes.keys())[idx]  </span><span class="s2"># Return existing node ID</span>
+
+        <span class="s2"># Otherwise, create a new node</span>
+        <span class="s1">node_id = len(self.nodes)</span>
+        <span class="s1">self.nodes[node_id] = coords</span>
+        <span class="s0">return </span><span class="s1">node_id</span>
+
+    <span class="s0">def </span><span class="s1">add_edge(self</span><span class="s0">, </span><span class="s1">node1</span><span class="s0">, </span><span class="s1">node2</span><span class="s0">, </span><span class="s1">properties=</span><span class="s0">None</span><span class="s1">):</span>
+        <span class="s4">&quot;&quot;&quot;Add an edge to the graph.&quot;&quot;&quot;</span>
+        <span class="s0">if </span><span class="s1">properties </span><span class="s0">is None</span><span class="s1">:</span>
+            <span class="s1">properties = {}</span>
+        <span class="s1">self.edges[(node1</span><span class="s0">, </span><span class="s1">node2)] = properties</span>
+        <span class="s1">self.edges[(node2</span><span class="s0">, </span><span class="s1">node1)] = properties  </span><span class="s2"># Assuming undirected graph</span>
+
+    <span class="s0">def </span><span class="s1">get_neighbors(self</span><span class="s0">, </span><span class="s1">node):</span>
+        <span class="s4">&quot;&quot;&quot;Get all neighbors of a given node.&quot;&quot;&quot;</span>
+        <span class="s0">return </span><span class="s1">[n2 </span><span class="s0">for </span><span class="s1">n1</span><span class="s0">, </span><span class="s1">n2 </span><span class="s0">in </span><span class="s1">self.edges.keys() </span><span class="s0">if </span><span class="s1">n1 == node]</span>
+
+    <span class="s0">def </span><span class="s1">node_str(self</span><span class="s0">, </span><span class="s1">node) -&gt; str:</span>
+        <span class="s0">return </span><span class="s5">f&quot;node </span><span class="s0">{</span><span class="s1">node</span><span class="s0">}</span><span class="s5">: x:</span><span class="s0">{</span><span class="s1">self.nodes[node][</span><span class="s3">0</span><span class="s1">]</span><span class="s0">}</span><span class="s5">, y:</span><span class="s0">{</span><span class="s1">self.nodes[node][</span><span class="s3">1</span><span class="s1">]</span><span class="s0">}</span><span class="s5">, z:</span><span class="s0">{</span><span class="s1">self.nodes[node][</span><span class="s3">2</span><span class="s1">]</span><span class="s0">}</span><span class="s5">, &quot;</span>
+
+    <span class="s0">def </span><span class="s1">__repr__(self):</span>
+        <span class="s0">return </span><span class="s5">f&quot;Graph with </span><span class="s0">{</span><span class="s1">len(self.nodes)</span><span class="s0">} </span><span class="s5">nodes and </span><span class="s0">{</span><span class="s1">len(self.edges)//</span><span class="s3">2</span><span class="s0">} </span><span class="s5">edges&quot;</span>
+
+
+<span class="s0">class </span><span class="s1">Graph2D:</span>
+    <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">tolerance=</span><span class="s3">1e-2</span><span class="s1">):</span>
+        <span class="s1">self.nodes = {}  </span><span class="s2"># Store nodes as {node_id: (x, y)}</span>
+        <span class="s1">self.edges = {}  </span><span class="s2"># Store edges as {(node1, node2): properties}</span>
+        <span class="s1">self.tolerance = tolerance</span>
+        <span class="s1">self.kdtree = </span><span class="s0">None</span>
+
+    <span class="s0">def </span><span class="s1">add_node(self</span><span class="s0">, </span><span class="s1">coords):</span>
+        <span class="s4">&quot;&quot;&quot;Add a 2D node to the graph, merging nearby points.&quot;&quot;&quot;</span>
+        <span class="s1">coords = coords[:</span><span class="s3">2</span><span class="s1">]  </span><span class="s2"># Ensure we're only working with (x, y)</span>
+
+        <span class="s0">if not </span><span class="s1">self.nodes:  </span><span class="s2"># No nodes yet</span>
+            <span class="s1">node_id = </span><span class="s3">0</span>
+            <span class="s1">self.nodes[node_id] = coords</span>
+            <span class="s0">return </span><span class="s1">node_id</span>
+
+        <span class="s2"># Build KDTree</span>
+        <span class="s1">points = list(self.nodes.values())</span>
+        <span class="s1">self.kdtree = KDTree(points)</span>
+
+        <span class="s2"># Find nearest node within tolerance</span>
+        <span class="s1">dist</span><span class="s0">, </span><span class="s1">idx = self.kdtree.query(coords</span><span class="s0">, </span><span class="s1">distance_upper_bound=self.tolerance)</span>
+        <span class="s0">if </span><span class="s1">dist &lt; self.tolerance:</span>
+            <span class="s0">return </span><span class="s1">list(self.nodes.keys())[idx]  </span><span class="s2"># Use existing node</span>
+
+        <span class="s2"># Otherwise, create a new node</span>
+        <span class="s1">node_id = len(self.nodes)</span>
+        <span class="s1">self.nodes[node_id] = coords</span>
+        <span class="s0">return </span><span class="s1">node_id</span>
+
+    <span class="s0">def </span><span class="s1">add_edge(self</span><span class="s0">, </span><span class="s1">node1</span><span class="s0">, </span><span class="s1">node2</span><span class="s0">, </span><span class="s1">properties=</span><span class="s0">None</span><span class="s1">):</span>
+        <span class="s4">&quot;&quot;&quot;Add an edge between two nodes.&quot;&quot;&quot;</span>
+
+        <span class="s0">if </span><span class="s1">properties </span><span class="s0">is None</span><span class="s1">:</span>
+            <span class="s1">properties = {</span>
+                <span class="s5">&quot;length&quot;</span><span class="s1">: </span><span class="s3">0</span><span class="s0">,</span>
+                <span class="s5">&quot;layer&quot;</span><span class="s1">: </span><span class="s0">None</span>
+            <span class="s1">}</span>
+        <span class="s1">self.edges[(node1</span><span class="s0">, </span><span class="s1">node2)] = properties</span>
+        <span class="s1">self.edges[(node2</span><span class="s0">, </span><span class="s1">node1)] = properties  </span><span class="s2"># Undirected graph</span>
+
+    <span class="s0">def </span><span class="s1">get_neighbors(self</span><span class="s0">, </span><span class="s1">node):</span>
+        <span class="s4">&quot;&quot;&quot;Get all neighbors of a given node.&quot;&quot;&quot;</span>
+        <span class="s0">return </span><span class="s1">[n2 </span><span class="s0">for </span><span class="s1">n1</span><span class="s0">, </span><span class="s1">n2 </span><span class="s0">in </span><span class="s1">self.edges.keys() </span><span class="s0">if </span><span class="s1">n1 == node]</span>
+
+    <span class="s0">def </span><span class="s1">get_edges_for_node(self</span><span class="s0">, </span><span class="s1">node):</span>
+        <span class="s4">&quot;&quot;&quot; 
+        Get all edges that include the specified node, along with their properties. 
+ 
+        :param node: Node ID for which edges are to be retrieved. 
+        :return: List of tuples containing connected nodes and edge properties. 
+        &quot;&quot;&quot;</span>
+        <span class="s0">if </span><span class="s1">node </span><span class="s0">not in </span><span class="s1">self.nodes:</span>
+            <span class="s0">raise </span><span class="s1">ValueError(</span><span class="s5">f&quot;Node </span><span class="s0">{</span><span class="s1">node</span><span class="s0">} </span><span class="s5">does not exist in the graph.&quot;</span><span class="s1">)</span>
+
+        <span class="s1">edges = [((n1</span><span class="s0">, </span><span class="s1">n2)</span><span class="s0">, </span><span class="s1">self.edges[(n1</span><span class="s0">, </span><span class="s1">n2)]) </span><span class="s0">for </span><span class="s1">(n1</span><span class="s0">, </span><span class="s1">n2) </span><span class="s0">in </span><span class="s1">self.edges </span><span class="s0">if </span><span class="s1">n1 == node </span><span class="s0">or </span><span class="s1">n2 == node]</span>
+        <span class="s0">return </span><span class="s1">edges</span>
+
+    <span class="s0">def </span><span class="s1">visualize(self):</span>
+        <span class="s4">&quot;&quot;&quot;Visualize the graph in 2D.&quot;&quot;&quot;</span>
+        <span class="s1">plt.figure()</span>
+        <span class="s1">plt.title(</span><span class="s5">&quot;2D Graph Visualization&quot;</span><span class="s1">)</span>
+
+        <span class="s2"># Plot nodes</span>
+        <span class="s0">for </span><span class="s1">node_id</span><span class="s0">, </span><span class="s1">(x</span><span class="s0">, </span><span class="s1">y) </span><span class="s0">in </span><span class="s1">self.nodes.items():</span>
+            <span class="s1">plt.scatter(x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s1">color=</span><span class="s5">&quot;blue&quot;</span><span class="s0">, </span><span class="s1">s=</span><span class="s3">50</span><span class="s1">)</span>
+            <span class="s1">plt.text(x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s1">str(node_id)</span><span class="s0">, </span><span class="s1">fontsize=</span><span class="s3">8</span><span class="s0">, </span><span class="s1">color=</span><span class="s5">&quot;red&quot;</span><span class="s1">)</span>
+
+        <span class="s2"># Plot edges</span>
+        <span class="s0">for </span><span class="s1">(node1</span><span class="s0">, </span><span class="s1">node2) </span><span class="s0">in </span><span class="s1">self.edges.keys():</span>
+            <span class="s1">x1</span><span class="s0">, </span><span class="s1">y1 = self.nodes[node1]</span>
+            <span class="s1">x2</span><span class="s0">, </span><span class="s1">y2 = self.nodes[node2]</span>
+            <span class="s1">plt.plot([x1</span><span class="s0">, </span><span class="s1">x2]</span><span class="s0">, </span><span class="s1">[y1</span><span class="s0">, </span><span class="s1">y2]</span><span class="s0">, </span><span class="s1">color=</span><span class="s5">&quot;black&quot;</span><span class="s0">, </span><span class="s1">linewidth=</span><span class="s3">1</span><span class="s1">)</span>
+
+        <span class="s1">plt.xlabel(</span><span class="s5">&quot;X&quot;</span><span class="s1">)</span>
+        <span class="s1">plt.ylabel(</span><span class="s5">&quot;Y&quot;</span><span class="s1">)</span>
+        <span class="s1">plt.show()</span>
+
+    <span class="s0">def </span><span class="s1">node_str(self</span><span class="s0">, </span><span class="s1">node) -&gt; str:</span>
+        <span class="s0">return </span><span class="s5">f&quot;node </span><span class="s0">{</span><span class="s1">node</span><span class="s0">}</span><span class="s5">: x:</span><span class="s0">{</span><span class="s1">self.nodes[node][</span><span class="s3">0</span><span class="s1">]</span><span class="s0">}</span><span class="s5">, y:</span><span class="s0">{</span><span class="s1">self.nodes[node][</span><span class="s3">1</span><span class="s1">]</span><span class="s0">}</span><span class="s5">&quot;</span>
+
+    <span class="s0">def </span><span class="s1">__repr__(self):</span>
+        <span class="s0">return </span><span class="s5">f&quot;Graph2D with </span><span class="s0">{</span><span class="s1">len(self.nodes)</span><span class="s0">} </span><span class="s5">nodes and </span><span class="s0">{</span><span class="s1">len(self.edges) // </span><span class="s3">2</span><span class="s0">} </span><span class="s5">edges&quot;</span>
+
+
+<span class="s0">def </span><span class="s1">slice_3rd_d(pt):</span>
+    <span class="s0">try</span><span class="s1">:</span>
+        <span class="s0">if </span><span class="s1">len(pt) &gt;= </span><span class="s3">3</span><span class="s1">:</span>
+            <span class="s0">return </span><span class="s1">pt[</span><span class="s3">0</span><span class="s1">]</span><span class="s0">, </span><span class="s1">pt[</span><span class="s3">1</span><span class="s1">]</span>
+        <span class="s0">else</span><span class="s1">:</span>
+            <span class="s1">print(</span><span class="s5">&quot;no 3rd dimension &quot;</span><span class="s0">, </span><span class="s1">pt)</span>
+            <span class="s0">return </span><span class="s1">pt</span>
+    <span class="s0">except </span><span class="s1">AttributeError </span><span class="s0">as </span><span class="s1">err:</span>
+        <span class="s1">print(</span><span class="s5">f&quot;wrong point type detected at </span><span class="s0">{</span><span class="s1">pt</span><span class="s0">}</span><span class="s5">, </span><span class="s0">{</span><span class="s1">err</span><span class="s0">} </span><span class="s5">raised. Be aware.&quot;</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">build_graph_from_3dm(file_path</span><span class="s0">, </span><span class="s1">tolerance=</span><span class="s3">1e-1</span><span class="s0">, </span><span class="s1">dim=</span><span class="s5">&quot;2d&quot;</span><span class="s1">):</span>
+    <span class="s0">if </span><span class="s1">dim == </span><span class="s5">&quot;3d&quot;</span><span class="s1">:</span>
+        <span class="s1">graph = Graph(tolerance)</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">graph = Graph2D(tolerance)</span>
+    <span class="s1">line_geometries = rhinoDealer.RhinoModel(file_path).get_all_lines_end_pts_name()</span>
+    <span class="s0">if </span><span class="s1">dim == </span><span class="s5">&quot;2d&quot;</span><span class="s1">:</span>
+        <span class="s0">for </span><span class="s1">line</span><span class="s0">, </span><span class="s1">i </span><span class="s0">in </span><span class="s1">zip(line_geometries</span><span class="s0">, </span><span class="s1">range(len(line_geometries))):</span>
+            <span class="s1">line_geometries[i] = (slice_3rd_d(line[</span><span class="s3">0</span><span class="s1">][</span><span class="s3">0</span><span class="s1">])</span><span class="s0">, </span><span class="s1">slice_3rd_d(line[</span><span class="s3">0</span><span class="s1">][</span><span class="s3">1</span><span class="s1">]))</span><span class="s0">, </span><span class="s1">line[</span><span class="s3">1</span><span class="s1">]</span>
+
+    <span class="s2"># Add nodes and edges to the graph</span>
+    <span class="s1">line_num = len(line_geometries)</span>
+    <span class="s1">j = </span><span class="s3">0</span>
+    <span class="s0">for </span><span class="s1">pts</span><span class="s0">, </span><span class="s1">properties </span><span class="s0">in </span><span class="s1">line_geometries:</span>
+        <span class="s0">if </span><span class="s1">j * </span><span class="s3">100 </span><span class="s1">// line_num % </span><span class="s3">5 </span><span class="s1">== </span><span class="s3">0 </span><span class="s0">and </span><span class="s1">j * </span><span class="s3">100 </span><span class="s1">// line_num != (j - </span><span class="s3">1</span><span class="s1">) * </span><span class="s3">100 </span><span class="s1">// line_num:</span>
+            <span class="s1">print(j * </span><span class="s3">100 </span><span class="s1">// line_num</span><span class="s0">, </span><span class="s5">&quot;%&quot;</span><span class="s1">)</span>
+        <span class="s1">j += </span><span class="s3">1</span>
+        <span class="s1">start</span><span class="s0">, </span><span class="s1">end = pts[</span><span class="s3">0</span><span class="s1">]</span><span class="s0">, </span><span class="s1">pts[</span><span class="s3">1</span><span class="s1">]</span>
+        <span class="s1">start_id = graph.add_node(start)</span>
+        <span class="s1">end_id = graph.add_node(end)</span>
+        <span class="s1">length = </span><span class="s3">0</span>
+        <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(len(start)):</span>
+            <span class="s1">length += (start[i] - end[i])**</span><span class="s3">2</span>
+        <span class="s1">length = length**</span><span class="s3">0.5</span>
+        <span class="s0">if </span><span class="s1">length &gt; graph.tolerance:</span>
+            <span class="s1">graph.add_edge(start_id</span><span class="s0">, </span><span class="s1">end_id</span><span class="s0">, </span><span class="s1">properties={</span><span class="s5">&quot;length&quot;</span><span class="s1">: length</span><span class="s0">, </span><span class="s5">'layer'</span><span class="s1">: properties[</span><span class="s5">&quot;layer&quot;</span><span class="s1">]</span><span class="s0">, </span><span class="s5">'name'</span><span class="s1">: properties[</span><span class="s5">'name'</span><span class="s1">]})</span>
+    <span class="s0">return </span><span class="s1">graph</span>
+
+
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+simulation.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">graph</span>
+<span class="s0">import </span><span class="s1">matplotlib.pyplot </span><span class="s0">as </span><span class="s1">plt</span>
+<span class="s0">from </span><span class="s1">matplotlib.animation </span><span class="s0">import </span><span class="s1">FuncAnimation</span>
+<span class="s0">import </span><span class="s1">pickle</span>
+<span class="s0">import </span><span class="s1">time</span>
+<span class="s0">import </span><span class="s1">rhinoDealer</span>
+
+
+<span class="s0">class </span><span class="s1">Agent:</span>
+    <span class="s1">speeds = {</span>
+        <span class="s2">'paths'</span><span class="s1">: </span><span class="s3">4</span><span class="s0">,</span>
+        <span class="s2">'bike'</span><span class="s1">: </span><span class="s3">22</span><span class="s0">,</span>
+        <span class="s2">'railways'</span><span class="s1">: </span><span class="s3">25</span><span class="s0">,</span>
+        <span class="s2">'minor_roads'</span><span class="s1">: </span><span class="s3">30</span><span class="s0">,</span>
+        <span class="s2">'major_roads'</span><span class="s1">: </span><span class="s3">40</span><span class="s0">,</span>
+        <span class="s2">'begin'</span><span class="s1">: </span><span class="s3">80</span>
+        <span class="s4"># 'bus': lambda n: len(n.split(","))*10</span>
+    <span class="s1">}</span>
+
+    <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">location</span><span class="s0">, </span><span class="s1">speed</span><span class="s0">, </span><span class="s1">direction):</span>
+        <span class="s5">&quot;&quot;&quot; 
+        Initialize an agent. 
+ 
+        :param location: Initial position (tuple of x, y). 
+        :param speed: Speed of the agent (units per time step). 
+        :param direction: Target edge (tuple of node IDs). 
+        &quot;&quot;&quot;</span>
+        <span class="s1">self.location = location</span>
+        <span class="s1">self.speed = speed</span>
+        <span class="s1">self.direction = direction</span>
+        <span class="s1">self.remaining_distance = </span><span class="s0">None  </span><span class="s4"># Distance left on the current edge</span>
+        <span class="s1">self.end_rout = </span><span class="s0">False</span>
+
+    <span class="s0">def </span><span class="s1">get_updated_speed(self</span><span class="s0">, </span><span class="s1">graph_map</span><span class="s0">, </span><span class="s1">src_node</span><span class="s0">, </span><span class="s1">new_node):</span>
+        <span class="s5">&quot;&quot;&quot; 
+        Get the updated the agent speed when it changes rout. 
+ 
+        :param graph_map: The graph object. 
+        :param src_node: The old target node. 
+        :param new_node: The new target node. 
+        &quot;&quot;&quot;</span>
+        <span class="s1">max_speed = Agent.speeds[graph_map.edges[(src_node</span><span class="s0">, </span><span class="s1">new_node)][</span><span class="s2">'layer'</span><span class="s1">]]</span>
+        <span class="s0">if </span><span class="s1">self.speed == self.speeds[</span><span class="s2">'bike'</span><span class="s1">]:</span>
+            <span class="s0">return </span><span class="s1">self.speeds[</span><span class="s2">'bike'</span><span class="s1">]</span>
+        <span class="s0">if </span><span class="s1">self.speed &gt;= self.speeds[</span><span class="s2">'minor_roads'</span><span class="s1">]:</span>
+            <span class="s0">if </span><span class="s1">max_speed &gt;= self.speeds[</span><span class="s2">'minor_roads'</span><span class="s1">]:</span>
+                <span class="s0">return </span><span class="s1">max_speed</span>
+            <span class="s0">else</span><span class="s1">:</span>
+                <span class="s0">return </span><span class="s1">self.speeds[</span><span class="s2">'paths'</span><span class="s1">]</span>
+        <span class="s0">if </span><span class="s1">self.speed == self.speeds[</span><span class="s2">'railways'</span><span class="s1">]:</span>
+            <span class="s0">if </span><span class="s1">max_speed == self.speeds[</span><span class="s2">'railways'</span><span class="s1">]:</span>
+                <span class="s0">return </span><span class="s1">self.speed</span>
+        <span class="s0">return </span><span class="s1">self.speeds[</span><span class="s2">'paths'</span><span class="s1">]</span>
+
+    <span class="s0">def </span><span class="s1">update_position(self</span><span class="s0">, </span><span class="s1">graph_map</span><span class="s0">, </span><span class="s1">visited_nodes</span><span class="s0">, </span><span class="s1">new_agents):</span>
+        <span class="s5">&quot;&quot;&quot; 
+        Update the agent's position along the edge. 
+        Spawn new agents at intersections if applicable. 
+ 
+        :param graph_map: The graph object. 
+        :param visited_nodes: Set of nodes already visited in the simulation. 
+        :param new_agents: List to store newly spawned agents. 
+        &quot;&quot;&quot;</span>
+        <span class="s1">node1</span><span class="s0">, </span><span class="s1">node2 = self.direction</span>
+        <span class="s1">x1</span><span class="s0">, </span><span class="s1">y1 = graph_map.nodes[node1]</span>
+        <span class="s1">x2</span><span class="s0">, </span><span class="s1">y2 = graph_map.nodes[node2]</span>
+        <span class="s1">edge_length = ((x2 - x1) ** </span><span class="s3">2 </span><span class="s1">+ (y2 - y1) ** </span><span class="s3">2</span><span class="s1">) ** </span><span class="s3">0.5</span>
+
+        <span class="s0">if </span><span class="s1">self.remaining_distance </span><span class="s0">is None</span><span class="s1">:</span>
+            <span class="s1">self.remaining_distance = edge_length</span>
+
+        <span class="s4"># Move along the edge</span>
+        <span class="s1">step_distance = min(self.speed</span><span class="s0">, </span><span class="s1">self.remaining_distance)</span>
+        <span class="s1">ratio = step_distance / edge_length</span>
+        <span class="s1">self.location = (</span>
+            <span class="s1">self.location[</span><span class="s3">0</span><span class="s1">] + ratio * (x2 - x1)</span><span class="s0">,</span>
+            <span class="s1">self.location[</span><span class="s3">1</span><span class="s1">] + ratio * (y2 - y1)</span>
+        <span class="s1">)</span>
+        <span class="s1">self.remaining_distance -= step_distance</span>
+
+        <span class="s4"># Check if the agent has reached the end of the edge</span>
+        <span class="s0">if </span><span class="s1">self.remaining_distance &lt;= </span><span class="s3">0</span><span class="s1">:</span>
+            <span class="s1">self.end_rout = </span><span class="s0">True</span>
+            <span class="s0">if </span><span class="s1">node2 </span><span class="s0">not in </span><span class="s1">visited_nodes:</span>
+                <span class="s1">visited_nodes.add(node2)</span>
+                <span class="s1">neighbors = graph_map.get_neighbors(node2)</span>
+                <span class="s0">for </span><span class="s1">neighbor </span><span class="s0">in </span><span class="s1">neighbors:</span>
+                    <span class="s0">if </span><span class="s1">neighbor != node1:  </span><span class="s4"># Exclude the previous node</span>
+                        <span class="s1">speed = self.get_updated_speed(graph_map</span><span class="s0">, </span><span class="s1">node2</span><span class="s0">, </span><span class="s1">neighbor)</span>
+                        <span class="s1">new_agents.append(Agent(</span>
+                            <span class="s1">location=graph_map.nodes[node2]</span><span class="s0">,</span>
+                            <span class="s1">speed=speed</span><span class="s0">,</span>
+                            <span class="s1">direction=(node2</span><span class="s0">, </span><span class="s1">neighbor)</span>
+                        <span class="s1">))</span>
+
+
+<span class="s0">class </span><span class="s1">Simulation:</span>
+    <span class="s1">base_folder = </span><span class="s2">r&quot;C:\Users\yairm\PycharmProjects\pgmr\out&quot;</span>
+
+    <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">graph_map: graph.Graph2D</span><span class="s0">, </span><span class="s1">start_nodes</span><span class="s0">, </span><span class="s1">speed_multiplayer=</span><span class="s3">1.0</span><span class="s0">, </span><span class="s1">resolution=</span><span class="s3">10</span><span class="s1">):</span>
+        <span class="s5">&quot;&quot;&quot; 
+        Initialize the simulation. 
+ 
+        :param graph_map: The Graph2D object representing the map. 
+        :param start_nodes: Node ID where the simulation starts. 
+        :param speed_multiplayer: Speed of the agents (units per time step). 
+        :param resolution: Resolution for saving the animation 
+        &quot;&quot;&quot;</span>
+        <span class="s1">self.graph = graph_map</span>
+        <span class="s1">self.start_nodes = start_nodes</span>
+        <span class="s1">self.agents = []</span>
+        <span class="s1">self.visited_nodes = set()</span>
+        <span class="s1">self.time = </span><span class="s3">0</span>
+        <span class="s1">self.resolution = resolution</span>
+        <span class="s1">self.node_times = {node: float(</span><span class="s2">'inf'</span><span class="s1">) </span><span class="s0">for </span><span class="s1">node </span><span class="s0">in </span><span class="s1">self.graph.nodes}</span>
+
+        <span class="s0">for </span><span class="s1">speed_class </span><span class="s0">in </span><span class="s1">Agent.speeds.keys():</span>
+            <span class="s1">Agent.speeds[speed_class] *= speed_multiplayer</span>
+
+    <span class="s0">def </span><span class="s1">ignite(self):</span>
+        <span class="s5">&quot;&quot;&quot;Start the simulation.&quot;&quot;&quot;</span>
+        <span class="s0">for </span><span class="s1">sp </span><span class="s0">in </span><span class="s1">Agent.speeds:</span>
+            <span class="s0">if </span><span class="s1">sp == </span><span class="s2">'bike'</span><span class="s1">:</span>
+                <span class="s0">continue</span>
+            <span class="s0">else</span><span class="s1">:</span>
+                <span class="s1">Agent.speeds[sp] = </span><span class="s3">12</span>
+        <span class="s0">for </span><span class="s1">start_node </span><span class="s0">in </span><span class="s1">self.start_nodes:</span>
+            <span class="s0">for </span><span class="s1">agent </span><span class="s0">in </span><span class="s1">self.agents:</span>
+                <span class="s1">agent.location = self.graph.nodes[start_node]</span>
+            <span class="s1">self.node_times[start_node] = </span><span class="s3">0</span>
+            <span class="s1">self.time = </span><span class="s3">0</span>
+
+            <span class="s4"># Create initial agents for all directions from the start node</span>
+            <span class="s1">neighbors = self.graph.get_neighbors(start_node)</span>
+            <span class="s0">for </span><span class="s1">neighbor </span><span class="s0">in </span><span class="s1">neighbors:</span>
+                <span class="s1">self.agents.append(Agent(</span>
+                    <span class="s1">location=self.graph.nodes[start_node]</span><span class="s0">,</span>
+                    <span class="s1">speed=Agent.speeds[self.graph.edges[(start_node</span><span class="s0">, </span><span class="s1">neighbor)][</span><span class="s2">'layer'</span><span class="s1">]]</span><span class="s0">,</span>
+                    <span class="s1">direction=(start_node</span><span class="s0">, </span><span class="s1">neighbor)</span>
+                <span class="s1">))</span>
+            <span class="s4"># Mark the start node as visited</span>
+            <span class="s1">self.visited_nodes.add(start_node)</span>
+
+    <span class="s0">def </span><span class="s1">step(self):</span>
+        <span class="s5">&quot;&quot;&quot;Advance the simulation by one time step.&quot;&quot;&quot;</span>
+        <span class="s1">new_agents = []</span>
+
+        <span class="s0">for </span><span class="s1">agent </span><span class="s0">in </span><span class="s1">self.agents:</span>
+            <span class="s1">agent.update_position(self.graph</span><span class="s0">, </span><span class="s1">self.visited_nodes</span><span class="s0">, </span><span class="s1">new_agents)</span>
+            <span class="s0">if </span><span class="s1">agent.end_rout:</span>
+                <span class="s1">self.node_times[agent.direction[</span><span class="s3">1</span><span class="s1">]] = self.time</span>
+        <span class="s4"># Add new agents to the simulation</span>
+        <span class="s1">self.agents.extend(new_agents)</span>
+        <span class="s1">self.time += </span><span class="s3">1</span>
+
+    <span class="s0">def </span><span class="s1">pause(self</span><span class="s0">, </span><span class="s1">filename):</span>
+        <span class="s5">&quot;&quot;&quot;Save the simulation state to a file.&quot;&quot;&quot;</span>
+        <span class="s0">with </span><span class="s1">open(filename</span><span class="s0">, </span><span class="s2">'wb'</span><span class="s1">) </span><span class="s0">as </span><span class="s1">f:</span>
+            <span class="s1">pickle.dump(self</span><span class="s0">, </span><span class="s1">f)</span>
+
+    <span class="s1">@staticmethod</span>
+    <span class="s0">def </span><span class="s1">resume(filename):</span>
+        <span class="s5">&quot;&quot;&quot;Resume the simulation from a file.&quot;&quot;&quot;</span>
+        <span class="s0">with </span><span class="s1">open(filename</span><span class="s0">, </span><span class="s2">'rb'</span><span class="s1">) </span><span class="s0">as </span><span class="s1">f:</span>
+            <span class="s0">return </span><span class="s1">pickle.load(f)</span>
+
+    <span class="s0">def </span><span class="s1">log(self</span><span class="s0">, </span><span class="s1">max_steps=</span><span class="s3">100</span><span class="s0">, </span><span class="s1">save_path=</span><span class="s0">None, </span><span class="s1">resolution=</span><span class="s3">1080</span><span class="s1">):</span>
+        <span class="s5">&quot;&quot;&quot;Visualize the simulation as an animation with edge recoloring.&quot;&quot;&quot;</span>
+
+        <span class="s1">fig</span><span class="s0">, </span><span class="s1">ax = plt.subplots(figsize=(resolution / </span><span class="s3">100</span><span class="s0">, </span><span class="s1">resolution / </span><span class="s3">100</span><span class="s1">)</span><span class="s0">, </span><span class="s1">dpi=</span><span class="s3">100</span><span class="s1">)</span>
+        <span class="s1">ax.axis(</span><span class="s2">'off'</span><span class="s1">)  </span><span class="s4"># Remove axes, grid, and ticks</span>
+        <span class="s1">plt.subplots_adjust(left=</span><span class="s3">0</span><span class="s0">, </span><span class="s1">right=</span><span class="s3">1</span><span class="s0">, </span><span class="s1">top=</span><span class="s3">1</span><span class="s0">, </span><span class="s1">bottom=</span><span class="s3">0</span><span class="s1">)  </span><span class="s4"># Remove margins</span>
+        <span class="s1">fig.patch.set_facecolor(</span><span class="s2">'black'</span><span class="s1">)  </span><span class="s4"># Set the figure background to black</span>
+        <span class="s1">edge_lines = {}</span>
+        <span class="s1">edge_width = </span><span class="s3">3</span>
+
+        <span class="s0">def </span><span class="s1">time_adj(base_color</span><span class="s0">, </span><span class="s1">og_color=</span><span class="s0">None</span><span class="s1">):</span>
+            <span class="s5">&quot;&quot;&quot; 
+            should mimic perspective ratio 
+ 
+            :param base_color: hue to act omn 
+            :param og_color: original node color 
+            :return: color in rgba 
+            &quot;&quot;&quot;</span>
+            <span class="s0">if </span><span class="s1">og_color </span><span class="s0">is None</span><span class="s1">:</span>
+                <span class="s1">og_color = [</span><span class="s3">0</span><span class="s0">,</span><span class="s3">0</span><span class="s0">,</span><span class="s3">0</span><span class="s1">]</span>
+            <span class="s0">for </span><span class="s1">channel</span><span class="s0">, </span><span class="s1">i </span><span class="s0">in </span><span class="s1">zip(base_color</span><span class="s0">, </span><span class="s1">range(len(base_color))):</span>
+                <span class="s1">og_color[i] += (</span><span class="s3">1</span><span class="s1">-self.time/max_steps/</span><span class="s3">2</span><span class="s1">)*channel</span>
+            <span class="s0">return </span><span class="s1">og_color</span>
+
+        <span class="s0">def </span><span class="s1">brighter(color):</span>
+            <span class="s0">return </span><span class="s1">(color[</span><span class="s3">0</span><span class="s1">]+</span><span class="s3">1</span><span class="s1">)/</span><span class="s3">2</span><span class="s0">,</span><span class="s1">(color[</span><span class="s3">1</span><span class="s1">]+</span><span class="s3">1</span><span class="s1">)/</span><span class="s3">2</span><span class="s0">,</span><span class="s1">(color[</span><span class="s3">2</span><span class="s1">]+</span><span class="s3">1</span><span class="s1">)/</span><span class="s3">2</span>
+
+        <span class="s0">def </span><span class="s1">agent_color(agent):</span>
+            <span class="s1">gray_factor = </span><span class="s3">0</span>
+            <span class="s0">if </span><span class="s1">agent.speed == agent.speeds[</span><span class="s2">'railways'</span><span class="s1">]:</span>
+                <span class="s0">return </span><span class="s3">0.375</span><span class="s0">, </span><span class="s3">0.375</span><span class="s0">, </span><span class="s1">gray_factor  </span><span class="s4"># train</span>
+            <span class="s0">if </span><span class="s1">agent.speed == agent.speeds[</span><span class="s2">'paths'</span><span class="s1">]:</span>
+                <span class="s0">return </span><span class="s1">gray_factor</span><span class="s0">, </span><span class="s3">0.5</span><span class="s0">, </span><span class="s3">0.25  </span><span class="s4"># walk</span>
+            <span class="s0">if </span><span class="s1">agent.speed == agent.speeds[</span><span class="s2">'bike'</span><span class="s1">]:</span>
+                <span class="s0">return </span><span class="s1">gray_factor</span><span class="s0">, </span><span class="s1">gray_factor</span><span class="s0">, </span><span class="s3">0.75  </span><span class="s4"># bike</span>
+            <span class="s0">return </span><span class="s3">0.625</span><span class="s0">, </span><span class="s3">0.125</span><span class="s0">, </span><span class="s1">gray_factor  </span><span class="s4"># car</span>
+
+        <span class="s0">for </span><span class="s1">(node1</span><span class="s0">, </span><span class="s1">node2)</span><span class="s0">, </span><span class="s1">properties </span><span class="s0">in </span><span class="s1">self.graph.edges.items():</span>
+            <span class="s1">x1</span><span class="s0">, </span><span class="s1">y1 = self.graph.nodes[node1]</span>
+            <span class="s1">x2</span><span class="s0">, </span><span class="s1">y2 = self.graph.nodes[node2]</span>
+            <span class="s1">line</span><span class="s0">, </span><span class="s1">= ax.plot([x1</span><span class="s0">, </span><span class="s1">x2]</span><span class="s0">, </span><span class="s1">[y1</span><span class="s0">, </span><span class="s1">y2]</span><span class="s0">, </span><span class="s1">color=</span><span class="s2">&quot;white&quot;</span><span class="s0">, </span><span class="s1">linewidth=</span><span class="s3">0</span><span class="s1">)</span>
+            <span class="s1">edge_lines[(node1</span><span class="s0">, </span><span class="s1">node2)] = line</span>
+
+        <span class="s4"># Initialize agent positions</span>
+        <span class="s1">agent_scatter = ax.scatter(</span>
+            <span class="s1">[agent.location[</span><span class="s3">0</span><span class="s1">] </span><span class="s0">for </span><span class="s1">agent </span><span class="s0">in </span><span class="s1">self.agents]</span><span class="s0">,</span>
+            <span class="s1">[agent.location[</span><span class="s3">1</span><span class="s1">] </span><span class="s0">for </span><span class="s1">agent </span><span class="s0">in </span><span class="s1">self.agents]</span><span class="s0">,</span>
+            <span class="s1">c=[brighter(agent_color(agent)) </span><span class="s0">for </span><span class="s1">agent </span><span class="s0">in </span><span class="s1">self.agents]</span><span class="s0">, </span><span class="s1">s=</span><span class="s3">30</span>
+        <span class="s1">)</span>
+
+        <span class="s0">def </span><span class="s1">update(frame):</span>
+            <span class="s1">self.step()</span>
+            <span class="s1">print(</span><span class="s2">&quot;step: &quot;</span><span class="s0">, </span><span class="s1">frame)</span>
+            <span class="s1">print(</span><span class="s2">&quot;active agents: &quot;</span><span class="s0">, </span><span class="s1">len(self.agents))</span>
+
+            <span class="s4"># Update agent positions</span>
+            <span class="s0">if </span><span class="s1">len(self.agents) == </span><span class="s3">0</span><span class="s1">:</span>
+                <span class="s0">raise </span><span class="s1">RuntimeError(</span><span class="s2">&quot;Simulation ended&quot;</span><span class="s1">)</span>
+            <span class="s1">agent_scatter.set_offsets(</span>
+                <span class="s1">[(agent.location[</span><span class="s3">0</span><span class="s1">]</span><span class="s0">, </span><span class="s1">agent.location[</span><span class="s3">1</span><span class="s1">]) </span><span class="s0">for </span><span class="s1">agent </span><span class="s0">in </span><span class="s1">self.agents]</span>
+            <span class="s1">)</span>
+            <span class="s0">if </span><span class="s1">frame == max_steps - </span><span class="s3">1</span><span class="s1">:</span>
+                <span class="s1">agent_scatter.set_color(</span>
+                    <span class="s1">[(</span><span class="s3">0</span><span class="s0">,</span><span class="s3">0</span><span class="s0">,</span><span class="s3">0</span><span class="s0">,</span><span class="s3">0</span><span class="s1">) </span><span class="s0">for </span><span class="s1">_ </span><span class="s0">in </span><span class="s1">self.agents]</span>
+                <span class="s1">)</span>
+            <span class="s0">else</span><span class="s1">:</span>
+                <span class="s1">agent_scatter.set_color(</span>
+                    <span class="s1">[brighter(agent_color(agent)) </span><span class="s0">for </span><span class="s1">agent </span><span class="s0">in </span><span class="s1">self.agents]</span>
+                <span class="s1">)</span>
+
+            <span class="s4"># Update edge colors based on traversal</span>
+            <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">reversed(range(len(self.agents))):</span>
+                <span class="s1">agent = self.agents[i]</span>
+                <span class="s0">if </span><span class="s1">agent.end_rout:</span>
+                    <span class="s1">edge = agent.direction</span>
+                    <span class="s1">intensified_color = time_adj(agent_color(agent))</span>
+                    <span class="s1">edge_lines[edge].set_color(intensified_color)</span>
+                    <span class="s1">edge_lines[edge].set_linewidth(edge_width)</span>
+                    <span class="s1">self.agents.pop(i)</span>
+
+            <span class="s0">return </span><span class="s1">[agent_scatter] + list(edge_lines.values())</span>
+        <span class="s1">anim = FuncAnimation(fig</span><span class="s0">, </span><span class="s1">update</span><span class="s0">, </span><span class="s1">frames=max_steps</span><span class="s0">, </span><span class="s1">interval=</span><span class="s3">200</span><span class="s0">, </span><span class="s1">repeat=</span><span class="s0">False, </span><span class="s1">blit=</span><span class="s0">True</span><span class="s1">)</span>
+        <span class="s4"># plt.show()</span>
+        <span class="s0">if </span><span class="s1">save_path:</span>
+            <span class="s1">anim.save(save_path + </span><span class="s2">&quot;.gif&quot;</span><span class="s0">, </span><span class="s1">fps=</span><span class="s3">100</span><span class="s0">, </span><span class="s1">writer=</span><span class="s2">'pillow'</span><span class="s1">)</span>
+
+    <span class="s1">@staticmethod</span>
+    <span class="s0">def </span><span class="s1">run(simulation</span><span class="s0">, </span><span class="s1">max_steps=</span><span class="s0">None, </span><span class="s1">visualize=</span><span class="s0">False, </span><span class="s1">save_path=</span><span class="s0">None</span><span class="s1">):</span>
+        <span class="s5">&quot;&quot;&quot; 
+        Run the simulation until max_time or max_steps is reached. 
+ 
+        :param simulation: The Simulation object. 
+        :param max_steps: Maximum number of steps. 
+        :param visualize: If True, display the animation. 
+        :param save_path: 
+        &quot;&quot;&quot;</span>
+        <span class="s1">start_time = time.time()</span>
+        <span class="s1">steps = </span><span class="s3">0</span>
+        <span class="s0">if </span><span class="s1">simulation.time </span><span class="s0">is None or </span><span class="s1">simulation.time == </span><span class="s3">0</span><span class="s1">:</span>
+            <span class="s1">simulation.ignite()</span>
+
+        <span class="s0">if </span><span class="s1">visualize:</span>
+            <span class="s1">simulation.log(max_steps=max_steps</span><span class="s0">, </span><span class="s1">save_path=save_path)</span>
+        <span class="s0">else</span><span class="s1">:</span>
+            <span class="s0">while True</span><span class="s1">:</span>
+                <span class="s0">if </span><span class="s1">max_steps </span><span class="s0">is not None and </span><span class="s1">steps &gt;= max_steps:</span>
+                    <span class="s0">break</span>
+                <span class="s0">if </span><span class="s1">max_steps </span><span class="s0">is not None and </span><span class="s1">(time.time() - start_time) &gt;= max_steps:</span>
+                    <span class="s0">break</span>
+                <span class="s1">simulation.step()</span>
+                <span class="s1">steps += </span><span class="s3">1</span></pre>
+
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">time</span>
+<span class="s0">import </span><span class="s1">rhinoDealer</span>
+<span class="s0">import </span><span class="s1">graph</span>
+<span class="s0">import </span><span class="s1">simulation</span>
+<span class="s0">import </span><span class="s1">imageHandle</span>
+<span class="s0">if </span><span class="s1">__name__ == </span><span class="s2">'__main__'</span><span class="s1">:</span>
+    <span class="s1">t = time.time()</span>
+    <span class="s1">gra = graph.build_graph_from_3dm(model_add)</span>
+    <span class="s1">print(gra</span><span class="s0">, </span><span class="s2">&quot;generated in: &quot;</span><span class="s0">, </span><span class="s1">time.time() - t)</span>
+    <span class="s1">stp = rhinoDealer.RhinoModel(model_add).get_all_pts()</span>
+    <span class="s1">start_nodes = []</span>
+    <span class="s1">j = </span><span class="s4">0</span>
+    <span class="s0">for </span><span class="s1">point </span><span class="s0">in </span><span class="s1">stp:</span>
+        <span class="s1">start_nodes.append(gra.add_node((point[</span><span class="s4">0</span><span class="s1">][</span><span class="s4">0</span><span class="s1">]</span><span class="s0">, </span><span class="s1">point[</span><span class="s4">0</span><span class="s1">][</span><span class="s4">1</span><span class="s1">])))</span>
+    <span class="s1">sim = simulation.Simulation(gra</span><span class="s0">, </span><span class="s1">start_nodes=start_nodes</span><span class="s0">, </span><span class="s1">speed_multiplayer=</span><span class="s4">0.5</span><span class="s1">)</span>
+    <span class="s1">simulation.Simulation.run(sim</span><span class="s0">, </span><span class="s1">max_steps=</span><span class="s4">300</span><span class="s0">, </span><span class="s1">visualize=</span><span class="s0">True, </span><span class="s1">save_path=</span><span class="s2">&quot;fin&quot;</span><span class="s1">)</span>
+</pre>
+
+</body>
+</html>
