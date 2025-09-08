@@ -272,6 +272,7 @@ timeline-content{
 #preview-wrapper{
 	position: fixed;
 	display: flex;
+	z-index: 100;
 }
 #preview-page-bg{
 	position: fixed;
@@ -279,7 +280,7 @@ timeline-content{
 	display: inherit;
 	height: 100vh;
 	width: 100vw;
-	background: #80808080;
+	background: #000000c0;
 }
 #close-button{
 	position: fixed;
