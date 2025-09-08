@@ -39,6 +39,11 @@
 		</div>
 
 		<script type="module" src="js/resume.js"></script>
+		<div id="preview-wrapper" class="hidden">
+			<iframe id="preview-img-page"></iframe>
+			<div id="preview-page-bg" onclick="document.getElementById('preview-wrapper').classList.toggle('hidden', true)"></div>
+			<div id="close-button" onclick="document.getElementById('preview-wrapper').classList.toggle('hidden', true)">X</div>
+		</div>
 		<div id="footer"></div>
 		<script type="module" src="js/fixedStructure.js"></script>
     </body>
