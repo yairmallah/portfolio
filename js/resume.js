@@ -9,6 +9,8 @@ async function loadResume() {
 	buildTimeline(data);
 
 	buildSidebar(data);
+	
+	packEvents();
 }
 
 function buildAbout(data){
@@ -96,7 +98,7 @@ function buildTimeline(data) {
 	}
 	function parseElab(text) {
 		return text.replace(/@([^$@]+)\$@([^$@]+)\$/g,
-			(_, label, data) => `<span class="elab-link" onclick="presLink('${data}')">${label}</span>`
+			(_, label, data) => `<span class="elab-link" data-link="${data}">${label}</span>`
 		);
 	}
 	function presLink(dataLink){
@@ -205,7 +207,6 @@ function buildTimeline(data) {
 		gridStartCol = 0;//gridEndCol;
 		//if (cat == "education") root.style.setProperty("--gridColsMiddle", gridStartCol);
 	});
-	document.querySelectorAll(".elab-link").forEach(el => {el.addEventListener("click", () => presLink(el.dataset.link)); console.log(el);});
 	root.style.setProperty("--gridColsCount", /*gridStartCol*/ gridEndCol);
 	
 	const legend = document.createElement("div");
@@ -246,6 +247,24 @@ function buildSidebar(data) {
 		<span class="fact-data">${lang.level}</span>
 		</div>
 		`;
+	});
+}
+
+function packEvents(){
+	function clearChosenTimlineElenets(){
+		document.querySelectorAll(".timeline-item").forEach(elt => {elt.classList.toggle("chosen", false);});
+	}
+	document.querySelectorAll(".elab-link").forEach(el => {el.addEventListener("click", () => presLink(el.dataset.link));});
+	document.querySelector("body").addEventListener("click", e => {
+		console.log(!document.querySelector("#timeline-grid").contains(e.target));
+		if (e.target === document.querySelector("#timeline-grid")) clearChosenTimlineElenets();;
+		if (!e.target.closest("#timeline-grid")) clearChosenTimlineElenets();;
+	});
+	document.querySelectorAll(".timeline-item").forEach(el => {
+		el.addEventListener("click", () => {
+			clearChosenTimlineElenets();
+			el.classList.toggle("chosen", true);
+		});
 	});
 }
 
