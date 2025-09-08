@@ -8,8 +8,8 @@
 	gap: 10px;
 }
 #img-container{
-	max-height: 100vh;
-	max-width: 70vw;
+	height: 100%;
+	width: auto;
 	object-fit: contain;
 	background-size: contain;
 	display: flex;
@@ -18,11 +18,12 @@
 	object-fit: contain;
 	background-size: contain;
 	max-height: 100%;
-	max-width: 100%;
 }
 #text-container{
 	min-width: 30%;
 	height: 100%;
+	flex: 1 1 auto;
 	overflow: auto;
 	direction: ltr;
+	font-size: 12px;
 }
