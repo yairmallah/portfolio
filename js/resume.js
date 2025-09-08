@@ -19,8 +19,15 @@ function buildAbout(data){
 	const textContainer = document.createElement("div");
 	textContainer.id = "about-text-container";
 	textContainer.innerHTML = data.about.text;
-	container.appendChild(title);
-	container.appendChild(textContainer);
+	const aboutImg = document.createElement("img");
+	aboutImg.src = "https://yairmallah.github.io/portfolio/imgs/s1/dr2.jpg";
+	const subContainer = document.createElement("div");
+	
+	subContainer.appendChild(title);
+	subContainer.appendChild(textContainer);
+	container.appendChild(subContainer);
+	container.appendChild(aboutImg);
+	
 }
 
 function buildTimeline(data) {
@@ -87,6 +94,20 @@ function buildTimeline(data) {
 	function toggleLegend(){
 		document.getElementById("timeline-legend-container").classList.toggle("hidden");
 	}
+	function parseElab(text) {
+		return text.replace(/@([^$@]+)\$@([^$@]+)\$/g,
+			(_, label, data) => `<span class="elab-link" onclick="presLink('${data}')">${label}</span>`
+		);
+	}
+	function presLink(dataLink){
+		document.querySelector("#preview-wrapper").classList.toggle("hidden", false);;
+		const prevPage = document.querySelector("#preview-img-page");
+		prevPage.src = `https://yairmallah.github.io/portfolio/imgDisplay.html?${dataLink}`;
+	}
+	window.presLink = presLink;
+
+
+
 
 	const timelineGrid = document.createElement("div");
 	timelineGrid.id = "timeline-grid";
@@ -166,7 +187,7 @@ function buildTimeline(data) {
 						<span class="timeline-title">${ev.title}</span> | 
 						<span class="action">${ev.action}</span>
 					</div>
-					${ev.elab ? ev.elab.map(p => `<div class="elab">${p}</div>`).join("") : ""}
+					${ev.elab ? ev.elab.map(p => `<div class="elab">${parseElab(p)}</div>`).join("") : ""}
 				</div>
 				<div class="timeline-marker bottom"></div>
 				`;
@@ -184,6 +205,7 @@ function buildTimeline(data) {
 		gridStartCol = 0;//gridEndCol;
 		//if (cat == "education") root.style.setProperty("--gridColsMiddle", gridStartCol);
 	});
+	document.querySelectorAll(".elab-link").forEach(el => {el.addEventListener("click", () => presLink(el.dataset.link)); console.log(el);});
 	root.style.setProperty("--gridColsCount", /*gridStartCol*/ gridEndCol);
 	
 	const legend = document.createElement("div");
