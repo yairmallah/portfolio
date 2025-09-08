@@ -153,6 +153,16 @@ h2{
 	margin-left: 1.5em;
 	padding-right: 0.5em;
 	padding-left: 0.5em;
+	opacity: 0.7;
+	color: color-mix(in srgb, var(--invBg) 50%, rgba(0,0,0,0));
+	transition: color 0.3s ease, opacity 0.3s ease;
+}
+.timeline-item:hover{
+	opacity: 1;
+	color: var(--invBg);
+}.timeline-item.chosen{
+	opacity: 1;
+	color: var(--invBg);
 }
 .timeline-marker{
 	width: 12px;
@@ -216,10 +226,11 @@ timeline-content{
 	margin-top: 0.6em;
 	margin-bottom: 0.6em;
 	text-align: right;
+	color: var(--invBg);
 }.timeline-content .elab{
 	margin-top: 0.6em;
 	margin-bottom: 0.6em;
-	line-height: 1.5
+	line-height: 1.5;
 }
 #timeline-legend{
 	position: fixed;
@@ -254,7 +265,7 @@ timeline-content{
 .elab-link{
 	font-weight: bolder;
 	cursor: pointer;
-	color: color-mix(in srgb, var(--invBg) 80%, cyan);
+	color: color-mix(in srgb, var(--invBg) 50%, blue);
 }
 #preview-img-page{
 	position: fixed;
@@ -286,4 +297,13 @@ timeline-content{
 	position: fixed;
 	z-index: 102;
 	display: inherit;
+	border: 1px solid #aaa;
+	padding: 5px;
+	display: flex;
+	border-radius: 0.4em;
+	background: #222;
+	color: white;
+	top: 10vh;
+	right: calc(10vw - 2em);
+	cursor: pointer;
 }
