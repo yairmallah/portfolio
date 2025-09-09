@@ -153,13 +153,12 @@ h2{
 	margin-left: 1.5em;
 	padding-right: 0.5em;
 	padding-left: 0.5em;
-	opacity: 0.7;
-	color: color-mix(in srgb, var(--invBg) 50%, rgba(0,0,0,0));
+	/*color: color-mix(in srgb, var(--invBg) 50%, rgba(0,0,0,0));*/
 	transition: color 0.3s ease, opacity 0.3s ease;
 }
 .timeline-item:hover{
-	opacity: 1;
-	color: var(--invBg);
+	/*opacity: 1;*/
+	/*color: var(--invBg);*/
 }.timeline-item.chosen{
 	opacity: 1;
 	color: var(--invBg);
@@ -231,6 +230,28 @@ timeline-content{
 	margin-top: 0.6em;
 	margin-bottom: 0.6em;
 	line-height: 1.5;
+	opacity: 0.5;
+	transition: opacity 0.3s ease;
+}.timeline-content .elab.i{
+	max-width: 100%;
+	filter: grayscale(0.7) brightness(0.8) contrast(2);
+}
+.timeline-item.chosen .timeline-content .elab{
+	opacity: 1;
+}.timeline-item.chosen-sub .timeline-content .elab{
+	opacity: 1;
+}
+.timeline-content .show-mark{
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background: #808080;
+	transition: transform 0.5s ease;
+	transform: rotate(0deg);
+	border: 1px solid var(--invBg);
+}
+.timeline-content .show-mark.hide{
+	transform: rotate(180deg);
 }
 #timeline-legend{
 	position: fixed;
