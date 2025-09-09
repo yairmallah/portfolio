@@ -101,15 +101,13 @@ function buildTimeline(data) {
 			(_, label, data) => `<span class="elab-link" data-link="${data}">${label}</span>`
 		);
 	}
-	function presLink(dataLink){
-		document.querySelector("#preview-wrapper").classList.toggle("hidden", false);;
-		const prevPage = document.querySelector("#preview-img-page");
-		prevPage.src = `https://yairmallah.github.io/portfolio/imgDisplay.html?${dataLink}`;
+	function sortElab(elabFull, ind, parentName){
+		const prefix = elabFull[0];
+		elabFull = elabFull.substring(1, elabFull.length);
+		if (prefix === "t") return `<div class="elab ${prefix}" id="${parentName.title}-elab-${ind}">${parseElab(elabFull)}</div>`;
+		if (prefix === "i") return `<img class="elab ${prefix}" id="${parentName.title}-elab-${ind}" src="${elabFull}"></img>`;
+		if (prefix === "v") return `<video class="elab ${prefix}" id="${parentName.title}-elab-${ind}" src="${elabFull}" muted></video>`;
 	}
-	window.presLink = presLink;
-
-
-
 
 	const timelineGrid = document.createElement("div");
 	timelineGrid.id = "timeline-grid";
@@ -164,6 +162,7 @@ function buildTimeline(data) {
 				const item = document.createElement("div");
 				item.classList.add("timeline-item", "category-"+cat);
 				item.style.gridRow = generateGridYear(ev);
+				item.id = ev.title;
 				
 				let colIndex = gridStartCol;
 				if (!occupied[colIndex]) occupied[colIndex] = [];
@@ -189,10 +188,12 @@ function buildTimeline(data) {
 						<span class="timeline-title">${ev.title}</span> | 
 						<span class="action">${ev.action}</span>
 					</div>
-					${ev.elab ? ev.elab.map(p => `<div class="elab">${parseElab(p)}</div>`).join("") : ""}
+					${ev.elab ? ev.elab.map((p,i) => sortElab(p, i, ev)).join("") : ""}
+					
 				</div>
 				<div class="timeline-marker bottom"></div>
 				`;
+				//<div class="show-mark" id="${ev.title}-sh">^</div>
 				const lines = document.createElement("div");
 				lines.classList.toggle("border-line", true);
 				lines.classList.toggle(/*cat == "education"? "right-side" :*/ "left-side", true);
@@ -251,12 +252,71 @@ function buildSidebar(data) {
 }
 
 function packEvents(){
+	var timeToWord = 150;
+	function generateTextAnim(pressedButton){
+		const id = pressedButton.id.substring(3, pressedButton.length);
+		let counter = 0;
+		while (document.querySelector(`${id}-elab-${counter}`)){
+			const elabEl = document.querySelector(`${id}-elab-${counter}`);
+			if (elabEl.classList.contains("t")){
+				textAppearWordByWord(elabEl);
+			}
+		}
+	}
+	function textAppearWordByWord(textElement){
+		let original = textElement.innerHTML;
+		let words = original.split(" ");
+		textElement.innerHTML = "";
+		const timeouts = [];
+		const spans = [];
+		
+		textElement.classList.toggle("hidden", false);
+		words.forEach((word, index) => {
+			const span = document.createElement("span");
+			span.textContent = word + " ";
+			span.style.opacity = 0;
+			span.style.transition = "opacity 1s ease";
+			textElement.appendChild(span);
+			spans.push(span);
+
+			const t = setTimeout(() => {
+				span.style.opacity = 1;
+			}, index * timeToWord);
+			timeouts.push(t);
+			
+		});		
+
+		const totalDuration = (words.length + 1) * timeToWord;
+		const resetTimeout = setTimeout(() => {
+			textElement.innerHTML = original;
+		}, totalDuration);
+		timeouts.push(resetTimeout);
+		textElement._animation = {
+			timeouts,
+			spans,
+			finish: () => {
+				timeouts.forEach(clearTimeout);
+				spans.forEach(span => span.style.opacity = 1);
+			},
+			cancel: () => {
+				timeouts.forEach(clearTimeout);
+				textElement.innerHTML = original;
+			}
+		};
+		return totalDuration;
+	}
+	
 	function clearChosenTimlineElenets(){
 		document.querySelectorAll(".timeline-item").forEach(elt => {elt.classList.toggle("chosen", false);});
 	}
+	function presLink(dataLink){
+		document.querySelector("#preview-wrapper").classList.toggle("hidden", false);;
+		const prevPage = document.querySelector("#preview-img-page");
+		prevPage.src = `https://yairmallah.github.io/portfolio/imgDisplay.html?${dataLink}`;
+	}
 	document.querySelectorAll(".elab-link").forEach(el => {el.addEventListener("click", () => presLink(el.dataset.link));});
+	document.querySelectorAll(".elab.i").forEach(el => {el.addEventListener("click", () => presLink(`img=${el.src}`));});
 	document.querySelector("body").addEventListener("click", e => {
-		console.log(!document.querySelector("#timeline-grid").contains(e.target));
 		if (e.target === document.querySelector("#timeline-grid")) clearChosenTimlineElenets();;
 		if (!e.target.closest("#timeline-grid")) clearChosenTimlineElenets();;
 	});
@@ -265,7 +325,16 @@ function packEvents(){
 			clearChosenTimlineElenets();
 			el.classList.toggle("chosen", true);
 		});
+		el.addEventListener("mouseenter", () => el.classList.toggle("chosen-sub", true));
+		el.addEventListener("mouseleave", () => el.classList.toggle("chosen-sub", false));
 	});
+	document.querySelectorAll(".show-mark").forEach(el => {
+		el.addEventListener("click", () => {
+			if (!el.classList.contains("hide")) generateTextAnim(el);
+			el.classList.toggle("hide");
+		});
+	});
+	
 }
 
 document.addEventListener("DOMContentLoaded", loadResume);
