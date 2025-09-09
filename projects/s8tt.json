@@ -1,0 +1,207 @@
+{
+  "text": {
+    "title": "אזור תעשיה תלפיות",
+    "textR": "הפרוייקט מציע התייחסות למצב הקיים בבלוק ביד חרוצים כשדה מתחים. המתחים בשדה יוצרים הפרעות וקריעות במרחב שמאלצים התייחסות פרמטרית ומתווים פנים שטח אורגניים עם זרימה ייחודית בחלל.<br/>על גבי פני השטח שנוצרו הצבתי מבני גבוהיי קומות כדי לתמוך בייתכנות הכלכלית של הפרוייקט.",
+    "program": "תעשיה",
+    "loaction": "יד חרוצים, ירושלים",
+    "date": "אפריל 2024 - יולי 2024",
+    "area": "32,000",
+    "units": "m",
+    "status": "לא נבנה | סטודנטיאלי"
+  },
+  "grid": {
+    "columns": "repeat(15, 1fr)",
+    "rows": "repeat(12, 1fr)",
+    "gap": "0.5vw",
+    "ratio": "15 / 12"
+  },
+  "images": [
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/sec.png",
+      "title": "חתך | מוצע",
+      "gridColumn": "11 / 16",
+      "gridRow": "10 / 13",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/secex.png",
+      "title": "חתך | קיים",
+      "gridColumn": "8 / 11",
+      "gridRow": "11 / 13",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/planex.png",
+      "title": "תוכנית | קיים",
+      "gridColumn": "2 / 6",
+      "gridRow": "10 / 13",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/modcem.png",
+      "title": "מודל | בטון - קיים",
+      "gridColumn": "2 / 4",
+      "gridRow": "8 / 10",
+      "objectFit": "cover",
+      "rotation": "90",
+      "classCSS": "comp-photo-to-darw"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/modpls1.jpg",
+      "title": "מודל | תבנית יציקה, מוצע",
+      "gridColumn": "2 / 3",
+      "gridRow": "5 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-darw"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/modpls6.jpg",
+      "title": "מודל | תבנית יציקה, מוצע",
+      "gridColumn": "3 / 4",
+      "gridRow": "5 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-darw"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/modpls3.png",
+      "title": "מודל | תבנית יציקה, מוצע",
+      "gridColumn": "5 / 6",
+      "gridRow": "5 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-darw"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/modpls4.png",
+      "title": "מודל | תבנית יציקה, מוצע",
+      "gridColumn": "4 / 5",
+      "gridRow": "5 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-darw"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/modpls5.jpg",
+      "title": "מודל | תבנית יציקה, מוצע",
+      "gridColumn": "2 / 4",
+      "gridRow": "6 / 8",
+      "objectFit": "cover",
+      "rotation": "180",
+      "classCSS": "comp-photo-to-darw"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/pgood.png",
+      "title": "תוכנית | מוצע",
+      "gridColumn": "11 / 16",
+      "gridRow": "7 / 10",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/Gline.png",
+      "title": "תוכנית | שדה מתחים",
+      "gridColumn": "11 / 13",
+      "gridRow": "6 / 7",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imn4.png",
+      "title": "תמונה | תלפיות - לילה",
+      "gridColumn": "10 / 12",
+      "gridRow": "2 / 3",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imn1.png",
+      "title": "תמונה | תלפיות - לילה",
+      "gridColumn": "12 / 14",
+      "gridRow": "2 / 3",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imd4.png",
+      "title": "תמונה | תלפיות - דמדומים",
+      "gridColumn": "9 / 10",
+      "gridRow": "1 / 3",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imd1.jpeg",
+      "title": "תמונה | תלפיות - יום",
+      "gridColumn": "1 / 3",
+      "gridRow": "1 / 2",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imd3.png",
+      "title": "תמונה | תלפיות - יום",
+      "gridColumn": "5 / 7",
+      "gridRow": "1 / 2",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imd5.png",
+      "title": "תמונה | תלפיות - יום",
+      "gridColumn": "7 / 9",
+      "gridRow": "1 / 2",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imd6.png",
+      "title": "תמונה | תלפיות - יום",
+      "gridColumn": "3 / 5",
+      "gridRow": "1 / 2",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imn3.png",
+      "title": "תמונה | תלפיות - מתחים",
+      "gridColumn": "14 / 16",
+      "gridRow": "3 / 4",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/imn2.png",
+      "title": "תמונה | תלפיות - מתחים",
+      "gridColumn": "14 / 16",
+      "gridRow": "2 / 3",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo-to-gry"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s8/GgifT.mp4",
+      "title": "סרטון | שדה מתחים",
+      "gridColumn": "6 / 11",
+      "gridRow": "5 / 10",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    }
+  ]
+}
