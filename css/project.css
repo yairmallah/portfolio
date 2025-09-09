@@ -141,6 +141,9 @@
 	filter: contrast(500%) grayscale(70%) invert(1) hue-rotate(var(--hueRotDraw));
 	mix-blend-mode: difference;
 }
+.comp-black-bg{
+	background-color: black;
+}
 #chosen-image{
 	max-width: 85vw;
 	max-height: 85vh;
