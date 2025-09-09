@@ -2,6 +2,8 @@
   "about.html": [
     "imgs/sys/fav.svg",
     "css/general.css",
+    "css/about.css",
+    "js/resume.js",
     "js/fixedStructure.js"
   ],
   "contact.html": [
@@ -10,20 +12,29 @@
     "js/fixedStructure.js"
   ],
   "css": [
+    "css/about.css",
     "css/general.css",
+    "css/header.css",
+    "css/imgDisplay.css",
     "css/layout-tester.css",
     "css/portfolio.css",
     "css/project.css"
   ],
   "header.html": [
-    "css/general.css",
+    "css/header.css",
     "projects.html",
     "about.html",
     "contact.html"
   ],
+  "imgDisplay.html": [
+    "imgs/sys/fav.svg",
+    "css/general.css",
+    "css/imgDisplay.css"
+  ],
   "imgs": [
     "imgs/dbt4",
     "imgs/fav.png",
+    "imgs/floating",
     "imgs/hel",
     "imgs/s1",
     "imgs/s10",
@@ -43,7 +54,9 @@
     "js/displayModes.js",
     "js/fixedStructure.js",
     "js/imageLayoutTool.js",
-    "js/loadLayout.js"
+    "js/loadLayout.js",
+    "js/resume.js",
+    "js/resume.json"
   ],
   "layout-tester.html": [
     "imgs/sys/fav.svg",
@@ -64,10 +77,12 @@
     "projects/dbt4.json",
     "projects/hel.json",
     "projects/s1.json",
+    "projects/s10.json",
     "projects/s4.json",
     "projects/s6.json",
     "projects/s7.json",
-    "projects/s8.json"
+    "projects/s8.json",
+    "projects/s8t.json"
   ],
   "projects.html": [
     "imgs/sys/fav.svg",
@@ -83,6 +98,11 @@
     "imgs/dbt4/front.png",
     "imgs/dbt4/texture.jpg",
     "imgs/dbt4/texture1.png"
+  ],
+  "imgs/floating": [
+    "imgs/floating/moveNayotimg.mp4",
+    "imgs/floating/moveNayottxt.html",
+    "imgs/floating/talpiyotSrf.html"
   ],
   "imgs/hel": [
     "imgs/hel/model1.jpg",
@@ -111,7 +131,6 @@
     "imgs/s1/s4.jpeg"
   ],
   "imgs/s10": [
-    "imgs/s10/circles param.png",
     "imgs/s10/fullvid.mp4",
     "imgs/s10/imS0.png",
     "imgs/s10/imS1.png",
@@ -120,22 +139,20 @@
     "imgs/s10/jlm.png",
     "imgs/s10/p0.png",
     "imgs/s10/p0ex.png",
-    "imgs/s10/p0T.png",
     "imgs/s10/p1.png",
-    "imgs/s10/p1T.png",
     "imgs/s10/pu.png",
-    "imgs/s10/puT.png",
-    "imgs/s10/s motion.png",
-    "imgs/s10/schm static.png",
     "imgs/s10/secsqr1.png",
     "imgs/s10/secsqr2.png",
     "imgs/s10/secsqr3.png",
     "imgs/s10/secw1.png",
     "imgs/s10/secw2.png",
     "imgs/s10/secw3.png",
+    "imgs/s10/sh1.png",
+    "imgs/s10/sh2.png",
+    "imgs/s10/sh3.png",
     "imgs/s10/typo.jpg",
-    "imgs/s10/woods.png",
-    "imgs/s10/תצא שחור לבן.png"
+    "imgs/s10/tza.png",
+    "imgs/s10/tzapln.png"
   ],
   "imgs/s4": [
     "imgs/s4/br1.jpg",
@@ -183,15 +200,26 @@
   "imgs/s8": [
     "imgs/s8/GgifT.mp4",
     "imgs/s8/Gline.png",
+    "imgs/s8/im6.png",
     "imgs/s8/imd1.jpeg",
     "imgs/s8/imd3.png",
     "imgs/s8/imd4.png",
     "imgs/s8/imd5.png",
     "imgs/s8/imd6.png",
+    "imgs/s8/imf1.png",
+    "imgs/s8/imf2.png",
+    "imgs/s8/imf3.png",
+    "imgs/s8/imf4.png",
+    "imgs/s8/imf5.png",
+    "imgs/s8/imf6.png",
     "imgs/s8/imn1.png",
     "imgs/s8/imn2.png",
     "imgs/s8/imn3.png",
     "imgs/s8/imn4.png",
+    "imgs/s8/iso1.png",
+    "imgs/s8/iso2.png",
+    "imgs/s8/isoc.png",
+    "imgs/s8/isox.png",
     "imgs/s8/modcem.png",
     "imgs/s8/modpls1.jpg",
     "imgs/s8/modpls3.png",
@@ -204,7 +232,9 @@
     "imgs/s8/secex.png"
   ],
   "imgs/sys": [
+    "imgs/sys/enlarge.svg",
     "imgs/sys/fav.svg",
+    "imgs/sys/menu.svg",
     "imgs/sys/moon.svg",
     "imgs/sys/sun.svg"
   ],
