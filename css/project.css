@@ -14,7 +14,7 @@
 	right: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 5vw);
+	width: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 17.5vw);
 }.exp-text{
 	text-align: justify;
 	margin: 1em;
@@ -28,7 +28,7 @@
 	
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 5vw);
+	width: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 17.5vw);
 }.quick-fact{
 	margin-top: 2em;
 	margin-right: 1em;
@@ -42,7 +42,7 @@
 	grid-template-rows: var(--gridRows);
 	gap: var(--gridGap);
 	position: relative;
-	max-width: 100vw;
+	max-width: 65vw;
 	max-height: calc(100vh - var(--headerPer) * 1em);
 	aspect-ratio: var(--gridRatio);
 	overflow: hidden;
@@ -54,6 +54,7 @@
 }
 #layout-container.active {
 	max-height: calc((100vw - var(--headerPer) * 1em) / (var(--gridRatio)) );
+	max-width: 100vw;
 }
 #toggle-layout-button{
 	position: fixed;
@@ -64,7 +65,7 @@
 	z-index: 4;
 	border-radius: 5px;
 	bottom: 0;
-	right: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 5vw);
+	right: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 17.5vw);
 	transition: right 0.3s ease;
 }
 #toggle-layout-button.active{
