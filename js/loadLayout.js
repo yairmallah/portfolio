@@ -257,7 +257,8 @@ fetch(jsonFile)
 			el.classList.add('placed-img');
 			el.style.setProperty('--rotation', `${item.rotation}deg`);
 			if (item.classCSS) {
-				el.classList.add(item.classCSS);
+				if (typeof item.classCSS  === 'object') item.classCSS.forEach( classCss => {el.classList.add(classCss);});
+				else el.classList.add(item.classCSS);
 			} else {
 				el.classList.add('comp-draw');
 			}
