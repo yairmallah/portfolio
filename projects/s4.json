@@ -119,7 +119,7 @@
       "gridRow": "1 / 3",
       "objectFit": "contain",
       "rotation": "0",
-      "classCSS": "comp-photo"
+      "classCSS": ["comp-photo", "comp-black-bg"]
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s4/lt1.jpg",
