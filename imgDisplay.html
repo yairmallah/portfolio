@@ -66,43 +66,17 @@
 				console.log(actImg);
 				document.getElementById("img-container").appendChild(actImg);
 			}
-			function loadTxt(src){
-				window.txtSrc = src;
-
-				document.getElementById("text-container").innerHTML = "";
-				let actText;
-				if (getType(src) == "img"){
-					actImg = document.createElement("img");
-					actImg.src = window.imgSrc;
-				}
-				else if (getType(src) == "vid"){
-					console.log(window.imgSrc);
-					actImg = document.createElement("video");
-					actImg.src = window.imgSrc;
-					actImg.controls = true;
-					actImg.muted = true;
-					try {
-						waitForVideoLoad(actImg.play());
-					}
-					catch (error) {
-						console.warn(error);
-					}
-				}
-				
-				
-				document.getElementById("text-container").appendChild(actImg);
-			}
 		</script>
 		<script>
 			function loadTxt(src){
-				fetch(src) // Load the other page
-					.then(response => response.text()) // Convert response to text
+				fetch(src)
+					.then(response => response.text())
 					.then(html => {
 						let parser = new DOMParser();
-						let doc = parser.parseFromString(html, "text/html"); // Parse as DOM
-						let targetElement = doc.querySelector("body"); // Select specific element
+						let doc = parser.parseFromString(html, "text/html");
+						let targetElement = doc.querySelector("body");
 						if (targetElement) {
-						document.getElementById("text-container").innerHTML = targetElement.innerHTML; // Insert only inner content
+						document.getElementById("text-container").innerHTML = targetElement.innerHTML;
 						}
 					});
 			}
@@ -119,7 +93,11 @@
 			const imgAdd = params.get('img');
 			const txtAdd = params.get('txt');
 			loadImg(imgAdd);
-			loadTxt(txtAdd);
+			if (txtAdd) loadTxt(txtAdd);
+			else {
+				document.getElementById("text-container").classList.toggle("hidden", true);
+				document.getElementById("img-container").style.margin = "auto";
+			}
 		</script>
 	</body>
 </html>
