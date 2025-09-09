@@ -230,7 +230,7 @@ timeline-content{
 	margin-top: 0.6em;
 	margin-bottom: 0.6em;
 	line-height: 1.5;
-	opacity: 0.5;
+	opacity: 0.3;
 	transition: opacity 0.3s ease;
 }.timeline-content .elab.i{
 	max-width: 100%;
