@@ -79,6 +79,7 @@
 	pointer-events: var(--gridEvents);
 	z-index: 2;
 	mix-blend-mode: difference;
+	pointer-events: none;
 }
 .grid-line-x {
 	width: var(--gridGap);
