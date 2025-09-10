@@ -82,7 +82,8 @@
     "projects/s6.json",
     "projects/s7.json",
     "projects/s8.json",
-    "projects/s8t.json"
+    "projects/s8t.json",
+    "projects/s8tt.json"
   ],
   "projects.html": [
     "imgs/sys/fav.svg",
@@ -179,7 +180,10 @@
     "imgs/s6/3 100.png",
     "imgs/s6/4 100.png",
     "imgs/s6/ground 200.png",
-    "imgs/s6/sec.png"
+    "imgs/s6/roof.png",
+    "imgs/s6/sec.png",
+    "imgs/s6/sec2.png",
+    "imgs/s6/smap.png"
   ],
   "imgs/s7": [
     "imgs/s7/cont1.jpg",
