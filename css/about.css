@@ -157,6 +157,8 @@ h2{
 	padding-left: 0.5em;
 	/*color: color-mix(in srgb, var(--invBg) 50%, rgba(0,0,0,0));*/
 	transition: color 0.3s ease, opacity 0.3s ease;
+	min-height: 0;
+	min-width: 0;
 }
 .timeline-item:hover{
 	/*opacity: 1;*/
@@ -237,6 +239,27 @@ timeline-content{
 }.timeline-content .elab.i{
 	max-width: 100%;
 	filter: grayscale(0.7) brightness(0.8) contrast(2);
+}
+.timeline-content .elab.image-list{
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+	font-size: 0;
+}.timeline-content .elab.image-list .image-from-list{
+	filter: grayscale(0.7) brightness(0.8) contrast(2);
+	border-radius: 5px;
+	height: calc(50% - 10px);
+	object-fit: cover;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}.timeline-content .elab.image-list .image-from-list.image-big{
+	width: calc(100% - 10px);
+	margin-right: 5px;
+	margin-left: 5px;
+}.timeline-content .elab.image-list .image-from-list.image-small{
+	width: calc(50% - 10px);
+	margin-right: 5px;
+	margin-left: 5px;
 }
 .timeline-item.chosen .timeline-content .elab{
 	opacity: 1;
