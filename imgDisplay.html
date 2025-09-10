@@ -89,10 +89,34 @@
 			<div id="img-container"></div>
 		</div>
 		<script>
+			
 			const params = new URLSearchParams(window.location.search);
 			const imgAdd = params.get('img');
+			if (imgAdd[0] === '$'){
+				window.currentImgIndex = 0;
+				const imgAdds = imgAdd.split('$').slice(1)
+				
+				
+				function packRoatation(){					
+					if (!window.rotationPackedFlag) document.querySelector("#img-container #img").addEventListener('click', (e) => {
+						window.rotationPackedFlag = true;
+						const screenMiddle = window.innerWidth / 2;
+						const clickX = event.clientX;
+						if (clickX < screenMiddle) window.currentImgIndex += imgAdds.length - 1;
+						else window.currentImgIndex += 1;
+						window.currentImgIndex = window.currentImgIndex % imgAdds.length;
+						loadImg(imgAdds[window.currentImgIndex]);
+						window.rotationPackedFlag = false;
+						packRoatation();
+						window.rotationPackedFlag = true;
+					});
+				}
+				loadImg(imgAdds[0]);
+				packRoatation();
+			}
+			else loadImg(imgAdd);
 			const txtAdd = params.get('txt');
-			loadImg(imgAdd);
+			
 			if (txtAdd) loadTxt(txtAdd);
 			else {
 				document.getElementById("text-container").classList.toggle("hidden", true);
