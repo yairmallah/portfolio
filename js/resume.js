@@ -102,11 +102,32 @@ function buildTimeline(data) {
 		);
 	}
 	function sortElab(elabFull, ind, parentName){
+		function genImgList(){
+			const urlList = elabFull.split("$");
+			if (urlList.length >= 4) return `<div class="image-list" id="${parentName.title}-elab-${ind}" data-links="${'$'+urlList.join('$')}">
+				<img class="image-from-list image-small" src="${urlList[0]}" data-order="0"></img>
+				<img class="image-from-list image-small" src="${urlList[1]}" data-order="1"></img>
+				<img class="image-from-list image-small" src="${urlList[2]}" data-order="2"></img>
+				<img class="image-from-list image-small" src="${urlList[3]}" data-order="3"></img>
+			</div>`;
+			else if (urlList.length == 3) return `<div class="elab image-list" id="${parentName.title}-elab-${ind}" data-links="${'$'+urlList.join('$')}">
+				<img class="image-from-list image-big" src="${urlList[0]}" data-order="0"></img>
+				<img class="image-from-list image-small" src="${urlList[1]}" data-order="1"></img>
+				<img class="image-from-list image-small" src="${urlList[2]}" data-order="2"></img>
+			</div>`;
+			else if (urlList.length == 2) return `<div class="elab image-list" id="${parentName.title}-elab-${ind}" data-links="${'$'+urlList.join('$')}">
+				<img class="image-from-list image-big" src="${urlList[0]}" data-order="0"></img>
+				<img class="image-from-list image-big" src="${urlList[1]}" data-order="1"></img>
+			</div>`;
+			else return `<img class="elab ${prefix}" id="${parentName.title}-elab-${ind}" src="${elabFull}"></img>`;
+		}
 		const prefix = elabFull[0];
 		elabFull = elabFull.substring(1, elabFull.length);
 		if (prefix === "t") return `<div class="elab ${prefix}" id="${parentName.title}-elab-${ind}">${parseElab(elabFull)}</div>`;
-		if (prefix === "i") return `<img class="elab ${prefix}" id="${parentName.title}-elab-${ind}" src="${elabFull}"></img>`;
 		if (prefix === "v") return `<video class="elab ${prefix}" id="${parentName.title}-elab-${ind}" src="${elabFull}" muted></video>`;
+		if (prefix === "i") return `<img class="elab ${prefix}" id="${parentName.title}-elab-${ind}" src="${elabFull}"></img>`;
+		if (prefix === "$") return genImgList();
+		
 	}
 
 	const timelineGrid = document.createElement("div");
@@ -315,7 +336,6 @@ function packEvents(){
 		prevPage.src = `https://yairmallah.github.io/portfolio/imgDisplay.html?${dataLink}`;
 	}
 	document.querySelectorAll(".elab-link").forEach(el => {el.addEventListener("click", () => presLink(el.dataset.link));});
-	document.querySelectorAll(".elab.i").forEach(el => {el.addEventListener("click", () => presLink(`img=${el.src}`));});
 	document.querySelector("body").addEventListener("click", e => {
 		if (e.target === document.querySelector("#timeline-grid")) clearChosenTimlineElenets();;
 		if (!e.target.closest("#timeline-grid")) clearChosenTimlineElenets();;
@@ -328,6 +348,22 @@ function packEvents(){
 		el.addEventListener("mouseenter", () => el.classList.toggle("chosen-sub", true));
 		el.addEventListener("mouseleave", () => el.classList.toggle("chosen-sub", false));
 	});
+	document.querySelectorAll(".elab.i").forEach(el => {el.addEventListener("click", () => presLink(`img=${el.src}`));});
+	document.querySelectorAll(".elab.image-list .image-from-list").forEach(el => {
+		const links = el.parentElement.dataset.links;
+		let parts = links.substring(1, links.length).split("$");
+		let n = parseInt(el.dataset.order);
+		n = ((n % parts.length) + parts.length) % parts.length;
+		const shifted = parts.slice(n).concat(parts.slice(0, n));
+		console.log(shifted);
+		console.log(parts);
+		console.log(n);
+		console.log(el.parentElement);
+		console.log(links);
+		
+		el.addEventListener("click", () => presLink(`img=${"$" + shifted.join("$")}`));
+	});
+	
 	document.querySelectorAll(".show-mark").forEach(el => {
 		el.addEventListener("click", () => {
 			if (!el.classList.contains("hide")) generateTextAnim(el);
