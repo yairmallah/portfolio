@@ -106,8 +106,10 @@
 						else window.currentImgIndex += 1;
 						window.currentImgIndex = window.currentImgIndex % imgAdds.length;
 						loadImg(imgAdds[window.currentImgIndex]);
+						
 						window.rotationPackedFlag = false;
 						packRoatation();
+						document.querySelector("#img-container #img").style.maxWidth = "100%";
 						window.rotationPackedFlag = true;
 					});
 				}
