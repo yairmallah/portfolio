@@ -104,7 +104,7 @@ function buildTimeline(data) {
 	function sortElab(elabFull, ind, parentName){
 		function genImgList(){
 			const urlList = elabFull.split("$");
-			if (urlList.length >= 4) return `<div class="image-list" id="${parentName.title}-elab-${ind}" data-links="${'$'+urlList.join('$')}">
+			if (urlList.length >= 4) return `<div class="elab image-list" id="${parentName.title}-elab-${ind}" data-links="${'$'+urlList.join('$')}">
 				<img class="image-from-list image-small" src="${urlList[0]}" data-order="0"></img>
 				<img class="image-from-list image-small" src="${urlList[1]}" data-order="1"></img>
 				<img class="image-from-list image-small" src="${urlList[2]}" data-order="2"></img>
