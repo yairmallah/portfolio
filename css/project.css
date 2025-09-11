@@ -121,11 +121,15 @@
 	background-size: cover;
 }
 .comp-draw{
-	filter: invert(1) hue-rotate(var(--hueRotDraw)) blur(0.4px);
+	filter: invert(1) hue-rotate(var(--hueRotDraw));
 	mix-blend-mode: difference;
 }
 .comp-draw-inv{
 	filter: hue-rotate(var(--hueRotDraw));
+	mix-blend-mode: difference;
+}
+.comp-draw-low-sat{
+	filter: invert(1) hue-rotate(var(--hueRotDraw)) saturate(0.3);
 	mix-blend-mode: difference;
 }
 .comp-photo-to-gry{
