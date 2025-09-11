@@ -1,26 +1,26 @@
 {
   "text": {
-	"title": "יפו 86",
-	"textR": "על רחוב יפו הראשי בירושלים מיקמתי קמפוס לחקלאות במוטיבציה לייצר חקלאות ניסיונית בתנאים אורבניים. תוכניות המבנה משתנות דרמתית מקומה לקומה כדי לאפשר לאור להגיע לכל חלקי המבנה, ולייצר חלוקה עשירה בין חללי פנים וחוץ.</br>בתכנון שילבתי מבנה היסטורי ובניה חדשה, כדי לייצר קמפוס עירוני מתפקד יחד עם אזורים לקהילה ולהסברה ושטחי חקלאות שמישים.",
-	"program": "מבנה ציבור | אקדמיה",
-	"loaction": "יפו 86, ירושלים",
-	"date": "מרץ 2023 - יולי 2023",
-	"area": "4,000",
-	"units": "m",
-	"status": "לא נבנה | סטודנטיאלי"
+    "title": "יפו 86",
+    "textR": "על רחוב יפו הראשי בירושלים מיקמתי קמפוס לחקלאות במוטיבציה לייצר חקלאות ניסיונית בתנאים אורבניים. תוכניות המבנה משתנות דרמתית מקומה לקומה כדי לאפשר לאור להגיע לכל חלקי המבנה, ולייצר חלוקה עשירה בין חללי פנים וחוץ.</br>בתכנון שילבתי מבנה היסטורי ובניה חדשה, כדי לייצר קמפוס עירוני מתפקד יחד עם אזורים לקהילה ולהסברה ושטחי חקלאות שמישים.",
+    "program": "מבנה ציבור | אקדמיה",
+    "loaction": "יפו 86, ירושלים",
+    "date": "מרץ 2023 - יולי 2023",
+    "area": "4,000",
+    "units": "m",
+    "status": "לא נבנה | סטודנטיאלי"
   },
   "grid": {
     "columns": "repeat(6, 1fr)",
-    "rows": "repeat(6, 1fr)",
-    "gap": "1vw",
-    "ratio": "4 / 3"
+    "rows": "repeat(9, 1fr)",
+    "gap": "0.7vw",
+    "ratio": "32 / 27"
   },
   "images": [
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png",
       "title": "הדמיה | קומה 3",
-      "gridColumn": "4 / 7",
-      "gridRow": "1 / 4",
+      "gridColumn": "1 / 3",
+      "gridRow": "8 / 10",
       "objectFit": "cover",
       "rotation": "0",
       "classCSS": "comp-photo"
@@ -28,66 +28,99 @@
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/sec.png",
       "title": "חתך | כל המתחם",
-      "gridColumn": "4 / 7",
-      "gridRow": "4 / 7",
+      "gridColumn": "3 / 7",
+      "gridRow": "6 / 10",
       "objectFit": "cover",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/ground%20200.png",
       "title": "תוכנית | קומת קרקע - כל המבנה",
-      "gridColumn": "1 / 4",
-      "gridRow": "1 / 3",
-      "objectFit": "contain",
+      "gridColumn": "3 / 6",
+      "gridRow": "3 / 6",
+      "objectFit": "cover",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/4%20100.png",
       "title": "תוכנית | קומה 4",
-      "gridColumn": "3 / 4",
-      "gridRow": "3 / 5",
+      "gridColumn": "6 / 7",
+      "gridRow": "5 / 6",
       "objectFit": "cover",
-      "rotation": "90"
+      "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/3%20100.png",
       "title": "תוכנית | קומה 3",
-      "gridColumn": "2 / 3",
-      "gridRow": "3 / 5",
+      "gridColumn": "6 / 7",
+      "gridRow": "4 / 5",
       "objectFit": "cover",
-      "rotation": "90"
+      "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/2%20100.png",
       "title": "תוכנית | קומה 2",
-      "gridColumn": "1 / 2",
-      "gridRow": "3 / 5",
+      "gridColumn": "6 / 7",
+      "gridRow": "3 / 4",
       "objectFit": "cover",
-      "rotation": "90"
+      "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/-1%20100.png",
       "title": "תוכנית | קומה 1-",
       "gridColumn": "1 / 2",
-      "gridRow": "5 / 7",
+      "gridRow": "2 / 3",
       "objectFit": "cover",
-      "rotation": "90"
+      "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/0%20100.png",
       "title": "תוכנית | קומת קרקע",
       "gridColumn": "2 / 3",
-      "gridRow": "5 / 7",
+      "gridRow": "2 / 3",
       "objectFit": "cover",
-      "rotation": "90"
+      "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/1%20100.png",
       "title": "תוכנית | קומה 1",
-      "gridColumn": "3 / 4",
-      "gridRow": "5 / 7",
+      "gridColumn": "6 / 7",
+      "gridRow": "2 / 3",
       "objectFit": "cover",
-      "rotation": "90"
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s6/roof.png",
+      "title": "תוכנית | קומת גגות",
+      "gridColumn": "1 / 3",
+      "gridRow": "4 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-draw-low-sat"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s6/smap.png",
+      "title": "סכמה | חשיפה לשמש",
+      "gridColumn": "1 / 3",
+      "gridRow": "6 / 8",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s6/sec2.png",
+      "title": "חתך | המבנה הישן",
+      "gridColumn": "4 / 6",
+      "gridRow": "1 / 3",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s6/0t100.png",
+      "title": "תוכנית | המבנה הישן",
+      "gridColumn": "3 / 4",
+      "gridRow": "2 / 3",
+      "objectFit": "cover",
+      "rotation": "0"
     }
   ]
 }
