@@ -80,6 +80,7 @@
     "projects/s10.json",
     "projects/s4.json",
     "projects/s6.json",
+    "projects/s6t.json",
     "projects/s7.json",
     "projects/s8.json",
     "projects/s8t.json",
@@ -175,6 +176,7 @@
   "imgs/s6": [
     "imgs/s6/-1 100.png",
     "imgs/s6/0 100.png",
+    "imgs/s6/0t100.png",
     "imgs/s6/1 100.png",
     "imgs/s6/2 100.png",
     "imgs/s6/3 100.png",
