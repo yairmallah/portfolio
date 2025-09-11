@@ -83,13 +83,13 @@
 }
 .grid-line-x {
 	width: var(--gridGap);
-	height: 120%;
-	top: -10%;
+	height: 100%;
+	top: 0;
 }
 .grid-line-y {
 	height: var(--gridGap);
-	width: 120%;
-	left: -10%;
+	width: 100%;
+	left: 0;
 }
 .wave-dot {
 	position: absolute;
