@@ -39,10 +39,11 @@ function applyRotatedBackground(div, imageSrc, angleDeg, objectFit = 'cover') {
 			ctx.drawImage(img, -width / 2, -height / 2);
 
 			// Use canvas as background image
-			div.style.backgroundImage = `url('${canvas.toDataURL()}')`;
+			/*div.style.backgroundImage = `url('${canvas.toDataURL()}')`;
 			div.style.backgroundSize = objectFit;
 			div.style.backgroundRepeat = 'no-repeat';
-			div.style.backgroundPosition = 'center';
+			div.style.backgroundPosition = 'center';*/
+			div.src = canvas.toDataURL();
 		}
 		catch(e) {console.warn("rotationg img aborted due to ", e);}
 	};
@@ -218,7 +219,7 @@ fetch(jsonFile)
 		const rows_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridRows'));
 		const cols_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridColumns'));
 		let p_sum = 0;
-		for (let i = 1; i <= cols_temp.length; i ++){
+		for (let i = 1; i < cols_temp.length; i ++){
 			const line = document.createElement('line');
 			line.className = 'grid-line grid-line-x';
 			line.id = `r${i}`;
@@ -226,8 +227,9 @@ fetch(jsonFile)
 			line.style.left = `calc(${p_sum}% - ${(cols_temp.length - i) * parseFloat(data.grid.gap) / cols_temp.length}vw)`;
 			container.appendChild(line);
 		}
+		
 		p_sum = 0;
-		for (let i = 1; i <= rows_temp.length; i ++){
+		for (let i = 1; i < rows_temp.length; i ++){
 			const line = document.createElement('line');
 			line.className = 'grid-line grid-line-y';
 			line.id = `c${i}`;
@@ -248,8 +250,11 @@ fetch(jsonFile)
 				el.playsInline = true;
 				el.src = item.src;
 			} else {
-				el = document.createElement('div');
-				el.style.backgroundImage = `url('${item.src}')`;
+				/*el = document.createElement('div');
+				el.style.backgroundImage = `url('${item.src}')`;*/
+				el = document.createElement('img');
+				el.src = `${item.src}`;
+				el.loading = "lazy";
 				
 				if (item.rotation && item.rotation != 0) applyRotatedBackground(el, item.src, item.rotation, (item.objectFit || 'cover'));
 			}
