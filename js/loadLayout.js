@@ -254,7 +254,7 @@ fetch(jsonFile)
 				el.style.backgroundImage = `url('${item.src}')`;*/
 				el = document.createElement('img');
 				el.src = `${item.src}`;
-				el.loading = "lazy";
+				//el.loading = "lazy";
 				
 				if (item.rotation && item.rotation != 0) applyRotatedBackground(el, item.src, item.rotation, (item.objectFit || 'cover'));
 			}
@@ -287,6 +287,9 @@ fetch(jsonFile)
 
 		document.getElementById("block-bg").addEventListener('click', () => {
 			document.getElementById("block-bg").classList.toggle('hidden', true);
+		});
+		document.querySelectorAll(".placed-img").forEach( el => {
+			if (el.className.includes("draw")) el.classList.add("gpu-downscale");
 		});
 		
 		
