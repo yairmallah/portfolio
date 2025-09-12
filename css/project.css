@@ -114,7 +114,13 @@
 	background-size: contain;
 	object-fit: contain;
 	background-position: center;
+	/*image-rendering: -webkit-optimize-contrast;*/
+	/*image-rendering: optimizeQuality;*/
 	/*transition: all 3s ease;	*/
+}
+.placed-img.gpu-downscale{
+	will-change: transform;
+	transform: translateZ(0);
 }
 .comp-contain{
 	object-fit: contain;
