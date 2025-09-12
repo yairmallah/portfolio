@@ -72,7 +72,7 @@
       "gridRow": "2 / 3",
       "objectFit": "contain",
       "rotation": "0",
-	  "additionals": [["style.backgroundColor", "#000"]],
+	  "additionals": [["style.backgroundColor", "#000"]]
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s6/0%20100.png",
