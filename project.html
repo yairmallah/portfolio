@@ -10,10 +10,16 @@
 		<script>
 			window.add_dark_vals = {true: {
 				"--hueRotDraw": "180deg",
-				"--softBright": "80%"
+				"--softBright": "80%",
+				"--canvasBlendMode": "screen",
+				"--canvasFilter": "invert(1) hue-rotate(var(--hueRotDraw))",
+				"--canvasOpacity": "1"
 			}, false: {
 				"--hueRotDraw": "0deg",
-				"--softBright": "200%"
+				"--softBright": "200%",
+				"--canvasBlendMode": "multiply",
+				"--canvasFilter": "none",
+				"--canvasOpacity": "1"
 			}};
 		</script>
 	</head>
