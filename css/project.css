@@ -100,18 +100,20 @@
 }
 .wave-dot {
 	position: absolute;
-	width: calc(var(--gridGap) / 2);
-	height: calc(var(--gridGap) / 2);
+	width: calc(var(--gridGap) / 3);
+	height: calc(var(--gridGap) / 3);
 	border-radius: 50%;
-	background: color-mix(in srgb, var(--invBg) 30%, #80808080);
+	background: color-mix(in srgb, var(--invBg) 30%, #ffff0060);
 	pointer-events: none;
 	z-index: 10;
+	clip-path: inset(0);
 }
 .placed-img {
 	position: absolute;
 	height:100%;
 	width:100%;
 	display: block;
+	opacity: 1;
 	z-index: var(--imgsZ);
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -119,7 +121,10 @@
 	background-position: center;
 	/*image-rendering: -webkit-optimize-contrast;*/
 	/*image-rendering: optimizeQuality;*/
-	/*transition: all 3s ease;	*/
+	transition: opacity 0.8s ease;
+}
+.placed-img.fade{
+	opacity:0;
 }
 .placed-img.gpu-downscale{
 	will-change: transform;
