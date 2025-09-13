@@ -15,6 +15,15 @@ function reformat_grid_row_col(row, gap){
 function extract_percents(cssProp){
 	return percentages = [...cssProp.matchAll(/calc\(([\d.]+)%/g)].map(match => parseFloat(match[1]));
 }
+function loadIntoInternalCanvas(div, imageSrc){
+	
+}
+function copyInlineStyles(sourceEl, targetEl) {
+	for (let i = 0; i < sourceEl.style.length; i++) {
+		const prop = sourceEl.style[i];
+		targetEl.style[prop] = sourceEl.style.getPropertyValue(prop);
+	}
+}
 function applyRotatedBackground(div, imageSrc, angleDeg, objectFit = 'cover') {
 	const img = new Image();
 	img.onload = function () {
@@ -48,7 +57,6 @@ function applyRotatedBackground(div, imageSrc, angleDeg, objectFit = 'cover') {
 		catch(e) {console.warn("rotationg img aborted due to ", e);}
 	};
 	img.src = imageSrc;
-	
 }
 function setNestedProperty(obj, keyPath, value) {
 	const keys = keyPath.split('.');
@@ -61,6 +69,48 @@ function setNestedProperty(obj, keyPath, value) {
 	}
 
 	current[lastKey] = value; // Set the final value
+}
+function getRenderedImageSize(imgEl) {
+	const container = imgEl.getBoundingClientRect();
+	const cw = container.width;
+	const ch = container.height;
+	const iw = imgEl.naturalWidth;
+	const ih = imgEl.naturalHeight;
+	const isContain = imgEl.className.includes("contain");
+	let renderW, renderH;
+	if (!isContain) {
+		const scale = Math.max(cw / iw, ch / ih);
+		renderW = iw * scale;
+		renderH = ih * scale;
+
+	} else {
+		const scale = Math.min(cw / iw, ch / ih);
+		renderW = iw * scale;
+		renderH = ih * scale;
+
+	}
+	const offsetX = (cw - renderW) / 2;
+	const offsetY = (ch - renderH) / 2;
+	return { width: renderW, height: renderH, offsetY, offsetX};
+}
+function createSmoothCanvas(imgSrc, cellWidth, cellHeight, callback) {
+	const img = new Image();
+	img.src = imgSrc;
+	img.onload = () => {
+		// create canvas with desired output size
+		const canvas = document.createElement('canvas');
+		canvas.width = cellWidth * window.devicePixelRatio;   // support high-DPI
+		canvas.height = cellHeight * window.devicePixelRatio;
+		canvas.style.width = cellWidth * 2 + 'px';
+		canvas.style.height = cellHeight * 2 + 'px';
+
+		const ctx = canvas.getContext('2d');
+		ctx.imageSmoothingEnabled = true;
+		ctx.imageSmoothingQuality = 'high';
+
+		ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+		callback(canvas);
+	};
 }
 
 // General display values
@@ -213,7 +263,7 @@ fetch(jsonFile)
 		}
 		if (data.grid.ratio) {
 			document.documentElement.style.setProperty('--gridRatio', data.grid.ratio);
-		}
+		} 
 		
 		// Grid lines
 		const rows_temp = extract_percents(document.documentElement.style.getPropertyValue('--gridRows'));
@@ -240,6 +290,7 @@ fetch(jsonFile)
 		calculateJunctions();
 		
 		data.images.forEach(item => {
+			if (window.location.host === '127.0.0.4:8080') item.src = item.src.replace("https://yairmallah.github.io/portfolio/", "http://127.0.0.4:8080/"); //TODO delete 
 			let el;
 
 			if (item.src.substr(-3) === "mp4") {
@@ -254,13 +305,12 @@ fetch(jsonFile)
 				el.style.backgroundImage = `url('${item.src}')`;*/
 				el = document.createElement('img');
 				el.src = `${item.src}`;
-				//el.loading = "lazy";
-				
+				el.loading = "lazy";
 				if (item.rotation && item.rotation != 0) applyRotatedBackground(el, item.src, item.rotation, (item.objectFit || 'cover'));
 			}
 			
 			el.classList.add('placed-img');
-			el.style.setProperty('--rotation', `${item.rotation}deg`);
+			el.style.setProperty('--rotation', `${item.rotation}`);
 			if (item.classCSS) {
 				if (typeof item.classCSS  === 'object') item.classCSS.forEach( classCss => {el.classList.add(classCss);});
 				else el.classList.add(item.classCSS);
@@ -288,12 +338,36 @@ fetch(jsonFile)
 		document.getElementById("block-bg").addEventListener('click', () => {
 			document.getElementById("block-bg").classList.toggle('hidden', true);
 		});
-		document.querySelectorAll(".placed-img").forEach( el => {
-			if (el.className.includes("draw")) el.classList.add("gpu-downscale");
+		document.querySelectorAll(".placed-img").forEach(el => {
+			if (el.src.substr(-3) == "mp4") return;
+			if (!el.className.includes("draw")) return
+			el.classList.toggle("gpu-downscale", true);
+
+			/*el.addEventListener("load", ()=>{
+				//if (el.style.getPropertyValue("--rotation") && el.style.getPropertyValue("--rotation") != '0') applyRotatedBackground(el, el.src, parseInt(el.style.getPropertyValue("--rotation")), el.className.includes("contaion")?  "contain" : "cover");
+				
+				const rect = getRenderedImageSize(el);
+				const pixelWidth = rect.width;
+				const pixelHeight = rect.height;
+				createSmoothCanvas(el.src, pixelWidth, pixelHeight, (canvas) => {
+					//canvas.className = el.className;
+					const canvasContainer = document.createElement("div");
+					canvasContainer.className = el.className;
+					copyInlineStyles(el, canvasContainer);
+					const dataURL = canvas.toDataURL("image/png");
+					canvasContainer.style.backgroundImage = `url(${dataURL})`;
+					canvasContainer.classList.toggle("gpu-downscale", false);
+					canvasContainer.classList.toggle("canvas-overlay", true);
+					const upperContainer = document.createElement("div");
+					upperContainer.style.gridRow = el.style.gridRow;
+					upperContainer.style.gridColumn = el.style.gridColumn;
+					//upperContainer.appendChild(el);
+					//upperContainer.appendChild(canvasContainer);
+					//upperContainer.style.filter = "contrast(2)";
+					container.appendChild(canvasContainer);
+				});
+			});*/
 		});
-		
-		
-		
 		
 		/*document.querySelectorAll('.placed-img').forEach(img => {
 			img.addEventListener('mouseenter', (e) => {
