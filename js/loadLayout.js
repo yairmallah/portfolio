@@ -309,7 +309,8 @@ fetch(jsonFile)
 				if (item.rotation && item.rotation != 0) applyRotatedBackground(el, item.src, item.rotation, (item.objectFit || 'cover'));
 			}
 			
-			el.classList.add('placed-img');
+			el.classList.toggle('placed-img', true);
+			el.classList.toggle('fade', true);
 			el.style.setProperty('--rotation', `${item.rotation}`);
 			if (item.classCSS) {
 				if (typeof item.classCSS  === 'object') item.classCSS.forEach( classCss => {el.classList.add(classCss);});
@@ -339,11 +340,22 @@ fetch(jsonFile)
 			document.getElementById("block-bg").classList.toggle('hidden', true);
 		});
 		document.querySelectorAll(".placed-img").forEach(el => {
-			if (el.src.substr(-3) == "mp4") return;
-			if (!el.className.includes("draw")) return
-			el.classList.toggle("gpu-downscale", true);
-
-			/*el.addEventListener("load", ()=>{
+			el.addEventListener("load", ()=>{
+				setTimeout(() => {
+					el.classList.toggle("fade", false);
+					if (params.get('activewave')){
+						const rect = el.getBoundingClientRect();
+						const containerRect = container.getBoundingClientRect();
+						const corners = [
+							{ x: rect.left - containerRect.left, y: rect.top - containerRect.top }, // top-left
+							{ x: rect.right - containerRect.left, y: rect.top - containerRect.top }, // top-right
+							{ x: rect.right - containerRect.left, y: rect.bottom - containerRect.top }, // bottom-right
+							{ x: rect.left - containerRect.left, y: rect.bottom - containerRect.top } // bottom-left
+						];
+						corners.forEach(corner => {if (Math.random() > 0.3) emitWave(corner.x, corner.y)});
+					}
+				}, Math.random() * 3000);
+				/*
 				//if (el.style.getPropertyValue("--rotation") && el.style.getPropertyValue("--rotation") != '0') applyRotatedBackground(el, el.src, parseInt(el.style.getPropertyValue("--rotation")), el.className.includes("contaion")?  "contain" : "cover");
 				
 				const rect = getRenderedImageSize(el);
@@ -365,8 +377,11 @@ fetch(jsonFile)
 					//upperContainer.appendChild(canvasContainer);
 					//upperContainer.style.filter = "contrast(2)";
 					container.appendChild(canvasContainer);
-				});
-			});*/
+				});*/
+			});
+			if (el.src.substr(-3) == "mp4") return;
+			if (!el.className.includes("draw")) return
+			el.classList.toggle("gpu-downscale", true);
 		});
 		
 		/*document.querySelectorAll('.placed-img').forEach(img => {
