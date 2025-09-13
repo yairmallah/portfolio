@@ -5,6 +5,9 @@
 	--hueRotDraw: 180deg;
 	--softBright: 100;
 	--chosenImageZoom: 1;
+	--canvasBlendMode: screen;
+	--canvasFilter: invert(1) hue-rotate(var(--hueRotDraw));
+	--canvasOpacity: 1;
 }
 #text-right{
 	transition: width 0.3s ease;
@@ -121,6 +124,12 @@
 .placed-img.gpu-downscale{
 	will-change: transform;
 	transform: translateZ(0);
+}.placed-img.canvas-overlay{
+	mix-blend-mode: var(--canvasBlendMode);
+	filter: var(--canvasFilter);
+	opacity: var(--canvasOpacity);
+	pointer-events: none;
+	transition: opacity 0.5s ease;
 }
 .comp-contain{
 	object-fit: contain;
