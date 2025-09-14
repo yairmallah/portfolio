@@ -369,7 +369,7 @@ fetch(jsonFile)
 						];
 						corners.forEach(corner => {if (Math.random() > 0.3) emitWave(corner.x, corner.y)});
 					}
-				}, Math.random() * 3000);
+				}, Math.random() * 1500);
 				/*
 				//if (el.style.getPropertyValue("--rotation") && el.style.getPropertyValue("--rotation") != '0') applyRotatedBackground(el, el.src, parseInt(el.style.getPropertyValue("--rotation")), el.className.includes("contaion")?  "contain" : "cover");
 				
