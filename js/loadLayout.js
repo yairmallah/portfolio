@@ -341,7 +341,8 @@ fetch(jsonFile)
 		});
 		document.querySelectorAll(".placed-img").forEach(el => {
 			el.addEventListener("load", ()=>{
-				setTimeout(() => {
+				if (el.src.substr(-3) == "mp4") el.classList.toggle("fade", false);
+				else setTimeout(() => {
 					el.classList.toggle("fade", false);
 					if (params.get('activewave')){
 						const rect = el.getBoundingClientRect();
