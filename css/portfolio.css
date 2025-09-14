@@ -36,7 +36,19 @@
 	grid-template-rows: 80% 20%;
 	grid-template-columns: 100%;
 }
+@property --inner {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+@property --outer {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 2%;
+}
 .project-icon-container{
+	--inner: 0%;
+	--outer: 2%;
 	margin: auto;
 	width: 17vh;
 	height: 17vh;
@@ -45,13 +57,19 @@
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
-	transition: scale 1s ease-out;
+	transition: scale 1s ease-out, --inner 4s ease-out, --outer 4s ease-out;
 	background: var(--bgBody);
 	border-radius: 100%;
-	mask: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 70%);
+	mask: radial-gradient(circle, rgba(0,0,0,1) var(--inner), rgba(0,0,0,0) var(--outer));
 	cursor: pointer;
 }
-
+.project-icon-container:hover{
+	scale: 1.7;
+}
+.project-icon-container.reveal {
+	--inner: 60%;
+	--outer: 70%;
+}
 .project-icon{
 	min-width: 100%;
 	min-height: 100%;
