@@ -340,9 +340,23 @@ fetch(jsonFile)
 			document.getElementById("block-bg").classList.toggle('hidden', true);
 		});
 		document.querySelectorAll(".placed-img").forEach(el => {
-			el.addEventListener("load", ()=>{
-				if (el.src.substr(-3) == "mp4") el.classList.toggle("fade", false);
-				else setTimeout(() => {
+			if (el.src.substr(-3) == "mp4") setTimeout(() => {
+					el.classList.toggle("fade", false);
+					if (params.get('activewave')){
+						const rect = el.getBoundingClientRect();
+						const containerRect = container.getBoundingClientRect();
+						const corners = [
+							{ x: rect.left - containerRect.left, y: rect.top - containerRect.top }, // top-left
+							{ x: rect.right - containerRect.left, y: rect.top - containerRect.top }, // top-right
+							{ x: rect.right - containerRect.left, y: rect.bottom - containerRect.top }, // bottom-right
+							{ x: rect.left - containerRect.left, y: rect.bottom - containerRect.top } // bottom-left
+						];
+						corners.forEach(corner => {if (Math.random() > 0.3) emitWave(corner.x, corner.y)});
+					}
+				}, 20);
+			
+			else el.addEventListener("load", ()=>{
+				setTimeout(() => {
 					el.classList.toggle("fade", false);
 					if (params.get('activewave')){
 						const rect = el.getBoundingClientRect();
