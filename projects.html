@@ -38,6 +38,7 @@
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs10.jpg', 'הספריה הלאומית הישנה', 'photo-brighter', 'projects/s10.json'],
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bdbt4.png', 'אהיל', 'pre-draw-bw', 'projects/dbt4.json']
 					];
+					const imgEndings = [".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp"];
 					var col_count = 4;
 					if (isMobileDevice()){
 						col_count = 1;
@@ -65,7 +66,11 @@
 									const actualButton = document.createElement("div");
 									actualButton.className = 'project-icon-container';
 									actualButton.setAttribute('data-link', linkVal);
-									actualButton.innerHTML = '<img class="project-icon '+classVal+'" src="'+imgSrc+'" alt=""/>'
+									const imgObj = document.createElement("img");
+									imgObj.src = imgSrc;
+									imgObj.classList.add("project-icon", classVal);
+									imgObj.alt = title;
+									actualButton.appendChild(imgObj);
 									
 									const titleElement = document.createElement("p");
 									titleElement.className = 'project-title';
@@ -75,6 +80,7 @@
 									buttonWrapper.appendChild(titleElement);
 									
 									cell.appendChild(buttonWrapper);
+									
 								}
 
 								row.appendChild(cell);
@@ -91,6 +97,18 @@
 							window.location.href = 'project.html?file=' + this.getAttribute("data-link");
 						});
 					});
+					document.querySelectorAll("img.project-icon").forEach(img => {
+						if (imgEndings.includes(img.src.substr(-4)) || imgEndings.includes(imgSrc.substr(-5))){
+							img.addEventListener("load", () => {
+								setTimeout(() => {
+									img.parentElement.classList.toggle("reveal", true);
+								}, Math.random() * 4000);
+							});
+						}
+						else setTimeout(() => {
+							img.parentElement.classList.toggle("reveal", true);
+						}, 50);
+					});
 					
 				</script>
 				<script>
@@ -100,8 +118,6 @@
 						d.classList.forEach(cls => {if (cls.includes('bw')) inv_flag = true;});
 						d.style.filter = inv_flag ? "invert(1) hue-rotate("+ window.add_dark_vals[sessionStorage.getItem("isDark") || true]["--drawHueRot"] +")" : "none";
 					})});
-					document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.scale="";})});
-					document.querySelectorAll(".project-icon-container").forEach(d=>{d.addEventListener('mouseenter', () =>{d.style.scale="1.7";})});
 				</script>
 			</div>
 		</div>
