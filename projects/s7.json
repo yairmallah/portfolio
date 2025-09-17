@@ -99,7 +99,15 @@
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/s7/table.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableR.jpg",
+      "title": "טבלה | כניסת אור שמש בימות השנה",
+      "gridColumn": "4 / 8",
+      "gridRow": "5 / 9",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableEL.jpg",
       "title": "טבלה | כניסת אור שמש בימות השנה",
       "gridColumn": "4 / 8",
       "gridRow": "5 / 9",
