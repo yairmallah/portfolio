@@ -188,11 +188,13 @@
     "imgs/s6/smap.png"
   ],
   "imgs/s7": [
-    "imgs/s7/cont1.jpg",
+    "imgs/s7/clock.png",
+    "imgs/s7/cont1.png",
     "imgs/s7/cont2.png",
     "imgs/s7/eled.png",
     "imgs/s7/elen.png",
     "imgs/s7/elenor.png",
+    "imgs/s7/exp.png",
     "imgs/s7/gschem.png",
     "imgs/s7/isocer.png",
     "imgs/s7/isocon.png",
@@ -201,7 +203,10 @@
     "imgs/s7/pground.png",
     "imgs/s7/psub.png",
     "imgs/s7/ptyp.png",
-    "imgs/s7/table.jpg"
+    "imgs/s7/table.jpg",
+    "imgs/s7/tableEL.png",
+    "imgs/s7/tableR.png",
+    "imgs/s7/vol.png"
   ],
   "imgs/s8": [
     "imgs/s8/GgifT.mp4",
