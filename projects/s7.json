@@ -72,7 +72,8 @@
       "gridColumn": "1 / 2",
       "gridRow": "3 / 6",
       "objectFit": "cover",
-      "rotation": "0"
+      "rotation": "0",
+      "classCSS": "comp-photo"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/isocer.png",
@@ -99,7 +100,7 @@
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableR.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableR.png",
       "title": "טבלה | כניסת אור שמש בימות השנה",
       "gridColumn": "4 / 8",
       "gridRow": "5 / 9",
@@ -107,7 +108,7 @@
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableEL.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableEL.png",
       "title": "טבלה | כניסת אור שמש בימות השנה",
       "gridColumn": "4 / 8",
       "gridRow": "5 / 9",
@@ -121,15 +122,17 @@
       "gridColumn": "4 / 6",
       "gridRow": "3 / 5",
       "objectFit": "cover",
-      "rotation": "0"
+      "rotation": "0",
+      "classCSS": "comp-photo"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/s7/cont1.jpg",
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/cont1.png",
       "title": "מיפוי | צל בסמטה לפני החירור",
       "gridColumn": "6 / 8",
       "gridRow": "3 / 5",
       "objectFit": "cover",
-      "rotation": "0"
+      "rotation": "0",
+      "classCSS": "comp-photo"
     }
   ]
 }
