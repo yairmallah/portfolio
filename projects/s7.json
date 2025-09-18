@@ -1,58 +1,50 @@
 {
   "text": {
-	"title": "שוקן 2",
-	"textR": "הפרוייקט מתמקד בנסיון להכניס אור שמש לסמטה חשוכה. חוררתי את הבניין המזרחי, שחוסם כניסת אור שמש לסמטה בבוקר. תוך כדי כך נוצרה תוכנית קומה מאתגרת, עם הגבלות על אזורים בהם אסור לבנות קירות או רצפה. התוצאה היא מבנה שטוף שמש, שמאיר לתוך הסמטה ומכניס תאורה ואוויר לעצמו.",
-	"program": "מגורים",
-	"loaction": "שוקן 2, תל אביב",
-	"date": "דצמבר 2023 - מרץ 2024",
-	"area": "300",
-	"units": "m",
-	"status": "לא נבנה | סטודנטיאלי"
+    "title": "שוקן 2",
+    "textR": "הפרוייקט מתמקד בנסיון להכניס אור שמש לסמטה חשוכה. חוררתי את הבניין המזרחי, שחוסם כניסת אור שמש לסמטה בבוקר. תוך כדי כך נוצרה תוכנית קומה מאתגרת, עם הגבלות על אזורים בהם אסור לבנות קירות או רצפה. התוצאה היא מבנה שטוף שמש, שמאיר לתוך הסמטה ומכניס תאורה ואוויר לעצמו.",
+    "program": "מגורים",
+    "loaction": "שוקן 2, תל אביב",
+    "date": "דצמבר 2023 - מרץ 2024",
+    "area": "300",
+    "units": "m",
+    "status": "לא נבנה | סטודנטיאלי"
   },
   "grid": {
-    "columns": "repeat(7, 1fr)",
-    "rows": "repeat(8, 1fr)",
-    "gap": "1vw",
-    "ratio": "16 / 10"
+    "columns": "repeat(12, 1fr)",
+    "rows": "repeat(15, 1fr)",
+    "gap": "0.5vw",
+    "ratio": "10 / 7"
   },
   "images": [
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/psub.png",
       "title": "תוכנית קרקע | מפלס רחוב שוקן",
-      "gridColumn": "3 / 4",
-      "gridRow": "1 / 3",
+      "gridColumn": "5 / 7",
+      "gridRow": "7 / 10",
       "objectFit": "cover",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/pground.png",
       "title": "תוכנית קרקע | מפלס הסמטה",
-      "gridColumn": "2 / 3",
-      "gridRow": "1 / 3",
+      "gridColumn": "5 / 7",
+      "gridRow": "4 / 7",
       "objectFit": "cover",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/ptyp.png",
       "title": "תוכנית | קומת טיפוסית",
-      "gridColumn": "1 / 2",
-      "gridRow": "1 / 3",
+      "gridColumn": "5 / 7",
+      "gridRow": "1 / 4",
       "objectFit": "cover",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/s7/gschem.png",
-      "title": "דיאגרמה | חירור המבנה כדי להחדיר אור לסמטה",
-      "gridColumn": "4 / 8",
-      "gridRow": "1 / 3",
-      "objectFit": "contain",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/elen.png",
       "title": "חזית | לילה",
-      "gridColumn": "3 / 4",
-      "gridRow": "3 / 6",
+      "gridColumn": "1 / 3",
+      "gridRow": "10 / 16",
       "objectFit": "cover",
       "rotation": "0",
       "classCSS": "comp-photo"
@@ -60,8 +52,8 @@
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/eled.png",
       "title": "חזית | יום",
-      "gridColumn": "2 / 3",
-      "gridRow": "3 / 6",
+      "gridColumn": "3 / 5",
+      "gridRow": "10 / 16",
       "objectFit": "cover",
       "rotation": "0",
       "classCSS": "comp-photo"
@@ -69,8 +61,8 @@
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/elenor.png",
       "title": "חזית | רחוב שוקן",
-      "gridColumn": "1 / 2",
-      "gridRow": "3 / 6",
+      "gridColumn": "5 / 7",
+      "gridRow": "10 / 16",
       "objectFit": "cover",
       "rotation": "0",
       "classCSS": "comp-photo"
@@ -79,60 +71,92 @@
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/isocer.png",
       "title": "דיאגרמה | סרקולציה",
       "gridColumn": "2 / 3",
-      "gridRow": "6 / 9",
-      "objectFit": "cover",
+      "gridRow": "4 / 8",
+      "objectFit": "contain",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/isoen4.png",
       "title": "דיאגרמה | מעטפת",
-      "gridColumn": "1 / 2",
-      "gridRow": "6 / 9",
-      "objectFit": "cover",
+      "gridColumn": "3 / 5",
+      "gridRow": "4 / 10",
+      "objectFit": "contain",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/isocon.png",
       "title": "דיאגרמה | קונסטרוקציה",
-      "gridColumn": "3 / 4",
-      "gridRow": "6 / 9",
-      "objectFit": "cover",
+      "gridColumn": "1 / 2",
+      "gridRow": "4 / 8",
+      "objectFit": "contain",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableR.png",
       "title": "טבלה | כניסת אור שמש בימות השנה",
-      "gridColumn": "4 / 8",
-      "gridRow": "5 / 9",
+      "gridColumn": "7 / 13",
+      "gridRow": "10 / 16",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableEL.png",
       "title": "טבלה | כניסת אור שמש בימות השנה",
-      "gridColumn": "4 / 8",
-      "gridRow": "5 / 9",
+      "gridColumn": "7 / 13",
+      "gridRow": "10 / 16",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-photo"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/cont2.png",
-      "title": "סכמה | כניסת אור לסמטה אחרי החירור",
-      "gridColumn": "4 / 6",
-      "gridRow": "3 / 5",
-      "objectFit": "cover",
+      "title": "מיפוי | כניסת אור לסמטה אחרי החירור",
+      "gridColumn": "10 / 13",
+      "gridRow": "8 / 10",
+      "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-photo"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/s7/cont1.png",
       "title": "מיפוי | צל בסמטה לפני החירור",
-      "gridColumn": "6 / 8",
-      "gridRow": "3 / 5",
-      "objectFit": "cover",
+      "gridColumn": "10 / 13",
+      "gridRow": "1 / 3",
+      "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/exp.png",
+      "gridColumn": "12 / 13",
+      "gridRow": "3 / 8",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/vol.png",
+      "title": "דיאגרמה | נפח",
+      "gridColumn": "10 / 12",
+      "gridRow": "6 / 8",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/clock.png",
+      "title": "סכמה | קרני שמש בשעה 7:30 בארבעת העונות",
+      "gridColumn": "10 / 12",
+      "gridRow": "3 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/p.png",
+      "title": "תוכנית | חשיפה לשמש בקומה טיפוסית",
+      "gridColumn": "7 / 10",
+      "gridRow": "1 / 8",
+      "objectFit": "contain",
+      "rotation": "0"
     }
   ]
 }
