@@ -1,0 +1,138 @@
+{
+  "text": {
+	"title": "שוקן 2",
+	"textR": "הפרוייקט מתמקד בנסיון להכניס אור שמש לסמטה חשוכה. חוררתי את הבניין המזרחי, שחוסם כניסת אור שמש לסמטה בבוקר. תוך כדי כך נוצרה תוכנית קומה מאתגרת, עם הגבלות על אזורים בהם אסור לבנות קירות או רצפה. התוצאה היא מבנה שטוף שמש, שמאיר לתוך הסמטה ומכניס תאורה ואוויר לעצמו.",
+	"program": "מגורים",
+	"loaction": "שוקן 2, תל אביב",
+	"date": "דצמבר 2023 - מרץ 2024",
+	"area": "300",
+	"units": "m",
+	"status": "לא נבנה | סטודנטיאלי"
+  },
+  "grid": {
+    "columns": "repeat(7, 1fr)",
+    "rows": "repeat(8, 1fr)",
+    "gap": "1vw",
+    "ratio": "16 / 10"
+  },
+  "images": [
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/psub.png",
+      "title": "תוכנית קרקע | מפלס רחוב שוקן",
+      "gridColumn": "3 / 4",
+      "gridRow": "1 / 3",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/pground.png",
+      "title": "תוכנית קרקע | מפלס הסמטה",
+      "gridColumn": "2 / 3",
+      "gridRow": "1 / 3",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/ptyp.png",
+      "title": "תוכנית | קומת טיפוסית",
+      "gridColumn": "1 / 2",
+      "gridRow": "1 / 3",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/gschem.png",
+      "title": "דיאגרמה | חירור המבנה כדי להחדיר אור לסמטה",
+      "gridColumn": "4 / 8",
+      "gridRow": "1 / 3",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/elen.png",
+      "title": "חזית | לילה",
+      "gridColumn": "3 / 4",
+      "gridRow": "3 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/eled.png",
+      "title": "חזית | יום",
+      "gridColumn": "2 / 3",
+      "gridRow": "3 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/elenor.png",
+      "title": "חזית | רחוב שוקן",
+      "gridColumn": "1 / 2",
+      "gridRow": "3 / 6",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/isocer.png",
+      "title": "דיאגרמה | סרקולציה",
+      "gridColumn": "2 / 3",
+      "gridRow": "6 / 9",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/isoen4.png",
+      "title": "דיאגרמה | מעטפת",
+      "gridColumn": "1 / 2",
+      "gridRow": "6 / 9",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/isocon.png",
+      "title": "דיאגרמה | קונסטרוקציה",
+      "gridColumn": "3 / 4",
+      "gridRow": "6 / 9",
+      "objectFit": "cover",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableR.png",
+      "title": "טבלה | כניסת אור שמש בימות השנה",
+      "gridColumn": "4 / 8",
+      "gridRow": "5 / 9",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/tableEL.png",
+      "title": "טבלה | כניסת אור שמש בימות השנה",
+      "gridColumn": "4 / 8",
+      "gridRow": "5 / 9",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/cont2.png",
+      "title": "סכמה | כניסת אור לסמטה אחרי החירור",
+      "gridColumn": "4 / 6",
+      "gridRow": "3 / 5",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/s7/cont1.png",
+      "title": "מיפוי | צל בסמטה לפני החירור",
+      "gridColumn": "6 / 8",
+      "gridRow": "3 / 5",
+      "objectFit": "cover",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    }
+  ]
+}
