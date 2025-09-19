@@ -130,7 +130,7 @@
       "title": "סכמה | טיפוסים גאומטריים עירוניים",
       "gridColumn": "7 / 8",
       "gridRow": "8 / 9",
-      "objectFit": "contain",
+      "objectFit": "cover",
       "rotation": "0",
       "classCSS": "comp-photo"
     },
@@ -139,7 +139,7 @@
       "title": "מפה | אזורים צופים בירושלים",
       "gridColumn": "6 / 7",
       "gridRow": "8 / 9",
-      "objectFit": "contain",
+      "objectFit": "cover",
       "rotation": "0",
       "classCSS": "comp-photo"
     },
