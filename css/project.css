@@ -148,6 +148,10 @@
 	filter: invert(1) hue-rotate(var(--hueRotDraw));
 	mix-blend-mode: difference;
 }
+.comp-draw-brighter{
+	filter: invert(1) hue-rotate(var(--hueRotDraw)) brightness(3);
+	mix-blend-mode: difference;
+}
 .comp-draw-inv{
 	filter: hue-rotate(var(--hueRotDraw));
 	mix-blend-mode: difference;
