@@ -1,0 +1,104 @@
+:root{
+	--intSqrPosY: 30vh;
+	--intSqrPosX: 50vw;
+	--intSqrWidth: 15vw;
+	--intSqrHeight: 60vw;
+}
+#content-container{
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	background: var(--bgBody);
+}
+#contact-image{
+	background: linear-gradient(90deg, var(--bgBody) 0%, transparent 5%, transparent 95%, var(--bgBody) 100%), url(/imgs/floating/2.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: calc(var(--headerPer) * 2em);
+	height: 100%;
+	width: calc((100vw - var(--headerPer) * 2em) / 3 + 1%);
+	/*mix-blend-mode: exclusion;*/
+	filter: contrast(1.2);
+}
+#plus-shape{
+	position: absolute;
+	pointer-events: none;
+}#plus-shape #horizontal{
+	position: relative;
+	height: 2px;
+	width: 20px;
+	background: var(--invBg);
+	top: calc(var(--intSqrPosY) + 0px);
+	left: calc(10px - var(--intSqrPosX) + var(--intSqrWidth));
+}#plus-shape #vertical{
+	position: relative;
+	height: 20px;
+	width: 2px;
+	background: var(--invBg);
+	top: calc(var(--intSqrPosY) - 10px);
+	left: calc(2px - var(--intSqrPosX) + var(--intSqrWidth));
+}
+#contact-paragraph-wrappwer{
+	height: 100%;
+	position:absolute;
+	top: 0;
+	left: var(--intSqrPosX);
+	width: var(--intSqrWidth);
+	background: hsla(0, 0%, 50%, 0.2);
+	border-right: 1px dashed color-mix(in srgb, var(--invBg) 70%, transparent);
+	border-left: 1px dashed color-mix(in srgb, var(--invBg) 40%, transparent);
+}#contact-paragraph{
+	margin: 1em;
+	position: relative;
+	top: var(--intSqrPosY);
+}#contact-paragraph p{
+	text-align: justify;
+}
+#contact-info-wrappwer{
+	position: absolute;
+	top: var(--intSqrPosY);
+	width: 100vw;
+	right: 0;
+	background: hsla(0, 0%, 50%, 0.2);
+	direction: ltr;
+	border-top: 1px dashed color-mix(in srgb, var(--invBg) 70%, transparent);
+	border-bottom: 1px dashed color-mix(in srgb, var(--invBg) 40%, transparent);
+}
+#contact-info{
+	position:relative;
+	left: calc(var(--intSqrPosX) + var(--intSqrWidth));
+	width: calc(100% - var(--intSqrPosX) - var(--intSqrWidth));
+}
+.contact-info-item{
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 6em calc(100% - 6em);
+	gap: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.item-logo{
+	height: 100%;
+	width: 100%;
+	mix-blend-mode: exclusion;
+	filter: invert(1);
+	background: var(--logoIconUrl);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.item-logo#item-logo-me{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/fig.svg);
+}.item-logo#item-logo-phone{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/phone.svg);
+}.item-logo#item-logo-mail{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/mail.svg);
+}.item-logo#item-logo-site{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/site.svg);
+}
+#item-logo-name{
+	font-weight:bolder;
+}
