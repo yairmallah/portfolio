@@ -11,7 +11,7 @@
 	background: var(--bgBody);
 }
 #contact-image{
-	background: linear-gradient(90deg, var(--bgBody) 0%, transparent 5%, transparent 95%, var(--bgBody) 100%), url(/imgs/floating/2.png);
+	background: linear-gradient(90deg, black 0%, transparent 5%, transparent 95%, black 100%), url(/imgs/floating/5.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -20,8 +20,8 @@
 	left: calc(var(--headerPer) * 2em);
 	height: 100%;
 	width: calc((100vw - var(--headerPer) * 2em) / 3 + 1%);
-	/*mix-blend-mode: exclusion;*/
-	filter: contrast(1.2);
+	mix-blend-mode: exclusion;
+	filter: grayscale(0.7);
 }
 #plus-shape{
 	position: absolute;
