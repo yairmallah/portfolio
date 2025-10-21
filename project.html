@@ -6,15 +6,14 @@
 		<link rel="icon" href="./imgs/sys/fav.svg" sizes="any">
 		<title>project</title>
 		<link rel="stylesheet" type="text/css" href="css\general.css"/>
-		<link rel="stylesheet" type="text/css" href="css\project.css"/>
 		<script>
 			const link = document.createElement("link");
 			link.rel = "stylesheet";
 			link.type = "text/css";
 			if (window.innerWidth <= 768) {
-				link.href = "css/project.css";
-			} else {
 				link.href = "css/project-mobile.css";
+			} else {
+				link.href = "css/project.css";
 			}
 			document.head.appendChild(link);
 		</script>
@@ -40,12 +39,11 @@
 		<div id="content-container-wrapper">
 			<div id="content-container">
 				<div id="text-left" class="active"></div>
+				<div id="text-right" class="active"></div>
 				<div id="layout-container">
 					<div id="block-bg" class="hidden"></div>
 					<div id="toggle-layout-button"></div>
 				</div>
-				<div id="text-right" class="active"></div>
-				
 				<script src="js/loadLayout.js"></script>
 			</div>
 		</div>
