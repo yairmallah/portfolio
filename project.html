@@ -8,6 +8,17 @@
 		<link rel="stylesheet" type="text/css" href="css\general.css"/>
 		<link rel="stylesheet" type="text/css" href="css\project.css"/>
 		<script>
+			const link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.type = "text/css";
+			if (window.innerWidth <= 768) {
+				link.href = "css/project.css";
+			} else {
+				link.href = "css/project-mobile.css";
+			}
+			document.head.appendChild(link);
+		</script>
+		<script>
 			window.add_dark_vals = {true: {
 				"--hueRotDraw": "180deg",
 				"--softBright": "80%",
