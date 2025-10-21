@@ -1,0 +1,82 @@
+:root{
+}
+#contact-image{
+	background: url(https://yairmallah.github.io/portfolio/imgs/floating/7.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	mix-blend-mode: exclusion;
+	filter: grayscale(0.7);
+	z-index: -5;
+	pointer-events: none;
+	opacity: 0.4;
+}
+#plus-shape{
+	pointer-events: none;
+	display: none;
+}
+#contact-paragraph-wrappwer{
+	height: 100%;
+	top: 0;
+}#contact-paragraph{
+	margin: 1em;
+}#contact-paragraph p{
+	text-align: justify;
+}
+#contact-info-wrappwer{
+	width: 100vw;
+	right: 0;
+	direction: ltr;
+}
+#contact-info{
+	position:relative;
+}
+.contact-info-item{
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 3em calc(100% - 5em);
+	gap: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.item-logo{
+	height: 100%;
+	width: 100%;
+	mix-blend-mode: exclusion;
+	filter: invert(1);
+	background: var(--logoIconUrl);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.item-logo#item-logo-me{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/fig.svg);
+}.item-logo#item-logo-phone{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/phone.svg);
+}.item-logo#item-logo-mail{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/mail.svg);
+}.item-logo#item-logo-site{
+	--logoIconUrl: url(https://yairmallah.github.io/portfolio/imgs/sys/site.svg);
+}
+#item-logo-name{
+	font-weight:bolder;
+}
+.item-value{
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+.item-value::-webkit-scrollbar {
+	height:3px;
+}
+.item-value::-webkit-scrollbar-thumb {
+	background: color-mix(in srgb, var(--bgBody) 50%, #808080);
+	box-shadow: none;
+}
+.item-value::-webkit-scrollbar-thumb:hover {
+	background: color-mix(in srgb, var(--bgBody) 50%, #808080);
+}
