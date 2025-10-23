@@ -50,7 +50,7 @@
 	grid-template-rows: var(--gridRows);
 	gap: var(--gridGap);
 	position: relative;
-	max-width: 65vw;
+	max-width: 100vw;
 	max-height: calc(100vh - var(--headerPer) * 1em);
 	aspect-ratio: var(--gridRatio);
 	overflow: visible;
@@ -59,10 +59,21 @@
 	transition: max-height 0.3s ease, max-width 0.3s ease;
 	margin-right: auto;
 	margin-left: auto;
+	padding-top: calc(50vh - var(--headerPer) * 0.5em - 50vw / (var(--gridRatio)));
+	padding-bottom: calc(50vh - var(--headerPer) * 0.5em - 50vw / (var(--gridRatio)));
+	scroll-snap-align: start;
 }
 #toggle-layout-button{
-	display: none;
-	position: fixed;
+	/*display: none;*/
+	position: absolute;
+	bottom:0;
+	background-color: hsla(0,0%,50%,0.7);
+	height: 50px;
+	width: 50px;
+	z-index: 4;
+	border-radius: 5px;
+	right: max(calc(50vw - ((100vh - var(--headerPer) * 1em) * (var(--gridRatio)) / 2 )), 17.5vw);
+	transition: right 0.3s ease;
 }
 .grid-line {
 	display: none;
