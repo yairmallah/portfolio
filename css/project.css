@@ -9,6 +9,10 @@
 	--canvasFilter: invert(1) hue-rotate(var(--hueRotDraw));
 	--canvasOpacity: 1;
 }
+::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+}
 #text-right{
 	transition: width 0.3s ease;
 	height: 100%;
