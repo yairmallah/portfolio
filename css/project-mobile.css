@@ -45,8 +45,9 @@
 	grid-template-columns: 5em calc(100% - 5em);
 }
 #layout-container{
-	display: grid;
-	grid-template-columns: var(--gridColumns);
+	display: flex;
+	height: calc(100vh - var(--headerPer) * 1em);
+	/*grid-template-columns: var(--gridColumns);
 	grid-template-rows: var(--gridRows);
 	gap: var(--gridGap);
 	position: relative;
@@ -60,8 +61,10 @@
 	margin-right: auto;
 	margin-left: auto;
 	padding-top: calc(50vh - var(--headerPer) * 0.5em - 50vw / (var(--gridRatio)));
-	padding-bottom: calc(50vh - var(--headerPer) * 0.5em - 50vw / (var(--gridRatio)));
+	padding-bottom: calc(50vh - var(--headerPer) * 0.5em - 50vw / (var(--gridRatio)));*/
 	scroll-snap-align: start;
+	scroll-snap-type: x mandatory;
+	overflow-x: auto;
 }
 #layout-container.active{
 	max-width: unset;
@@ -71,8 +74,8 @@
 	padding-bottom: 0;
 }
 #toggle-layout-button{
-	/*display: none;*/
-	position: absolute;
+	display: none;
+	position: fixed;
 	bottom:0;
 	background-color: hsla(0,0%,50%,0.7);
 	height: 35px;
@@ -126,6 +129,7 @@
 	/*image-rendering: -webkit-optimize-contrast;*/
 	/*image-rendering: optimizeQuality;*/
 	transition: opacity 0.8s ease;
+	scroll-snap-align: start;
 }
 .placed-img.fade{
 	opacity:0;
@@ -139,14 +143,6 @@
 	opacity: var(--canvasOpacity);
 	pointer-events: none;
 	transition: opacity 0.5s ease;
-}
-.comp-contain{
-	object-fit: contain;
-	background-size: contain;
-}
-.comp-cover{
-	object-fit: cover;
-	background-size: cover;
 }
 .comp-draw{
 	filter: invert(1) hue-rotate(var(--hueRotDraw));
