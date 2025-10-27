@@ -126,10 +126,10 @@
 	background-size: contain;
 	object-fit: contain;
 	background-position: center;
-	/*image-rendering: -webkit-optimize-contrast;*/
-	/*image-rendering: optimizeQuality;*/
 	transition: opacity 0.8s ease;
-	scroll-snap-align: start;
+	scroll-snap-align: center;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 .placed-img.fade{
 	opacity:0;
