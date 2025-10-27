@@ -6,7 +6,17 @@
 		<link rel="icon" href="./imgs/sys/fav.svg" sizes="any">
         <title>קורות חיים</title>
 		<link rel="stylesheet" type="text/css" href="css\general.css"/>
-		<link rel="stylesheet" type="text/css" href="css\about.css"/>
+		<script>
+			const link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.type = "text/css";
+			if (window.innerWidth <= 768) {
+				link.href = "css/about-mobile.css";
+			} else {
+				link.href = "css/about.css";
+			}
+			document.head.appendChild(link);
+		</script>
 		<script>
 			window.add_dark_vals = {true: {
 				"--scrollbarColorInv":"#ccc",
