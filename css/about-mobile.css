@@ -137,7 +137,7 @@ h2{
 	padding-left: 0.5em;
 	/*color: color-mix(in srgb, var(--invBg) 50%, rgba(0,0,0,0));*/
 	transition: color 0.3s ease, opacity 0.3s ease;
-	height: calc(100vh - var(--headerPer) * 1em - 4.5em);
+	height: calc(100vh - var(--headerPer) * 1em - 7.5em);
 	width: 75vw;
 	margin-right: 12.5vw;
 	margin-left: 12.5vw;
