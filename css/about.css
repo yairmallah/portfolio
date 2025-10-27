@@ -180,6 +180,7 @@ h2{
 	right: -7.5px;
 	pointer-events: none;
 	border: 1px solid var(--invBg);
+	color: transparent;
 }.timeline-marker.top{
 	top: -6px;
 }.timeline-marker.bottom{
@@ -217,12 +218,10 @@ h2{
 	--baseColorHue: 20;
 	background: color-mix(in srgb, var(--bgBody) 70%, hsla(var(--baseColorHue), var(--timeItemBgSat), var(--timeItemBgLight), 0.5));
 }
-timeline-content{
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-}
 .timeline-content {
 	font-size: 1em;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 .timeline-content .timeline-title{
 	font-weight: bolder;
