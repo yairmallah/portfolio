@@ -203,7 +203,7 @@ function buildTimeline(data) {
 				/*if (cat == "education") item.style.gridColumn = `${colIndex} / ${colIndex + 1}`;
 				else */item.style.gridColumn = `${colIndex + 2} / ${colIndex + 3}`;
 				item.innerHTML = 
-				`<div class="timeline-marker top"></div>
+				`<div class="timeline-marker top">${ev.start}</div>
 				<div class="timeline-content">
 					<div class="content-title">
 						<span class="timeline-title">${ev.title}</span> | 
@@ -212,7 +212,7 @@ function buildTimeline(data) {
 					${ev.elab ? ev.elab.map((p,i) => sortElab(p, i, ev)).join("") : ""}
 					
 				</div>
-				<div class="timeline-marker bottom"></div>
+				<div class="timeline-marker bottom">${ev.end}</div>
 				`;
 				//<div class="show-mark" id="${ev.title}-sh">^</div>
 				const lines = document.createElement("div");
