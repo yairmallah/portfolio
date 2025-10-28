@@ -15,6 +15,7 @@
 	scroll-snap-type: y mandatory;
 	overflow-y: auto;
 	scroll-behavior: smooth;
+	height: calc(100vh - var(--headerPer) * 1em) !important;
 }#left-side-content-container{
 	display: none;
 	position: relative;
@@ -261,25 +262,26 @@ h2{
 	transform: rotate(180deg);
 }
 #timeline-legend{
-	position: fixed;
+	position: absolute;
 	height: 20px;
 	width: 20px;
 	border-radius: 50%;
 	background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
 	-webkit-mask: radial-gradient(farthest-side, transparent 60%, black 0);
 	mask: radial-gradient(farthest-side, transparent 60%, black 0);
-	bottom: 15px;
-	left: calc(var(--leftWidth) + 15px + var(--gapBase));
+	bottom: calc(15px - 100vh + var(--headerPer) * 1em);
+	left: 15px;
 	overflow: visible;
 }
 #timeline-legend-container{
 	bottom: 55px;
-	left: calc(var(--leftWidth) + 15px + var(--gapBase));
+	left: 15px;
 	position: fixed;
 	background: color-mix(in srgb, var(--bgBody) 50%, #808080a0);
 	padding: 10px;
 	border-radius: 10px;
 	border: 1px solid var(--invBg);
+	z-index: 5;
 }
 #timeline-legend-container .legend-color{
 	background: color-mix(in srgb, var(--invBg) 20%, hsl(var(--baseColorHue), 100%, 50%)) !important;
