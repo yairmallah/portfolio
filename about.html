@@ -53,7 +53,8 @@
 				leftSideWrap.classList.toggle("hidden", true);
 				const showLeftSideButton = document.createElement("div");
 				showLeftSideButton.id = "show-left-side-button";
-				showLeftSideButton.addEventListener("click", () => {leftSideWrap.classList.toggle("hidden");});
+				showLeftSideButton.addEventListener("click", () => {leftSideWrap.classList.toggle("hidden", false);});
+				document.querySelector("body").appendChild(showLeftSideButton);
 				const hideLeftSideButton = document.createElement("div");
 				hideLeftSideButton.id = "hide-left-side-button";
 				leftSideWrap.appendChild(hideLeftSideButton);
