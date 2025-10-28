@@ -234,12 +234,12 @@ function buildTimeline(data) {
 	const legend = document.createElement("div");
 	legend.id = "timeline-legend";
 	legend.addEventListener("click", toggleLegend);
-	timelineGrid.appendChild(legend);
 	
 
 	// inject into page
 	container.innerHTML = ""; // clear old content
 	container.appendChild(timelineGrid);
+	container.appendChild(legend);
 	loadLegend(container);
 }
 
