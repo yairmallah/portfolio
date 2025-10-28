@@ -61,9 +61,13 @@
 	border-radius: 7px;
 	background-color: color-mix(in srgb, var(--bgBody) 70%, #80808080);
 	background-image: url("https://yairmallah.github.io/portfolio/imgs/sys/lines.svg");
-	bottom: 15px;
+	background-size: 80%;
+	background-position: center;
+	background-repeat: no-repeat;
+	top: calc(0.5em + var(--headerPer) * 1em);
 	right: 15px;
 	border: 1px solid color-mix(in srgb, var(--bgBody) 40%, #808080);
+	z-index: 20;
 }
 #hide-left-side-button{
 	position: fixed;
@@ -72,6 +76,9 @@
 	border-radius: 7px;
 	background-color: color-mix(in srgb, var(--bgBody) 70%, #80808080);
 	background-image: url("https://yairmallah.github.io/portfolio/imgs/sys/x.svg");
+	background-size: 80%;
+	background-position: center;
+	background-repeat: no-repeat;
 	top: 15px;
 	right: 15px;
 	border: 1px solid color-mix(in srgb, var(--bgBody) 40%, #808080);
@@ -92,7 +99,8 @@
 	margin-right: var(--gapBase);
 }
 h2{
-	margin-top: 0;
+	margin-top: 0.5em;
+	padding-right: 40px;
 }
 #sub-header{
 	display: flex;
@@ -146,7 +154,7 @@ h2{
 	padding-left: 0.5em;
 	/*color: color-mix(in srgb, var(--invBg) 50%, rgba(0,0,0,0));*/
 	transition: color 0.3s ease, opacity 0.3s ease;
-	height: calc(100vh - var(--headerPer) * 1em - 7.5em);
+	height: calc(100vh - var(--headerPer) * 1em - 11.5em);
 	width: 75vw;
 	margin-right: 12.5vw;
 	margin-left: 12.5vw;
@@ -277,7 +285,7 @@ h2{
 	background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
 	-webkit-mask: radial-gradient(farthest-side, transparent 60%, black 0);
 	mask: radial-gradient(farthest-side, transparent 60%, black 0);
-	bottom: calc(15px - 100vh + var(--headerPer) * 1em);
+	top: calc(100vh - var(--headerPer) * 1em + 0.5em);
 	left: 15px;
 	overflow: visible;
 }
