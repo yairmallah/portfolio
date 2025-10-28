@@ -47,6 +47,19 @@
 				<div id="text-left"></div>
 			</div>
 		</div>
+		<script>
+			if (window.innerWidth <= 768) {
+				const leftSideWrap = document.getElementById("left-side-content-container-wrapper");
+				leftSideWrap.classList.toggle("hidden", true);
+				const showLeftSideButton = document.createElement("div");
+				showLeftSideButton.id = "show-left-side-button";
+				showLeftSideButton.addEventListener("click", () => {leftSideWrap.classList.toggle("hidden");});
+				const hideLeftSideButton = document.createElement("div");
+				hideLeftSideButton.id = "hide-left-side-button";
+				leftSideWrap.appendChild(hideLeftSideButton);
+				hideLeftSideButton.addEventListener("click", () => {leftSideWrap.classList.toggle("hidden", true);});
+			}
+		</script>
 
 		<script type="module" src="js/resume.js"></script>
 		<div id="preview-wrapper" class="hidden">
