@@ -128,7 +128,6 @@ h2{
 	grid-template-rows: repeat(calc(var(--gridRowCount) - 1), minmax(8em, auto)) 1px;
 	/*gap: 1em;*/
 	position: relative;
-	padding-top: 0.5em;
 	height: calc(100vh - var(--headerPer) * 1em);
 	scroll-snap-align: start;
 	
