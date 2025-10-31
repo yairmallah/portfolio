@@ -58,11 +58,11 @@ body {
 }
 /* Track */
 ::-webkit-scrollbar-track {
-/*background: var(--bgBody);*/
+	background: transparent;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: var(--scrollbarColor); 
+	background: var(--scrollbarColor);
 	box-shadow: inset 0px 0px 2px 2px var(--bgBody);
 }
 /* Handle on hover */
