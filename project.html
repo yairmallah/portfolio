@@ -7,6 +7,16 @@
 		<title>project</title>
 		<link rel="stylesheet" type="text/css" href="css\general.css"/>
 		<script>
+			if (window.innerWidth <= 768)
+			{
+				const link = document.createElement("link");
+				link.rel = "stylesheet";
+				link.type = "text/css";
+				link.href = "css/general-mobile.css";
+				document.head.appendChild(link);
+			}
+		</script>
+		<script>
 			const link = document.createElement("link");
 			link.rel = "stylesheet";
 			link.type = "text/css";

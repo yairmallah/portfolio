@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+	width: 3px;
+	height: 3px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #d9472ea0;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #d9472e;
+}
