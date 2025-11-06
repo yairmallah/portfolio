@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="he">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="./imgs/sys/fav.svg" sizes="any">
+        <title>Yair Mallah</title>
+		<link rel="stylesheet" type="text/css" href="css\general.css"/>
+		<link rel="stylesheet" type="text/css" href="css\index.css"/>
+    </head>
+    <body>
+		<svg id="svg-fav" ></svg>
+		<script>
+			async function loadSVGSequentially(src, targetSelector, delay = 300) {
+				// Load the external SVG file
+				const response = await fetch(src);
+				const text = await response.text();
+
+				// Parse the SVG content
+				const parser = new DOMParser();
+				const svgDoc = parser.parseFromString(text, "image/svg+xml");
+				const elements = Array.from(svgDoc.documentElement.children); // top-level nodes
+
+				// Find target SVG in the current page
+				const targetSVG = document.querySelector(targetSelector);
+				if (!targetSVG) {
+				console.error("Target SVG element not found:", targetSelector);
+				return;
+				}
+
+				// Loop through each element and append one by one
+for (const el of elements) {
+  const clone = el.cloneNode(true);
+  clone.classList.add("svg-fav-ele");
+ 
+  targetSVG.appendChild(clone);
+    clone.style.opacity = 0;
+
+   clone.style.transition = "opacity 1s ease";
+  clone.style.opacity = 1;
+
+  await new Promise(resolve => setTimeout(resolve, delay));
+}
+			}
+
+			// Example: load from 'src.svg' into the <svg id="main-svg">
+			loadSVGSequentially("imgs/sys/fav.svg", "#svg-fav", 1000);
+		</script>
+
+
+		<div id="header"></div>
+		<div id="content-container">
+			<script>//window.location.href = "projects.html"</script>
+		</div>
+		<div id="footer"></div>
+		<script type="module" src="js/fixedStructure.js"></script>
+		
+    </body>
+</html>
+
+
+
+

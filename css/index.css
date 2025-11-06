@@ -1,0 +1,19 @@
+body{
+	display:flex;
+	justify-content: center;
+}
+#svg-fav{
+	height: min(100vh, 100vw);
+	width: min(100vh, 100vw);
+	position: fixed;
+}
+#header{
+	display: none !important;
+}
+.svg-fav-ele{
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+.fav-seen{
+	opacity: 1;
+}
