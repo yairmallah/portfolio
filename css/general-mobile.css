@@ -5,6 +5,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	background: #d9472ea0;
+	box-shadow: none;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
