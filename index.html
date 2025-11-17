@@ -6,13 +6,76 @@
 		<link rel="icon" href="./imgs/sys/fav.svg" sizes="any">
         <title>Yair Mallah</title>
 		<link rel="stylesheet" type="text/css" href="css\general.css"/>
+		<link rel="stylesheet" type="text/css" href="css\index.css"/>
     </head>
     <body>
+		<svg id="svg-fav" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 720 720" overflow="visible" version="1.1" preserveAspectRatio="xMidYMid meet"></svg>
+
+		<script>
+			function redirect(){
+				setTimeout(() => {
+					document.querySelector("body").style.backgroundColor = "var(--bgBody)";
+					setTimeout(() => {
+						const favAct = document.querySelector("#svg-fav");
+						favAct.style.top = "0";
+						favAct.style.right = "1vw";						
+						favAct.style.height = "calc(var(--headerPer) * 1em)";						
+						favAct.style.width = "calc(var(--headerPer) * 1em)";
+						setTimeout(() => {
+							const header = document.querySelector("#header");
+							header.style.display = "grid";
+							header.style.opacity = "1";
+							setTimeout(() => {
+								window.location.href = "projects.html?redirect=true";
+							}, 3000);
+						}, 1500);
+					}, 1500);
+				}, 10);
+			}
+			async function loadSVGSequentially(src, targetSelector) {
+				// Load the external SVG file
+				const response = await fetch(src);
+				const text = await response.text();
+
+				// Parse the SVG content
+				const parser = new DOMParser();
+				const svgDoc = parser.parseFromString(text, "image/svg+xml");
+				const elements = Array.from(svgDoc.documentElement.children); // top-level nodes
+
+				// Find target SVG in the current page
+				const targetSVG = document.querySelector(targetSelector);
+				if (!targetSVG) {
+				console.error("Target SVG element not found:", targetSelector);
+				return;
+				}
+				var startId = 0;
+				for (const el of elements) {
+				const clone = el.cloneNode(true);
+					targetSVG.appendChild(clone);
+					clone.id = "svg-obj-" + startId;
+					startId += 1;
+					clone.classList.toggle("svg-fav-ele", true);
+				}
+				for (let i =0; i < startId; i++){
+					const currnetSvgPath = document.getElementById("svg-obj-" + i);
+					currnetSvgPath.classList.toggle("fav-seen", true);
+					await new Promise(r => setTimeout(r, 100));
+				}
+				redirect();
+			}
+			
+
+			loadSVGSequentially("imgs/sys/fav.svg", "#svg-fav");
+		</script>
+
+
 		<div id="header"></div>
 		<div id="content-container">
-			<script>window.location.href = "projects.html"</script>
+			<script>//window.location.href = "projects.html"</script>
 		</div>
 		<div id="footer"></div>
 		<script type="module" src="js/fixedStructure.js"></script>
+		
     </body>
 </html>
+

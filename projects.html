@@ -26,6 +26,22 @@
 		</script>
     </head>
     <body>
+		<script>
+			const params = new URLSearchParams(window.location.search);
+			const redirected = params.get("redirect") === "true";
+			if (redirected){
+				console.log("in");
+				const scenes = document.createElement("div");
+				scenes.id = "scenes";
+				document.querySelector("body").appendChild(scenes);
+				setTimeout(() => {
+					scenes.style.opacity = 0;
+					setTimeout(() => {
+						scenes.remove();
+					}, 1500);
+				}, 50);
+			}
+		</script>
 		<div id="header"></div>
 		<div id="content-container-wrapper">
 			<div id="content-container">
