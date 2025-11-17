@@ -2,7 +2,6 @@
   "about.html": [
     "imgs/sys/fav.svg",
     "css/general.css",
-    "css/about.css",
     "js/resume.js",
     "js/fixedStructure.js"
   ],
@@ -12,16 +11,23 @@
     "js/fixedStructure.js"
   ],
   "css": [
+    "css/about-mobile.css",
     "css/about.css",
+    "css/contact-mobile.css",
+    "css/contact.css",
+    "css/general-mobile.css",
     "css/general.css",
     "css/header.css",
     "css/imgDisplay.css",
+    "css/index.css",
     "css/layout-tester.css",
     "css/portfolio.css",
+    "css/project-mobile.css",
     "css/project.css"
   ],
   "header.html": [
     "css/header.css",
+    "index.html",
     "projects.html",
     "about.html",
     "contact.html"
@@ -48,6 +54,12 @@
   "index.html": [
     "imgs/sys/fav.svg",
     "css/general.css",
+    "css/index.css",
+    "js/fixedStructure.js"
+  ],
+  "indexT.html": [
+    "imgs/sys/fav.svg",
+    "css/general.css",
     "js/fixedStructure.js"
   ],
   "js": [
@@ -69,7 +81,6 @@
   "project.html": [
     "imgs/sys/fav.svg",
     "css/general.css",
-    "css/project.css",
     "js/loadLayout.js",
     "js/fixedStructure.js"
   ],
@@ -82,6 +93,7 @@
     "projects/s6.json",
     "projects/s6t.json",
     "projects/s7.json",
+    "projects/s7t.json",
     "projects/s8.json",
     "projects/s8t.json",
     "projects/s8tt.json"
@@ -102,8 +114,13 @@
     "imgs/dbt4/texture1.png"
   ],
   "imgs/floating": [
+    "imgs/floating/1.png",
+    "imgs/floating/2.png",
+    "imgs/floating/7.png",
+    "imgs/floating/8.png",
     "imgs/floating/moveNayotimg.mp4",
     "imgs/floating/moveNayottxt.html",
+    "imgs/floating/s2bird.png",
     "imgs/floating/talpiyotSrf.html"
   ],
   "imgs/hel": [
@@ -118,6 +135,7 @@
     "imgs/s1/m1.jpeg",
     "imgs/s1/m2.jpeg",
     "imgs/s1/m3.jpeg",
+    "imgs/s1/m4.png",
     "imgs/s1/p1.jpg",
     "imgs/s1/p2.jpg",
     "imgs/s1/p3.jpg",
@@ -245,9 +263,17 @@
   "imgs/sys": [
     "imgs/sys/enlarge.svg",
     "imgs/sys/fav.svg",
+    "imgs/sys/fav1.svg",
+    "imgs/sys/fig.svg",
+    "imgs/sys/lines.svg",
+    "imgs/sys/mail.svg",
     "imgs/sys/menu.svg",
     "imgs/sys/moon.svg",
-    "imgs/sys/sun.svg"
+    "imgs/sys/phone.svg",
+    "imgs/sys/site.svg",
+    "imgs/sys/sun.svg",
+    "imgs/sys/t1.svg",
+    "imgs/sys/x.svg"
   ],
   "imgs/thumbnails": [
     "imgs/thumbnails/bdbt4.png",
