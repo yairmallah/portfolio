@@ -12,6 +12,9 @@
 	z-index: 99 !important;
 	width: calc(100% - var(--leftWidth) + var(--headerPer) * 2em - var(--gapBase)) !important;
 	right: 0 !important;
+	background-position: right top !important;
+	background-size: calc(100% - var(--headerPer) * 2em - 0.5em) 100% !important;
+	background-repeat: no-repeat !important;
 }
 #content-container-wrapper{
 	width: calc(100vw - var(--leftWidth) - var(--gapBase) * 2);
