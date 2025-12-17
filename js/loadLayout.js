@@ -272,6 +272,7 @@ fetch(jsonFile)
 		for (let i = 1; i < cols_temp.length; i ++){
 			const line = document.createElement('line');
 			line.className = 'grid-line grid-line-x';
+			if (data.grid.imps) if (data.grid.imps.x.includes(i) line.className = 'grid-line grid-line-x imp';
 			line.id = `r${i}`;
 			p_sum += cols_temp[i-1];
 			line.style.left = `calc(${p_sum}% - ${(cols_temp.length - i) * parseFloat(data.grid.gap) / cols_temp.length}vw)`;
@@ -282,6 +283,7 @@ fetch(jsonFile)
 		for (let i = 1; i < rows_temp.length; i ++){
 			const line = document.createElement('line');
 			line.className = 'grid-line grid-line-y';
+			if (data.grid.imps) if (data.grid.imps.y.includes(i) line.className = 'grid-line grid-line-y imp';
 			line.id = `c${i}`;
 			p_sum += rows_temp[i-1];
 			line.style.top = `calc(${p_sum}% - ${(rows_temp.length - i) * parseFloat(data.grid.gap) / rows_temp.length}vw)`;
