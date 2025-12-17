@@ -52,7 +52,7 @@
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2CP.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3CP.png",
       "gridColumn": "2 / 3",
       "gridRow": "6 / 7",
       "objectFit": "contain",
@@ -404,7 +404,7 @@
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1CP.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2CP.png",
       "gridColumn": "3 / 4",
       "gridRow": "6 / 7",
       "objectFit": "contain",
@@ -420,7 +420,7 @@
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/par24/C1PL.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1CL.png",
       "gridColumn": "4 / 5",
       "gridRow": "7 / 8",
       "objectFit": "contain",
