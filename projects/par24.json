@@ -3,7 +3,8 @@
     "columns": "repeat(11, 1fr)",
     "rows": "repeat(10, 1fr)",
     "gap": "1vw",
-    "ratio": "11 / 10"
+    "ratio": "11 / 10",
+	"imps": {"x":[1, 4, 7], "y": []}
   },
   "images": [
     {
