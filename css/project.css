@@ -157,7 +157,7 @@
 	mix-blend-mode: difference;
 }
 .comp-draw-inv{
-	filter: hue-rotate(var(--hueRotDraw));
+	filter: hue-rotate(calc(var(--hueRotDraw) + 180deg));
 	mix-blend-mode: difference;
 }
 .comp-draw-low-sat{
