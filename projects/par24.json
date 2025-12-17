@@ -433,6 +433,13 @@
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/code.png",
+      "gridColumn": "1 / 8",
+      "gridRow": "9 / 11",
+      "objectFit": "contain",
+      "rotation": "0"
     }
   ]
 }
