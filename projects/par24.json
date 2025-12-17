@@ -2,7 +2,7 @@
   "grid": {
     "columns": "repeat(11, 1fr)",
     "rows": "repeat(10, 1fr)",
-    "gap": "0.1vw",
+    "gap": "1vw",
     "ratio": "11 / 10"
   },
   "images": [
