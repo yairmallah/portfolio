@@ -102,6 +102,25 @@
 	border-right: 0;
 	border-left: 0;
 }
+.grid-line-x.emp::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	width: 1px;
+	background: var(--invBg);
+	transform: translateX(-50%);
+}.grid-line-y.emp::after{
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	height: 1px;
+	background: white;
+	transform: translateY(-50%);
+}
 .wave-dot {
 	position: absolute;
 	width: calc(var(--gridGap) / 3);
