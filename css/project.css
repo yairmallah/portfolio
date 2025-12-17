@@ -102,7 +102,7 @@
 	border-right: 0;
 	border-left: 0;
 }
-.grid-line-x.emp::after{
+.grid-line-x.imp::after{
 	content: "";
 	position: absolute;
 	top: 0;
@@ -111,7 +111,7 @@
 	width: 1px;
 	background: var(--invBg);
 	transform: translateX(-50%);
-}.grid-line-y.emp::after{
+}.grid-line-y.imp::after{
 	content: "";
 	position: absolute;
 	left: 0;
