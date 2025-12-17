@@ -2,7 +2,7 @@
   "grid": {
     "columns": "repeat(11, 1fr)",
     "rows": "repeat(10, 1fr)",
-    "gap": "0.5vw",
+    "gap": "0.1vw",
     "ratio": "11 / 10"
   },
   "images": [
@@ -381,6 +381,20 @@
       "src": "https://yairmallah.github.io/portfolio/imgs/par24/B3C.png",
       "gridColumn": "4 / 5",
       "gridRow": "8 / 9",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/par24/C3PL.png",
+      "gridColumn": "4 / 5",
+      "gridRow": "6 / 7",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "http://127.0.0.4:8080/imgs/par24/C3CL.png",
+      "gridColumn": "4 / 5",
+      "gridRow": "5 / 6",
       "objectFit": "contain",
       "rotation": "0"
     }
