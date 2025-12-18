@@ -1,288 +1,258 @@
 {
+  "text": {
+	"title": "סיומלציה אורבנית",
+	"textR": "הפרוייקט מהווה מסגרת לניסוי הבוחן את אופני התנועה המתאפשרים בסיטואציות אורבניות שונות. בחנתי תנועת סוכנים תחת סטרוקטורה קונצנטרית וגריד ומיפיתי באמצעים פרמטריים (תוך שימוש בPython ו-Grasshopper) את התחביר המרחבי הנוצר בתוכם תחת אילוצים, והתנהגויות שונות",
+	"loaction": "-",
+	"date": "ינואר 2024 - אוקטובר 2024",
+	"area": "0.25",
+	"units": "km",
+	"status": "לא נבנה | תיאורטי"
+  },
   "grid": {
     "columns": "repeat(11, 1fr)",
-    "rows": "repeat(10, 1fr)",
-    "gap": "1vw",
-    "ratio": "11 / 10",
-	"imps": {"x":[1, 4, 7], "y": []}
+    "rows": "repeat(9, 1fr)",
+    "gap": "0.7vw",
+    "ratio": "11 / 9",
+    "imps": {
+      "x": [
+        1,
+        4,
+        7
+      ],
+      "y": [
+        3,
+        6
+      ]
+    }
   },
   "images": [
     {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/BC.png",
+      "title": "סטרוקטורת בסיס | קונצנטרי",
+      "gridColumn": "1 / 2",
+      "gridRow": "4 / 5",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
       "src": "https://yairmallah.github.io/portfolio/imgs/par24/BG.png",
+      "title": "סטרוקטורת בסיס | גריד",
       "gridColumn": "1 / 2",
       "gridRow": "1 / 2",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1GP.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1C.png",
+      "title": "ניסוי | התנהגות I חזרה I | קונצנטרי",
+      "gridColumn": "4 / 5",
+      "gridRow": "6 / 7",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1CL.png",
+      "title": "ניסוי | התנהגות I חזרה I קווי תנועה | קונצנטרי",
+      "gridColumn": "4 / 5",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1CP.png",
+      "title": "ניסוי | התנהגות I חזרה I אזורי תעבורה | קונצנטרי",
+      "gridColumn": "4 / 5",
+      "gridRow": "4 / 5",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1G.png",
+      "title": "ניסוי | התנהגות I חזרה I | גריד",
       "gridColumn": "2 / 3",
-      "gridRow": "2 / 3",
+      "gridRow": "3 / 4",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1GL.png",
+      "title": "ניסוי | התנהגות I חזרה I קווי תנועה | גריד",
       "gridColumn": "2 / 3",
-      "gridRow": "3 / 4",
+      "gridRow": "2 / 3",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1G.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1GP.png",
+      "title": "ניסוי | התנהגות I חזרה I אזורי תעבורה | גריד",
       "gridColumn": "2 / 3",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2C.png",
+      "title": "ניסוי | התנהגות I חזרה II | קונצנטרי",
+      "gridColumn": "3 / 4",
+      "gridRow": "6 / 7",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2CL.png",
+      "title": "ניסוי | התנהגות I חזרה II קווי תנועה | קונצנטרי",
+      "gridColumn": "3 / 4",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2CP.png",
+      "title": "ניסוי | התנהגות I חזרה II אזורי תעבורה | קונצנטרי",
+      "gridColumn": "3 / 4",
       "gridRow": "4 / 5",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/BC.png",
-      "gridColumn": "1 / 2",
-      "gridRow": "5 / 6",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2C.png",
-      "gridColumn": "3 / 4",
-      "gridRow": "8 / 9",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2G.png",
+      "title": "ניסוי | התנהגות I חזרה II | גריד",
+      "gridColumn": "4 / 5",
+      "gridRow": "3 / 4",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3CP.png",
-      "gridColumn": "2 / 3",
-      "gridRow": "6 / 7",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2GL.png",
+      "title": "ניסוי | התנהגות I חזרה II קווי תנועה | גריד",
+      "gridColumn": "4 / 5",
+      "gridRow": "2 / 3",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2GP.png",
+      "title": "ניסוי | התנהגות I חזרה II אזורי תעבורה | גריד",
+      "gridColumn": "4 / 5",
+      "gridRow": "1 / 2",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2PL.png",
+      "title": "ניסוי | התנהגות I חזרה III קווי תנועה | קונצנטרי",
       "gridColumn": "2 / 3",
-      "gridRow": "7 / 8",
+      "gridRow": "5 / 6",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2CL.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3C.png",
+      "title": "ניסוי | התנהגות I חזרה III | קונצנטרי",
+      "gridColumn": "2 / 3",
+      "gridRow": "6 / 7",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3CP.png",
+      "title": "ניסוי | התנהגות I חזרה III אזורי תעבורה | קונצנטרי",
+      "gridColumn": "2 / 3",
+      "gridRow": "4 / 5",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3G.png",
+      "title": "ניסוי | התנהגות I חזרה III | גריד",
       "gridColumn": "3 / 4",
-      "gridRow": "7 / 8",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3GL.png",
-      "gridColumn": "10 / 11",
       "gridRow": "3 / 4",
       "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3G.png",
-      "gridColumn": "10 / 11",
-      "gridRow": "4 / 5",
-      "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3GP.png",
-      "gridColumn": "10 / 11",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3GL.png",
+      "title": "ניסוי | התנהגות I חזרה III קווי תנועה | גריד",
+      "gridColumn": "3 / 4",
       "gridRow": "2 / 3",
       "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3GP.png",
+      "title": "ניסוי | התנהגות I חזרה III אזורי תעבורה | גריד",
+      "gridColumn": "3 / 4",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3CL.png",
-      "gridColumn": "10 / 11",
-      "gridRow": "7 / 8",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3PL.png",
+      "title": "ניסוי | התנהגות II חזרה I קווי תנועה | קונצנטרי",
+      "gridColumn": "5 / 6",
+      "gridRow": "5 / 6",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3C.png",
-      "gridColumn": "10 / 11",
-      "gridRow": "8 / 9",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3CP.png",
-      "gridColumn": "10 / 11",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1C.png",
+      "title": "ניסוי | התנהגות II חזרה I | קונצנטרי",
+      "gridColumn": "5 / 6",
       "gridRow": "6 / 7",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2GP.png",
-      "gridColumn": "9 / 10",
-      "gridRow": "2 / 3",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2GL.png",
-      "gridColumn": "9 / 10",
-      "gridRow": "3 / 4",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2G.png",
-      "gridColumn": "9 / 10",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1CG.png",
+      "title": "ניסוי | התנהגות II חזרה I אזורי תעבורה | קונצנטרי",
+      "gridColumn": "5 / 6",
       "gridRow": "4 / 5",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2CP.png",
-      "gridColumn": "9 / 10",
-      "gridRow": "6 / 7",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2CL.png",
-      "gridColumn": "9 / 10",
-      "gridRow": "7 / 8",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2C.png",
-      "gridColumn": "9 / 10",
-      "gridRow": "8 / 9",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1GP.png",
-      "gridColumn": "8 / 9",
-      "gridRow": "2 / 3",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1GL.png",
-      "gridColumn": "8 / 9",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1G.png",
+      "title": "ניסוי | התנהגות II חזרה I | גריד",
+      "gridColumn": "5 / 6",
       "gridRow": "3 / 4",
       "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1G.png",
-      "gridColumn": "8 / 9",
-      "gridRow": "4 / 5",
-      "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1CP.png",
-      "gridColumn": "8 / 9",
-      "gridRow": "6 / 7",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1CL.png",
-      "gridColumn": "8 / 9",
-      "gridRow": "7 / 8",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1C.png",
-      "gridColumn": "8 / 9",
-      "gridRow": "8 / 9",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3GP.png",
-      "gridColumn": "7 / 8",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1GL.png",
+      "title": "ניסוי | התנהגות II חזרה I קווי תנועה | גריד",
+      "gridColumn": "5 / 6",
       "gridRow": "2 / 3",
       "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3GL.png",
-      "gridColumn": "7 / 8",
-      "gridRow": "3 / 4",
-      "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3G.png",
-      "gridColumn": "7 / 8",
-      "gridRow": "4 / 5",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1GP.png",
+      "title": "ניסוי | התנהגות II חזרה I אזורי תעבורה | גריד",
+      "gridColumn": "5 / 6",
+      "gridRow": "1 / 2",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3CP.png",
-      "gridColumn": "7 / 8",
-      "gridRow": "6 / 7",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3CL.png",
-      "gridColumn": "7 / 8",
-      "gridRow": "7 / 8",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3C.png",
-      "gridColumn": "7 / 8",
-      "gridRow": "8 / 9",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2GP.png",
-      "gridColumn": "6 / 7",
-      "gridRow": "2 / 3",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2GL.png",
-      "gridColumn": "6 / 7",
-      "gridRow": "3 / 4",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2G.png",
-      "gridColumn": "6 / 7",
-      "gridRow": "4 / 5",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2CP.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2C.png",
+      "title": "ניסוי | התנהגות II חזרה II | קונצנטרי",
       "gridColumn": "6 / 7",
       "gridRow": "6 / 7",
       "objectFit": "contain",
@@ -291,156 +261,289 @@
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2CL.png",
+      "title": "ניסוי | התנהגות II חזרה II קווי תנועה | קונצנטרי",
       "gridColumn": "6 / 7",
-      "gridRow": "7 / 8",
+      "gridRow": "5 / 6",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2C.png",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2CP.png",
+      "title": "ניסוי | התנהגות II חזרה II אזורי תעבורה | קונצנטרי",
       "gridColumn": "6 / 7",
-      "gridRow": "8 / 9",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1GP.png",
-      "gridColumn": "5 / 6",
-      "gridRow": "2 / 3",
-      "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1GL.png",
-      "gridColumn": "5 / 6",
-      "gridRow": "3 / 4",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1G.png",
-      "gridColumn": "5 / 6",
       "gridRow": "4 / 5",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1C.png",
-      "gridColumn": "5 / 6",
-      "gridRow": "8 / 9",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2G.png",
+      "title": "ניסוי | התנהגות II חזרה II | גריד",
+      "gridColumn": "6 / 7",
+      "gridRow": "3 / 4",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D1CG.png",
-      "gridColumn": "5 / 6",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2GL.png",
+      "title": "ניסוי | התנהגות II חזרה II קווי תנועה | גריד",
+      "gridColumn": "6 / 7",
+      "gridRow": "2 / 3",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D2GP.png",
+      "title": "ניסוי | התנהגות II חזרה II אזורי תעבורה | גריד",
+      "gridColumn": "6 / 7",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3C.png",
+      "title": "ניסוי | התנהגות II חזרה III | קונצנטרי",
+      "gridColumn": "7 / 8",
       "gridRow": "6 / 7",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3C.png",
-      "gridColumn": "2 / 3",
-      "gridRow": "8 / 9",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3CL.png",
+      "title": "ניסוי | התנהגות II חזרה III קווי תנועה | קונצנטרי",
+      "gridColumn": "7 / 8",
+      "gridRow": "5 / 6",
       "objectFit": "contain",
-      "rotation": "0",
-      "classCSS": "comp-draw-inv"
+      "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3G.png",
-      "gridColumn": "3 / 4",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3CP.png",
+      "title": "ניסוי | התנהגות II חזרה III אזורי תעבורה | קונצנטרי",
+      "gridColumn": "7 / 8",
       "gridRow": "4 / 5",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3GL.png",
-      "gridColumn": "3 / 4",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3G.png",
+      "title": "ניסוי | התנהגות II חזרה III | גריד",
+      "gridColumn": "7 / 8",
       "gridRow": "3 / 4",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3GP.png",
-      "gridColumn": "3 / 4",
-      "gridRow": "2 / 3",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2GL.png",
-      "gridColumn": "4 / 5",
-      "gridRow": "3 / 4",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3GL.png",
+      "title": "ניסוי | התנהגות II חזרה III קווי תנועה | גריד",
+      "gridColumn": "7 / 8",
+      "gridRow": "2 / 3",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2G.png",
-      "gridColumn": "4 / 5",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/D3GP.png",
+      "title": "ניסוי | התנהגות II חזרה III אזורי תעבורה | גריד",
+      "gridColumn": "7 / 8",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1C.png",
+      "title": "ניסוי | התנהגות III חזרה I | קונצנטרי",
+      "gridColumn": "8 / 9",
+      "gridRow": "6 / 7",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1CL.png",
+      "title": "ניסוי | התנהגות III חזרה I קווי תנועה | קונצנטרי",
+      "gridColumn": "8 / 9",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1CP.png",
+      "title": "ניסוי | התנהגות III חזרה I אזורי תעבורה | קונצנטרי",
+      "gridColumn": "8 / 9",
       "gridRow": "4 / 5",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2GP.png",
-      "gridColumn": "4 / 5",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1G.png",
+      "title": "ניסוי | התנהגות III חזרה I | גריד",
+      "gridColumn": "8 / 9",
+      "gridRow": "3 / 4",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1GL.png",
+      "title": "ניסוי | התנהגות III חזרה I קווי תנועה | גריד",
+      "gridColumn": "8 / 9",
       "gridRow": "2 / 3",
       "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H1GP.png",
+      "title": "ניסוי | התנהגות III חזרה I אזורי תעבורה | גריד",
+      "gridColumn": "8 / 9",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C3PL.png",
-      "gridColumn": "5 / 6",
-      "gridRow": "7 / 8",
-      "objectFit": "contain",
-      "rotation": "0"
-    },
-    {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C2CP.png",
-      "gridColumn": "3 / 4",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2C.png",
+      "title": "ניסוי | התנהגות III חזרה II | קונצנטרי",
+      "gridColumn": "9 / 10",
       "gridRow": "6 / 7",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1C.png",
-      "gridColumn": "4 / 5",
-      "gridRow": "8 / 9",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2CL.png",
+      "title": "ניסוי | התנהגות III חזרה II קווי תנועה | קונצנטרי",
+      "gridColumn": "9 / 10",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2CP.png",
+      "title": "ניסוי | התנהגות III חזרה II אזורי תעבורה | קונצנטרי",
+      "gridColumn": "9 / 10",
+      "gridRow": "4 / 5",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1CL.png",
-      "gridColumn": "4 / 5",
-      "gridRow": "7 / 8",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2G.png",
+      "title": "ניסוי | התנהגות III חזרה II | גריד",
+      "gridColumn": "9 / 10",
+      "gridRow": "3 / 4",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2GL.png",
+      "title": "ניסוי | התנהגות III חזרה II קווי תנועה | גריד",
+      "gridColumn": "9 / 10",
+      "gridRow": "2 / 3",
       "objectFit": "contain",
       "rotation": "0"
     },
     {
-      "src": "https://yairmallah.github.io/portfolio/imgs/par24/C1CP.png",
-      "gridColumn": "4 / 5",
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H2GP.png",
+      "title": "ניסוי | התנהגות III חזרה II אזורי תעבורה | גריד",
+      "gridColumn": "9 / 10",
+      "gridRow": "1 / 2",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3C.png",
+      "title": "ניסוי | התנהגות III חזרה III | קונצנטרי",
+      "gridColumn": "10 / 11",
       "gridRow": "6 / 7",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3CL.png",
+      "title": "ניסוי | התנהגות III חזרה III קווי תנועה | קונצנטרי",
+      "gridColumn": "10 / 11",
+      "gridRow": "5 / 6",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3CP.png",
+      "title": "ניסוי | התנהגות III חזרה III אזורי תעבורה | קונצנטרי",
+      "gridColumn": "10 / 11",
+      "gridRow": "4 / 5",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3G.png",
+      "title": "ניסוי | התנהגות III חזרה III | גריד",
+      "gridColumn": "10 / 11",
+      "gridRow": "3 / 4",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-draw-inv"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3GL.png",
+      "title": "ניסוי | התנהגות III חזרה III קווי תנועה | גריד",
+      "gridColumn": "10 / 11",
+      "gridRow": "2 / 3",
+      "objectFit": "contain",
+      "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/H3GP.png",
+      "title": "ניסוי | התנהגות III חזרה III אזורי תעבורה | גריד",
+      "gridColumn": "10 / 11",
+      "gridRow": "1 / 2",
       "objectFit": "contain",
       "rotation": "0",
       "classCSS": "comp-draw-inv"
     },
     {
       "src": "https://yairmallah.github.io/portfolio/imgs/par24/code.png",
-      "gridColumn": "1 / 8",
-      "gridRow": "9 / 11",
+      "title": "קוד Grasshopper",
+      "gridColumn": "1 / 9",
+      "gridRow": "7 / 9",
       "objectFit": "contain",
       "rotation": "0"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/f.mp4",
+      "title": "סימולציה | מצב עניינים",
+      "gridColumn": "9 / 12",
+      "gridRow": "7 / 10",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/b.mp4",
+      "title": "סימולציה | מפה צוברת",
+      "gridColumn": "8 / 9",
+      "gridRow": "9 / 10",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
+    },
+    {
+      "src": "https://yairmallah.github.io/portfolio/imgs/par24/s.mp4",
+      "title": "סימולציה | סכמת כוחות על סוכן",
+      "gridColumn": "8 / 9",
+      "gridRow": "8 / 9",
+      "objectFit": "contain",
+      "rotation": "0",
+      "classCSS": "comp-photo"
     }
   ]
 }
