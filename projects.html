@@ -56,21 +56,21 @@
 				<script>
 					const projects_data = [
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs1.jpg', 'מעונות אגרון', 'draw-bw', 'projects/s1.json'],
-						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png', 'רחוב צקלג', 'photo-black-bg', 'projects/s4.json'],
-						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png', 'יפו 86', 'photo-brighter', 'projects/s6.json'],
-						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png', 'שוקן 2', 'draw-bw', 'projects/s7.json'],
-						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg', 'פיאצה דל פופולו', 'original', 'projects/hel.json'],
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs8.png', 'אזור תעשיה תלפיות', 'pre-draw-bw', 'projects/s8.json'],
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs10.jpg', 'הספריה הלאומית הישנה', 'photo-brighter', 'projects/s10.json'],
+						['https://yairmallah.github.io/portfolio/imgs/par24/D1C.png', 'סימולציה אורבנית', 'inv-pre-draw-wb-hue', 'projects/par24.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs7.png', 'שוקן 2', 'draw-bw', 'projects/s7.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs4.png', 'רחוב צקלג', 'photo-black-bg', 'projects/s4.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bs6.png', 'יפו 86', 'photo-brighter', 'projects/s6.json'],
+						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bhel.jpg', 'פיאצה דל פופולו', 'original', 'projects/hel.json'],
 						['https://yairmallah.github.io/portfolio/imgs/thumbnails/bdbt4.png', 'אהיל', 'pre-draw-bw', 'projects/dbt4.json']
 					];
 					const imgEndings = [".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp"];
-					var col_count = 4;
+					var col_count = 3;
 					if (isMobileDevice()){
 						col_count = 1;
-						document.documentElement.style.setProperty('--cellWidth', '100%');
 						document.documentElement.style.setProperty('--cellHeight', '100vh');
-					}
+					}document.documentElement.style.setProperty('--cellWidth', ((100 / col_count) + "%"));
 					
 					function pushProjectsTable(projects_data, col_count, table_id) {
 						const table = document.getElementById(table_id);
@@ -141,8 +141,12 @@
 					document.querySelectorAll(".project-icon").forEach(d=>{d.addEventListener('mouseleave', () =>{d.style.filter="";})});
 					document.querySelectorAll(".project-icon").forEach(d=>{d.addEventListener('mouseenter', () =>{
 						var inv_flag = false;
+						var inv_hue_flag = false;
 						d.classList.forEach(cls => {if (cls.includes('bw')) inv_flag = true;});
-						d.style.filter = inv_flag ? "invert(1) hue-rotate("+ window.add_dark_vals[sessionStorage.getItem("isDark") || true]["--drawHueRot"] +")" : "none";
+						d.classList.forEach(cls => {if (cls.includes('wb-hue')) inv_hue_flag = true;});
+						d.style.filter = inv_flag ? "invert(1) hue-rotate("+ window.add_dark_vals[sessionStorage.getItem("isDark") || true]["--drawHueRot"] +")" : inv_hue_flag ? "hue-rotate(calc("+ window.add_dark_vals[sessionStorage.getItem("isDark") || true]["--drawHueRot"] +" + 180deg))" : "none";
+					console.log(inv_flag);
+					console.log(inv_hue_flag);
 					})});
 				</script>
 			</div>
