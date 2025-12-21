@@ -86,6 +86,10 @@
 	filter: invert(1) hue-rotate(var(--drawHueRot)) grayscale(90%) /*blur(.2px)*/ brightness(500%)/* contrast(500%) blur(0.5px)*/;
 	mix-blend-mode: exclusion;
 }
+.inv-pre-draw-wb-hue{
+	filter: hue-rotate(calc(var(--drawHueRot) + 180deg)) grayscale(90%)  constrast(1.5);
+	mix-blend-mode: exclusion;
+}
 .pre-draw-bw{
 	filter: invert(1) hue-rotate(180deg) grayscale(100%) contrast(2);
 	mix-blend-mode: exclusion;
