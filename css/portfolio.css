@@ -87,7 +87,7 @@
 	mix-blend-mode: exclusion;
 }
 .inv-pre-draw-wb-hue{
-	filter: hue-rotate(calc(var(--drawHueRot) + 180deg)) grayscale(90%)  constrast(1.5);
+	filter: hue-rotate(calc(var(--drawHueRot) + 180deg)) grayscale(90%) contrast(1.5);
 	mix-blend-mode: exclusion;
 }
 .pre-draw-bw{
