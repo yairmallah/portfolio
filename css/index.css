@@ -10,7 +10,7 @@ body{
 	position: fixed;
 	top: max(0vh, calc((100vh - min(80vh, 80vw)) / 2));
 	right: max(0vh, calc((100vw - min(80vh, 80vw)) / 2));
-	transition: all 1.5s ease;
+	transition: all 1.5s ease-in;
 }
 #header{
 	/*display: none !important;*/
@@ -29,16 +29,20 @@ body{
 }
 #svg-obj-0{
 	animation: pop 2s ease alternate;
-	animation-iteration-count: 6;
+	animation-iteration-count: 2;
 	transform-origin: center;
 }
 @keyframes pop {
 	from {
 		transform: scale(1);
 		fill: #808080;
+		stroke: #7f7f7f;
+		stroke-opacity: 0.384314;
 	}
 	to {
-		transform: scale(1.05);
-		fill: #806060;
+		transform: scale(1.1);
+		fill: #AA4040;
+		stroke: #ed143d;
+		stroke-opacity: 1;
 	}
 }
