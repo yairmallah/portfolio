@@ -29,7 +29,7 @@
 								window.location.href = "projects.html?redirect=true";
 							}, 3000);
 						}, 1500);
-					}, 1500);
+					}, 2000);
 				}, 10);
 			}
 			async function loadSVGSequentially(src, targetSelector) {
@@ -56,12 +56,12 @@
 					startId += 1;
 					clone.classList.toggle("svg-fav-ele", true);
 				}
+				redirect();
 				for (let i =0; i < startId; i++){
 					const currnetSvgPath = document.getElementById("svg-obj-" + i);
 					currnetSvgPath.classList.toggle("fav-seen", true);
 					await new Promise(r => setTimeout(r, 100));
 				}
-				redirect();
 			}
 			
 
