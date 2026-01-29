@@ -22,8 +22,8 @@ export const darkValues={
 
 
 export const toggleMode=(isDark)=>{
+	const root = document.documentElement;
 	Object.keys(darkValues[isDark]).forEach(varMode => {
-		const root = document.documentElement;
 		root.style.setProperty(varMode, darkValues[isDark][varMode]);
 	});
 	sessionStorage.setItem("isDark", isDark);
