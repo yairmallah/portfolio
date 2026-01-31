@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="he">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="./imgs/sys/fav.svg" sizes="any">
+		<link rel="stylesheet" type="text/css" href="css\general.css"/>
+		<title>מיומנויות</title>
+		<script>
+			const link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.type = "text/css";
+			if (window.innerWidth <= 768) {
+				link.href = "css/skills-mobile.css";
+			} else {
+				link.href = "css/skills.css";
+			}
+			document.head.appendChild(link);
+		</script>
+		<script>
+			window.add_dark_vals = {false: {
+					"--scrollbarColorS":"#AAA",
+					"--scrollbarHoverS":"#444",
+					"--boolIcon":"1"
+				},
+				true: {					
+					"--scrollbarColorS":"#555",
+					"--scrollbarHoverS":"#AAA",
+					"--boolIcon":"0"
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="menu-wrapper">
+			<div id="menu"></div>
+		</div>
+		<div id="content-container-wrapper">
+			<div id="content-container">
+				<div id="action-container">
+					<iframe id="action-iframe"></iframe>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="js/skills.js"></script>
+		<div id="footer"></div>
+		<script type="module" src="js/fixedStructure.js"></script>
+		<script>
+		function childClicked(linkURL){
+			console.log(linkURL);
+		}
+		</script>
+	</body>
+</html>
