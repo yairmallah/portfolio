@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="he">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="./imgs/sys/fav.svg" sizes="any">
+        <title>עיצוב פרמטרי</title>
+		<link rel="stylesheet" type="text/css" href="\css\general.css"/>
+		<script>
+			const link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.type = "text/css";
+			if (window.innerWidth <= 768) {
+				link.href = "/skill-mobile.css";
+			} else {
+				link.href = "skill.css";
+			}
+			document.head.appendChild(link);
+		</script>
+    </head>
+    <body>
+	
+	<div id="examples-container">
+	</div>
+	<script type="module" src="/js/loadSkill.js"></script>
+	</body>
+</html>
